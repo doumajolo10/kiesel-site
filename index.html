@@ -18,8 +18,9 @@
 </head>
 <body data-pagina="index">
 <a class="pular so-leitor" href="#conteudo">Ir para o conteúdo</a>
+<div class="faixa-topo"><div class="miolo"><div><span>Av. Getúlio Vargas, Centro · São Martinho/RS</span><span>CRECI 45.125/RS</span></div><div><span><a href="https://wa.me/5555999479495" target="_blank" rel="noopener">(55) 99947-9495</a></span><span><a href="https://wa.me/5555996298532" target="_blank" rel="noopener">(55) 99629-8532</a></span></div></div></div>
 <header class="topo" id="topo">
-  <a class="marca" href="index.html" aria-label="Kiesel Negócios Imobiliários, início"><img src="assets/logo-topo.png" width="391" height="190" alt="" decoding="async"><span><span class="nome">KIESEL</span><span class="sub">Negócios Imobiliários</span></span></a>
+  <a class="marca" href="index.html" aria-label="Kiesel Negócios Imobiliários, início"><img src="assets/logo-kiesel-hd.png" width="1290" height="500" alt="Kiesel Negócios Imobiliários" decoding="async"></a>
   <nav class="nav" aria-label="Principal"><a href="index.html" class="ativo" aria-current="page"><span class="i">01</span>Início</a><a href="imoveis.html"><span class="i">02</span>Imóveis</a><a href="financiamento.html"><span class="i">03</span>Financiamento</a><a href="anuncie.html"><span class="i">04</span>Anuncie</a><a href="sobre.html"><span class="i">05</span>A Kiesel</a><a href="contato.html"><span class="i">06</span>Contato</a></nav>
   <div class="topo-acoes">
     <a class="ico-btn" id="favs-topo" href="imoveis.html?fin=favoritos" aria-label="Imóveis favoritos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span class="conta num" id="favs-n">0</span></a>
@@ -34,78 +35,212 @@
 </nav>
 <main id="conteudo">
 
-<div class="pre" id="pre" aria-hidden="true">
-  <div class="pre-nome"><img src="assets/logo-topo.png" alt="" width="391" height="190" style="height:44px;width:auto"><span class="mono">Kiesel · Negócios Imobiliários</span></div>
-  <div class="pre-num num" id="pre-conta">0</div>
-  <div class="pre-linha"><i id="pre-barra"></i></div>
-  <div class="pre-rot mono"><span>São Martinho, RS</span><span>CRECI 45.125/RS</span></div>
-</div>
+<div class="pre" id="pre" aria-hidden="true"><img src="assets/logo-kiesel-hd.png" alt="" width="391" height="190"><span class="pre-num" id="pre-conta">0</span><i class="pre-linha"><i id="pre-barra"></i></i></div>
 <section class="heroi" id="heroi">
   <div class="heroi-fotos" id="heroi-fotos"><div class="foto ativa" data-ref="CA0036"><img src="img/g/CA0036-03.webp" width="1280" height="720" alt="Casa com 2 quartos, 105 m² em Jardim" fetchpriority="high"></div><div class="foto" data-ref="CA0044"><img src="img/g/CA0044-02.webp" width="1280" height="720" alt="Casa com 2 quartos, 303 m² em Novo" loading="lazy" decoding="async"></div><div class="foto" data-ref="CH0005"><img src="img/g/CH0005-01.webp" width="1280" height="720" alt="Chácara com 3 quartos, 3 hectares em Interior" loading="lazy" decoding="async"></div><div class="foto" data-ref="CH0002"><img src="img/g/CH0002-03.webp" width="1280" height="720" alt="Chácara com 3 quartos, 4.500 m² em Interior" loading="lazy" decoding="async"></div></div>
   <div class="heroi-veu"></div>
   <div class="heroi-miolo">
-    <div>
-      <h1><span class="w"><span>Um</span></span> <span class="w"><span>lugar</span></span> <span class="w"><span>em</span></span> <span class="w"><span>São</span></span> <span class="w"><span>Martinho</span></span> <span class="w"><span>para</span></span> <span class="w"><span>chamar</span></span> <span class="w"><span>de</span></span> <span class="w"><span>seu.</span></span></h1>
-      <p class="sub">Por trás de cada negócio, uma história de respeito e confiança. Casas, terrenos, chácaras e salas comerciais em São Martinho e região.</p>
-      <div class="acoes"><a class="btn btn-papel" href="imoveis.html">Ver os 41 imóveis <span class="seta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="btn btn-contorno" href="anuncie.html">Anunciar o meu</a></div>
+    <div class="cartao-busca">
+      <div><h1>Encontre seu imóvel em São Martinho e região</h1><p class="sub">41 imóveis à venda e para alugar, com preço, fotos e atendimento direto com o corretor. CRECI 45.125/RS.</p></div>
+      <form class="busca" id="form-busca" action="imoveis.html" method="get">
+        <div class="alterna" role="group" aria-label="Finalidade"><input type="hidden" name="fin" id="b-fin" value="comprar"><button type="button" data-fin="comprar" aria-pressed="true">Comprar</button><button type="button" data-fin="alugar" aria-pressed="false">Alugar</button></div>
+        <div class="campo"><label for="b-tipo">Tipo de imóvel</label><select class="sel" id="b-tipo" name="tipo"><option value="">Todos os tipos</option><option>Casa</option><option>Terreno</option><option>Chácara</option><option>Área rural</option><option>Prédio</option><option>Sala comercial</option></select></div>
+        <div class="campo"><label for="b-bairro">Bairro</label><select class="sel" id="b-bairro" name="bairro"><option value="">Todos os bairros</option><option value="Centro">Centro · São Martinho</option><option value="Novo">Novo · São Martinho</option><option value="Jardim">Jardim · São Martinho</option><option value="Interior">Interior · São Martinho</option><option value="Santo Antonio">Santo Antonio · São Martinho</option><option value="Nichele">Nichele · São Martinho</option><option value="Interior">Interior · Sede Nova</option><option value="Nichelle">Nichelle · São Martinho</option></select></div>
+        <div class="campo"><label for="b-quartos">Quartos</label><select class="sel" id="b-quartos" name="quartos"><option value="">Qualquer</option><option value="1">1 ou mais</option><option value="2">2 ou mais</option><option value="3">3 ou mais</option><option value="4">4 ou mais</option></select></div>
+        <button class="btn btn-azul" type="submit">Buscar imóveis <span class="seta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+      </form>
     </div>
     <div class="heroi-hud">
-      <div class="atual" id="heroi-atual" aria-live="polite"><a href="imovel-CA0036.html" data-i="0" style="text-decoration:none;display:grid;gap:4px"><b>Casa com 2 quartos, 105 m²</b><span>Jardim · São Martinho/RS · R$ 550.000</span><span>CA0036 · 01 / 04</span></a><a href="imovel-CA0044.html" data-i="1" hidden style="text-decoration:none;display:grid;gap:4px"><b>Casa com 2 quartos, 303 m²</b><span>Novo · São Martinho/RS · R$ 1.350.000</span><span>CA0044 · 02 / 04</span></a><a href="imovel-CH0005.html" data-i="2" hidden style="text-decoration:none;display:grid;gap:4px"><b>Chácara com 3 quartos, 3 hectares</b><span>Interior · Sede Nova/RS · R$ 950.000</span><span>CH0005 · 03 / 04</span></a><a href="imovel-CH0002.html" data-i="3" hidden style="text-decoration:none;display:grid;gap:4px"><b>Chácara com 3 quartos, 4.500 m²</b><span>Interior · São Martinho/RS · R$ 900.000</span><span>CH0002 · 04 / 04</span></a></div>
+      <div class="atual" id="heroi-atual" aria-live="polite"><a href="imovel-CA0036.html" data-i="0"><b>Casa com 2 quartos, 105 m²</b><span>Jardim · São Martinho/RS · R$ 550.000</span><span>Ref. CA0036 · ver imóvel →</span></a><a href="imovel-CA0044.html" data-i="1" hidden><b>Casa com 2 quartos, 303 m²</b><span>Novo · São Martinho/RS · R$ 1.350.000</span><span>Ref. CA0044 · ver imóvel →</span></a><a href="imovel-CH0005.html" data-i="2" hidden><b>Chácara com 3 quartos, 3 hectares</b><span>Interior · Sede Nova/RS · R$ 950.000</span><span>Ref. CH0005 · ver imóvel →</span></a><a href="imovel-CH0002.html" data-i="3" hidden><b>Chácara com 3 quartos, 4.500 m²</b><span>Interior · São Martinho/RS · R$ 900.000</span><span>Ref. CH0002 · ver imóvel →</span></a></div>
       <div class="barras" id="heroi-barras"><i class="ativa"></i><i></i><i></i><i></i></div>
     </div>
   </div>
-  <div class="heroi-rolar" aria-hidden="true"><span>Rolar</span><i></i></div>
 </section>
-<section class="busca-painel" aria-label="Buscar imóvel">
+<section class="numeros" aria-label="Números da Kiesel">
   <div class="miolo">
-    <form class="busca" id="form-busca" action="imoveis.html" method="get">
-      <div class="alterna" role="group" aria-label="Finalidade"><input type="hidden" name="fin" id="b-fin" value="comprar"><button type="button" data-fin="comprar" aria-pressed="true">Comprar</button><button type="button" data-fin="alugar" aria-pressed="false">Alugar</button></div>
-      <div class="campo"><label for="b-tipo">Tipo</label><select class="sel" id="b-tipo" name="tipo"><option value="">Todos os tipos</option><option>Casa</option><option>Terreno</option><option>Chácara</option><option>Área rural</option><option>Prédio</option><option>Sala comercial</option></select></div>
-      <div class="campo"><label for="b-bairro">Bairro</label><select class="sel" id="b-bairro" name="bairro"><option value="">Todos os bairros</option><option value="Centro">Centro · São Martinho</option><option value="Novo">Novo · São Martinho</option><option value="Jardim">Jardim · São Martinho</option><option value="Interior">Interior · São Martinho</option><option value="Santo Antonio">Santo Antonio · São Martinho</option><option value="Nichele">Nichele · São Martinho</option><option value="Interior">Interior · Sede Nova</option><option value="Nichelle">Nichelle · São Martinho</option></select></div>
-      <div class="campo"><label for="b-quartos">Quartos</label><select class="sel" id="b-quartos" name="quartos"><option value="">Qualquer</option><option value="1">1 ou mais</option><option value="2">2 ou mais</option><option value="3">3 ou mais</option><option value="4">4 ou mais</option></select></div>
-      <button class="btn btn-tinta" type="submit">Buscar <span class="seta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
-    </form>
+    <div class="fato rv"><b class="num" data-n="41">0</b><span>imóveis publicados hoje</span></div>
+    <div class="fato rv"><b class="num" data-n="20">0</b><span>casas à venda</span></div>
+    <div class="fato rv"><b class="num" data-n="18">0</b><span>terrenos, chácaras e áreas</span></div>
+    <div class="fato rv"><b class="num" data-n="8">0</b><span>bairros em São Martinho e Sede Nova</span></div>
   </div>
 </section>
-<section class="afirma" id="afirma">
+<section class="secao" id="categorias">
   <div class="miolo">
-    <p class="texto" id="afirma-texto"><span class="pal">A</span><span class="pal">Kiesel</span><span class="pal">tem</span><span class="pal">41</span><span class="pal">imóveis</span><span class="pal">à</span><span class="pal">venda</span><span class="pal">e</span><span class="pal">para</span><span class="pal">alugar</span><span class="pal">em</span><span class="pal">São</span><span class="pal">Martinho</span><span class="pal">e</span><span class="pal">região,</span><span class="pal">com</span><span class="pal">um</span><span class="pal">corretor</span><span class="pal">que</span><span class="pal">conhece</span><span class="pal">cada</span><span class="pal">rua</span><span class="pal">da</span><span class="pal">cidade</span><span class="pal">e</span><span class="pal">o</span><span class="pal">histórico</span><span class="pal">de</span><span class="pal">cada</span><span class="pal">casa.</span></p>
-    <div class="fatos">
-      <div class="fato rv"><b class="num" data-n="41">0</b><span class="mono">imóveis na carteira</span></div>
-      <div class="fato rv"><b class="num" data-n="20">0</b><span class="mono">casas à venda</span></div>
-      <div class="fato rv"><b class="num" data-n="18">0</b><span class="mono">terrenos, chácaras e áreas</span></div>
+    <div class="cabeca rv"><div><span class="mono">O que você procura</span><h2>Busque por tipo de imóvel</h2></div></div>
+    <div class="categorias" data-stagger><a class="ladrilho rv" href="imoveis.html?tipo=Casa"><img src="img/p/CA0047-02.webp" alt="" loading="lazy" decoding="async"><b>Casas</b><span>20 imóveis</span></a><a class="ladrilho rv" href="imoveis.html?tipo=Terreno"><img src="img/p/TE0028-01.webp" alt="" loading="lazy" decoding="async"><b>Terrenos</b><span>12 imóveis</span></a><a class="ladrilho rv" href="imoveis.html?tipo=Ch%C3%A1cara"><img src="img/p/CH0007-01.webp" alt="" loading="lazy" decoding="async"><b>Chácaras</b><span>5 imóveis</span></a><a class="ladrilho rv" href="imoveis.html?tipo=%C3%81rea%20rural"><img src="img/p/AR0001-01.webp" alt="" loading="lazy" decoding="async"><b>Áreas rurais</b><span>1 imóvel</span></a><a class="ladrilho rv" href="imoveis.html?tipo=Pr%C3%A9dio"><img src="img/p/PR0001-01.webp" alt="" loading="lazy" decoding="async"><b>Prédios</b><span>1 imóvel</span></a><a class="ladrilho rv" href="imoveis.html?tipo=Sala%20comercial&fin=alugar"><img src="img/p/SA0003-01.webp" alt="" loading="lazy" decoding="async"><b>Salas comerciais</b><span>2 imóveis</span></a></div>
+  </div>
+</section>
+<section class="secao secao-cinza" id="selecao">
+  <div class="miolo">
+    <div class="cabeca rv"><div><span class="mono">Seleção da equipe</span><h2>Imóveis em destaque</h2><p>Os imóveis mais completos da carteira, escolhidos pela Kiesel.</p></div><a class="btn btn-contorno" href="imoveis.html">Ver catálogo completo <span class="seta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+    <div class="vitrine" data-stagger id="destaques"><a class="item" href="imovel-CA0044.html" data-cursor="Ver imóvel" data-ref="CA0044" data-tipo="Casa" data-fin="comprar" data-bairro="Novo" data-preco="1350000" data-quartos="2" data-area="303" data-data="2026-03-26" data-busca="casa com 2 quartos, 303 m² novo são martinho ca0044 ar-condicionado mobiliado água cozinha escritório lavabo armários nos dormitórios armários no banheiro armários no escritório armários na cozinha armários na lavanderia aceita animais vende
+terreno urbano de esquina com área de 352 m², com benfeitoria, uma casa de alvenaria com 303 m², contendo:
+primeiro piso:
+sala de estar;
+sala de tv;
+despensa;
+lavabo;
+garagem para dois veículos;
+segundo piso, possui:
+(02) dois dormitórios, sendo uma suíte com sacada;
+(01) um banheiro;
+sala;
+escritório;
+lavanderia;
+
+o imóvel possui móveis planejados que permanecem no imóvel;
+o referido imóvel é todo cercado;
+aberturas em madeira itaúba;
+o corpo da casa possui pré laje e tijolo maciço;
+o imóvel conta com (03) três aparelhos de ar-condicionado instalados;
+
+localizado na rua arsênio rodrigues da silva com a rua egidio gregory, na cidade de são martinho/rs.">
+  <div class="moldura"><img class="a" src="img/p/CA0044-02.webp" srcset="img/p/CA0044-02.webp 640w, img/g/CA0044-02.webp 1280w" sizes="(max-width:600px) 100vw, (max-width:1000px) 50vw, 33vw" width="640" height="360" alt="Casa com 2 quartos, 303 m² em Novo" loading="lazy" decoding="async"><img class="b" src="img/p/CA0044-01.webp" alt="" loading="lazy" decoding="async"><span class="cod">CA0044</span><span class="tipo">Casa</span><button class="fav" type="button" data-fav="CA0044" aria-label="Guardar CA0044 nos favoritos" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></button></div>
+  <div class="dados"><h3>Casa com 2 quartos, 303 m²</h3><span class="preco num">R$ 1.350.000</span></div>
+  <span class="onde mono">Novo · São Martinho/RS</span>
+  <div class="specs"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 18V8h18v10M3 12h18M6 8V5h5v3M13 8V5h5v3"/></svg>2 quartos</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3zM6 12V5a2 2 0 0 1 4 0M7 19l-1 2M17 19l1 2"/></svg>2 banheiros</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 16l1.5-5h11L19 16M3 16h18v3H3zM7 19v1M17 19v1"/><circle cx="7.5" cy="16" r="1"/><circle cx="16.5" cy="16" r="1"/></svg>2 vagas</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h5V4M15 20v-5h5"/></svg>303 m²</span></div>
+</a><a class="item" href="imovel-CA0036.html" data-cursor="Ver imóvel" data-ref="CA0036" data-tipo="Casa" data-fin="comprar" data-bairro="Jardim" data-preco="550000" data-quartos="2" data-area="104.5" data-data="2025-10-31" data-busca="casa com 2 quartos, 105 m² jardim são martinho ca0036 gera renda churrasqueira esgoto pavimentação energia elétrica pátio lavabo porcelanato vende
+terreno urbano com área de 345, 55 m², com benfeitoria, uma casa de alvenaria com 104, 50 m², contendo:
+(02) dois dormitórios;
+(01) um banheiro;
+lavabo;
+sala;
+cozinha;
+lavanderia;
+garagem;
+
+localizado na rua lori conrad, bairro jardim, na cidade de são martinho/rs.">
+  <div class="moldura"><img class="a" src="img/p/CA0036-03.webp" srcset="img/p/CA0036-03.webp 640w, img/g/CA0036-03.webp 1280w" sizes="(max-width:600px) 100vw, (max-width:1000px) 50vw, 33vw" width="640" height="360" alt="Casa com 2 quartos, 105 m² em Jardim" loading="lazy" decoding="async"><img class="b" src="img/p/CA0036-01.webp" alt="" loading="lazy" decoding="async"><span class="cod">CA0036</span><span class="tipo">Casa</span><button class="fav" type="button" data-fav="CA0036" aria-label="Guardar CA0036 nos favoritos" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></button></div>
+  <div class="dados"><h3>Casa com 2 quartos, 105 m²</h3><span class="preco num">R$ 550.000</span></div>
+  <span class="onde mono">Jardim · São Martinho/RS</span>
+  <div class="specs"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 18V8h18v10M3 12h18M6 8V5h5v3M13 8V5h5v3"/></svg>2 quartos</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3zM6 12V5a2 2 0 0 1 4 0M7 19l-1 2M17 19l1 2"/></svg>1 banheiro</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h5V4M15 20v-5h5"/></svg>105 m²</span></div>
+</a><a class="item" href="imovel-CH0005.html" data-cursor="Ver imóvel" data-ref="CH0005" data-tipo="Chácara" data-fin="comprar" data-bairro="Interior" data-preco="950000" data-quartos="3" data-area="2.8" data-data="2025-05-23" data-busca="chácara com 3 quartos, 3 hectares interior sede nova ch0005 gera renda água energia elétrica fruticultura casa principal pomar açude ende
+uma fração de terra rural com área de aproximadamente 2, 8 hectares(28.000 m²), com benfeitoria, uma casa mista com 200 m², contendo:
+(03) três dormitórios, sendo 01(uma) suíte;
+(01) um banheiro;
+cozinha;
+sala de estar;
+sala de jantar;
+despensa;
+área de festa;
+celeiro com 300 m²;
+estrebaria;
+possui 06 açudes;
+o referido imóvel possui um chiqueiro automatizado para 250 suínos;
+área arborizada com mudas frutíferas;
+
+localizado na localidade de linha avozani, interior do município de sede nova/rs.">
+  <div class="moldura"><img class="a" src="img/p/CH0005-01.webp" srcset="img/p/CH0005-01.webp 640w, img/g/CH0005-01.webp 1280w" sizes="(max-width:600px) 100vw, (max-width:1000px) 50vw, 33vw" width="640" height="360" alt="Chácara com 3 quartos, 3 hectares em Interior" loading="lazy" decoding="async"><img class="b" src="img/p/CH0005-02.webp" alt="" loading="lazy" decoding="async"><span class="cod">CH0005</span><span class="tipo">Chácara</span><button class="fav" type="button" data-fav="CH0005" aria-label="Guardar CH0005 nos favoritos" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></button></div>
+  <div class="dados"><h3>Chácara com 3 quartos, 3 hectares</h3><span class="preco num">R$ 950.000</span></div>
+  <span class="onde mono">Interior · Sede Nova/RS</span>
+  <div class="specs"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 18V8h18v10M3 12h18M6 8V5h5v3M13 8V5h5v3"/></svg>3 quartos</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3zM6 12V5a2 2 0 0 1 4 0M7 19l-1 2M17 19l1 2"/></svg>1 banheiro</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h5V4M15 20v-5h5"/></svg>2,8 ha</span></div>
+</a><a class="item" href="imovel-CA0035.html" data-cursor="Ver imóvel" data-ref="CA0035" data-tipo="Casa" data-fin="comprar" data-bairro="Jardim" data-preco="1250000" data-quartos="3" data-area="220" data-data="2025-10-28" data-busca="casa com 3 quartos, 220 m² jardim são martinho ca0035 churrasqueira ar-condicionado piscina esgoto portão eletrônico água pavimentação energia elétrica despensa cozinha lavanderia pátio escritório armários nos dormitórios armários na sala armários no escritório armários na cozinha porcelanato aceita animais terreno urbano com área de 325 m², com benfeitoria, uma casa de alvenaria com 220 m², contendo:
+(03) três dormitórios, sendo uma suíte;
+(01) um banheiro;
+sala/cozinha;
+lavanderia;
+garagem para dois veículos;
+segundo andar, possui:
+escritório;
+sótão;
+área de festa, possui:
+(01) um banheiro;
+cozinha;
+churrasqueira;
+piscina;
+
+o imóvel conta com um sótão amplo, ideal para armazenamento ou conforme a necessidade do morador.
+
+o referido imóvel possui piscina 3, 00 m x 6, 00 m, com aquecimento e cascata;
+o corpo da casa possui pré laje e tijolo maciço;
+aberturas em madeira itaúba;
+o imóvel possui (06) seis câmeras de vigilância e portão eletrônico;
+
+o imóvel conta com (06) seis aparelhos de ar-condicionado instalados, sendo:
+--&gt;2 unidades de 18.000 btus,
+--&gt;1 unidade de 12.000 btus,
+--&gt;3 unidades de 9.000 btus.
+
+localizado na rua alibio konrad, bairro jardim, na cidade de são martinho/rs.
+para mais informações entre em contato conosco
+(55)99947-9495;
+(55)99629-8532;">
+  <div class="moldura"><img class="a" src="img/p/CA0035-01.webp" srcset="img/p/CA0035-01.webp 640w, img/g/CA0035-01.webp 1280w" sizes="(max-width:600px) 100vw, (max-width:1000px) 50vw, 33vw" width="640" height="360" alt="Casa com 3 quartos, 220 m² em Jardim" loading="lazy" decoding="async"><img class="b" src="img/p/CA0035-02.webp" alt="" loading="lazy" decoding="async"><span class="cod">CA0035</span><span class="tipo">Casa</span><button class="fav" type="button" data-fav="CA0035" aria-label="Guardar CA0035 nos favoritos" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></button></div>
+  <div class="dados"><h3>Casa com 3 quartos, 220 m²</h3><span class="preco num">R$ 1.250.000</span></div>
+  <span class="onde mono">Jardim · São Martinho/RS</span>
+  <div class="specs"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 18V8h18v10M3 12h18M6 8V5h5v3M13 8V5h5v3"/></svg>3 quartos</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3zM6 12V5a2 2 0 0 1 4 0M7 19l-1 2M17 19l1 2"/></svg>2 banheiros</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 16l1.5-5h11L19 16M3 16h18v3H3zM7 19v1M17 19v1"/><circle cx="7.5" cy="16" r="1"/><circle cx="16.5" cy="16" r="1"/></svg>3 vagas</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h5V4M15 20v-5h5"/></svg>220 m²</span></div>
+</a><a class="item" href="imovel-CA0047.html" data-cursor="Ver imóvel" data-ref="CA0047" data-tipo="Casa" data-fin="comprar" data-bairro="Jardim" data-preco="775000" data-quartos="3" data-area="132" data-data="2026-09-28" data-busca="casa com 3 quartos, 132 m² jardim são martinho ca0047 churrasqueira lareira esgoto energia elétrica lavanderia pátio porcelanato aceita animais casa de alto padrão à venda
+se procura uma casa moderna, sólida, confortável e com excelente eficiência energética, esta é a oportunidade ideal.
+localizada em rua asfaltada, com ótima posição solar, esta residência foi construída em 2021 sobre um terreno de 364 m², com 13 metros de frente, e possui 132 m² de área construída, em alvenaria com tijolos maciços, oferecendo qualidade, durabilidade e excelente acabamento.
+características do imóvel
+3 dormitórios;
+2 banheiros;
+sala de estar;
+sala de convivência com lareira;
+cozinha planejada, totalmente projetada, com ampla bancada em mármore em formato de &quot;u&quot;;
+garagem ampla, ideal para caminhonete ou veículo de grande porte;
+espaço gourmet completo, com churrasqueira, ampla pia em mármore, balcão planejado, adega e um elegante bar integrado, todos projetados sob medida.
+acabamentos e diferenciais
+piso em porcelanato em toda a residência;
+aberturas externas em madeira de itaúba;
+portas internas com 90 cm de largura, proporcionando mais conforto e acessibilidade;
+sistema de energia solar com 12 módulos fotovoltaicos de 650 w, garantindo excelente economia na conta de energia;
+caixa d'água de 500 litros, proporcionando maior segurança e abastecimento em eventuais interrupções no fornecimento de água.
+área externa
+terreno totalmente murado;
+grade frontal;
+dois portões eletrônicos com controlo remoto;
+excelente privacidade e segurança;
+depósito nos fundos, com aproximadamente 3 x 4 metros, ideal para armazenamento de lenha, ferramentas, máquinas e outros equipamentos.
+esta é uma residência pensada para quem valoriza conforto, segurança, qualidade construtiva e economia, reunindo materiais de alto padrão e um projeto funcional para toda a família.
+além da excelente distribuição dos ambientes internos, o imóvel oferece um espaço gourmet completo para receber familiares e amigos, aliado à praticidade de um depósito externo e à tranquilidade proporcionada pelo sistema de energia solar e pela reserva de água.
+agende uma visita e venha conhecer pessoalmente todos os detalhes desta excelente oportunidade.">
+  <div class="moldura"><img class="a" src="img/p/CA0047-02.webp" srcset="img/p/CA0047-02.webp 640w, img/g/CA0047-02.webp 1280w" sizes="(max-width:600px) 100vw, (max-width:1000px) 50vw, 33vw" width="640" height="360" alt="Casa com 3 quartos, 132 m² em Jardim" loading="lazy" decoding="async"><img class="b" src="img/p/CA0047-01.webp" alt="" loading="lazy" decoding="async"><span class="cod">CA0047</span><span class="tipo">Casa</span><button class="fav" type="button" data-fav="CA0047" aria-label="Guardar CA0047 nos favoritos" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></button></div>
+  <div class="dados"><h3>Casa com 3 quartos, 132 m²</h3><span class="preco num">R$ 775.000</span></div>
+  <span class="onde mono">Jardim · São Martinho/RS</span>
+  <div class="specs"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 18V8h18v10M3 12h18M6 8V5h5v3M13 8V5h5v3"/></svg>3 quartos</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h5V4M15 20v-5h5"/></svg>132 m²</span></div>
+</a><a class="item" href="imovel-CH0002.html" data-cursor="Ver imóvel" data-ref="CH0002" data-tipo="Chácara" data-fin="comprar" data-bairro="Interior" data-preco="900000" data-quartos="3" data-area="4500" data-data="2024-11-14" data-busca="chácara com 3 quartos, 4.500 m² interior são martinho ch0002 piscina esgoto água pátio varanda armários no banheiro armários na cozinha fruticultura aqui você encontra a paz que precisa para recuperar as energias!
+um lugar fresco, arejado, tranquilo, em meio a natureza e com arvores frutíferas.
+um lugar de fácil acesso e próximo a cidade de são martinho/rs.
+vende
+uma fração de terra rural com área de aproximadamente 4.500 m², com benfeitoria, uma casa de alvenaria com 230 m², contendo:
+(03) três dormitórios, sendo 01(uma) suíte;
+(01) um banheiro;
+cozinha;
+sala de estar;
+sala de jantar;
+lavanderia;
+despensa;
+festerê com fogão campeiro;
+garagem para dois veículos com portão eletrônico;
+os móveis planejados permanecem no imóvel;
+o referido imóvel possui uma piscina de 18 m² com fonte drenada e bomba automatizada;
+o imóvel possui pré laje;
+excelente localização, a 1 km da cidade e 700 m da rodovia ers 210.
+localizado na localidade de lajeado taborda, interior do município de são martinho/rs.
+para mais informações entre em contato conosco
+(55)99629-8532;
+(55)99947-9495">
+  <div class="moldura"><img class="a" src="img/p/CH0002-03.webp" srcset="img/p/CH0002-03.webp 640w, img/g/CH0002-03.webp 1280w" sizes="(max-width:600px) 100vw, (max-width:1000px) 50vw, 33vw" width="640" height="360" alt="Chácara com 3 quartos, 4.500 m² em Interior" loading="lazy" decoding="async"><img class="b" src="img/p/CH0002-01.webp" alt="" loading="lazy" decoding="async"><span class="cod">CH0002</span><span class="tipo">Chácara</span><button class="fav" type="button" data-fav="CH0002" aria-label="Guardar CH0002 nos favoritos" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></button></div>
+  <div class="dados"><h3>Chácara com 3 quartos, 4.500 m²</h3><span class="preco num">R$ 900.000</span></div>
+  <span class="onde mono">Interior · São Martinho/RS</span>
+  <div class="specs"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 18V8h18v10M3 12h18M6 8V5h5v3M13 8V5h5v3"/></svg>3 quartos</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3zM6 12V5a2 2 0 0 1 4 0M7 19l-1 2M17 19l1 2"/></svg>1 banheiro</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 16l1.5-5h11L19 16M3 16h18v3H3zM7 19v1M17 19v1"/><circle cx="7.5" cy="16" r="1"/><circle cx="16.5" cy="16" r="1"/></svg>2 vagas</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h5V4M15 20v-5h5"/></svg>4.500 m²</span></div>
+</a></div>
+  </div>
+</section>
+<section class="secao" id="porque">
+  <div class="miolo">
+    <div class="cabeca rv"><div><span class="mono">Por que a Kiesel</span><h2>A imobiliária da cidade</h2></div></div>
+    <div class="porques" data-stagger>
+      <div class="porque rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3l2.5 2 3.2-.3.6 3.1 2.7 1.7-1.3 2.9 1.3 2.9-2.7 1.7-.6 3.1-3.2-.3L12 21l-2.5-2-3.2.3-.6-3.1L3 14.5l1.3-2.9L3 8.7l2.7-1.7.6-3.1 3.2.3z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Corretagem registrada</h3><p>CRECI 45.125/RS. Contrato, documentação conferida e orientação em cada etapa, da visita à escritura.</p></div>
+      <div class="porque rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 11l9-7 9 7M5 10v10h14V10M10 20v-6h4v6"/></svg></span><h3>Conhece cada quadra</h3><p>Escritório na Avenida Getúlio Vargas, no Centro. Sabe o histórico dos imóveis, a vizinhança e o que cada bairro oferece.</p></div>
+      <div class="porque rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.5"/></svg></span><h3>Preço na vitrine</h3><p>Nenhum imóvel "sob consulta". Valor, fotos e descrição completa de tudo o que está disponível.</p></div>
     </div>
   </div>
 </section>
-<section class="selecao" id="selecao">
-  <div class="selecao-pin" id="selecao-pin">
-    <div class="selecao-topo"><div><span class="mono">01 — Seleção</span><h2>Os imóveis que definem a cidade.</h2></div><a class="btn btn-contorno" href="imoveis.html">Catálogo completo <span class="seta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
-    <div class="trilho-h" id="trilho-h"><a class="peca" href="imovel-CA0044.html" data-cursor="Ver imóvel">
-  <div class="moldura"><img src="img/g/CA0044-02.webp" width="1280" height="720" alt="Casa com 2 quartos, 303 m² em Novo"><span class="cod">CA0044</span></div>
-  <div class="legenda"><div><h3>Casa com 2 quartos, 303 m²</h3><span class="mono">Novo · São Martinho/RS</span></div><span class="preco num">R$ 1.350.000</span></div>
-</a><a class="peca" href="imovel-CA0036.html" data-cursor="Ver imóvel">
-  <div class="moldura"><img src="img/g/CA0036-03.webp" width="1280" height="720" alt="Casa com 2 quartos, 105 m² em Jardim"><span class="cod">CA0036</span></div>
-  <div class="legenda"><div><h3>Casa com 2 quartos, 105 m²</h3><span class="mono">Jardim · São Martinho/RS</span></div><span class="preco num">R$ 550.000</span></div>
-</a><a class="peca" href="imovel-CH0005.html" data-cursor="Ver imóvel">
-  <div class="moldura"><img src="img/g/CH0005-01.webp" width="1280" height="720" alt="Chácara com 3 quartos, 3 hectares em Interior" loading="lazy" decoding="async"><span class="cod">CH0005</span></div>
-  <div class="legenda"><div><h3>Chácara com 3 quartos, 3 hectares</h3><span class="mono">Interior · Sede Nova/RS</span></div><span class="preco num">R$ 950.000</span></div>
-</a><a class="peca" href="imovel-CA0035.html" data-cursor="Ver imóvel">
-  <div class="moldura"><img src="img/g/CA0035-01.webp" width="1280" height="720" alt="Casa com 3 quartos, 220 m² em Jardim" loading="lazy" decoding="async"><span class="cod">CA0035</span></div>
-  <div class="legenda"><div><h3>Casa com 3 quartos, 220 m²</h3><span class="mono">Jardim · São Martinho/RS</span></div><span class="preco num">R$ 1.250.000</span></div>
-</a><a class="peca" href="imovel-CA0047.html" data-cursor="Ver imóvel">
-  <div class="moldura"><img src="img/g/CA0047-02.webp" width="1280" height="720" alt="Casa com 3 quartos, 132 m² em Jardim" loading="lazy" decoding="async"><span class="cod">CA0047</span></div>
-  <div class="legenda"><div><h3>Casa com 3 quartos, 132 m²</h3><span class="mono">Jardim · São Martinho/RS</span></div><span class="preco num">R$ 775.000</span></div>
-</a><a class="peca" href="imovel-CH0002.html" data-cursor="Ver imóvel">
-  <div class="moldura"><img src="img/g/CH0002-03.webp" width="1280" height="720" alt="Chácara com 3 quartos, 4.500 m² em Interior" loading="lazy" decoding="async"><span class="cod">CH0002</span></div>
-  <div class="legenda"><div><h3>Chácara com 3 quartos, 4.500 m²</h3><span class="mono">Interior · São Martinho/RS</span></div><span class="preco num">R$ 900.000</span></div>
-</a></div>
-    <div class="selecao-fim"><span class="mono">6 imóveis escolhidos pela equipe</span><div class="prog"><i id="selecao-prog"></i></div><span class="mono" id="selecao-cont">01 / 06</span></div>
-  </div>
-</section>
-<div class="marquee" aria-hidden="true"><div class="trilho"><span>Centro, São Martinho<em>19 imóveis</em></span><span>Novo, São Martinho<em>6 imóveis</em></span><span>Jardim, São Martinho<em>4 imóveis</em></span><span>Interior, São Martinho<em>4 imóveis</em></span><span>Santo Antonio, São Martinho<em>4 imóveis</em></span><span>Nichele, São Martinho<em>2 imóveis</em></span><span>Interior, Sede Nova<em>1 imóvel</em></span><span>Nichelle, São Martinho<em>1 imóvel</em></span><span>Centro, São Martinho<em>19 imóveis</em></span><span>Novo, São Martinho<em>6 imóveis</em></span><span>Jardim, São Martinho<em>4 imóveis</em></span><span>Interior, São Martinho<em>4 imóveis</em></span><span>Santo Antonio, São Martinho<em>4 imóveis</em></span><span>Nichele, São Martinho<em>2 imóveis</em></span><span>Interior, Sede Nova<em>1 imóvel</em></span><span>Nichelle, São Martinho<em>1 imóvel</em></span></div></div>
-<section class="secao" id="recentes">
+<section class="secao secao-cinza" id="recentes">
   <div class="miolo">
-    <div class="cabeca"><div><span class="mono rv">02 — Carteira</span><h2 class="rv">Atualizados recentemente.</h2></div><a class="btn btn-contorno rv" href="imoveis.html">Ver todos os 41 <span class="seta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+    <div class="cabeca rv"><div><span class="mono">Carteira</span><h2>Atualizados recentemente</h2></div><a class="btn btn-contorno" href="imoveis.html">Ver todos os 41 <span class="seta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
     <div class="vitrine" data-stagger><a class="item" href="imovel-TE0028.html" data-cursor="Ver imóvel" data-ref="TE0028" data-tipo="Terreno" data-fin="comprar" data-bairro="Centro" data-preco="340000" data-quartos="0" data-area="987.15" data-data="2026-10-07" data-busca="terreno, 987 m² centro são martinho te0028  oportunidade única em são martinho/rs!
 
 (02) dois terrenos urbanos, sem benfeitorias, cada terreno com área de aproximadamente de 420, 00 m²;
@@ -231,40 +366,47 @@ para mais informações ou agendar uma visita
 </section>
 <section class="secao" id="bairros">
   <div class="miolo">
-    <div class="cabeca"><div><span class="mono rv">03 — Onde</span><h2 class="rv">Cada bairro, um jeito de morar.</h2></div><p class="rv">Do Centro às chácaras do interior, a carteira cobre São Martinho inteira e o município vizinho de Sede Nova. Passe o mouse para ver.</p></div>
-    <div class="bairros" data-stagger><a class="bairro rv" href="imoveis.html?bairro=Centro" data-foto="img/p/CA0032-01.webp"><span class="n num">01</span><b>Centro</b><span class="mono">São Martinho · 19 imóveis</span></a><a class="bairro rv" href="imoveis.html?bairro=Novo" data-foto="img/p/CA0045-01.webp"><span class="n num">02</span><b>Novo</b><span class="mono">São Martinho · 6 imóveis</span></a><a class="bairro rv" href="imoveis.html?bairro=Jardim" data-foto="img/p/CA0036-03.webp"><span class="n num">03</span><b>Jardim</b><span class="mono">São Martinho · 4 imóveis</span></a><a class="bairro rv" href="imoveis.html?bairro=Interior" data-foto="img/p/CH0005-01.webp"><span class="n num">04</span><b>Interior</b><span class="mono">São Martinho · 4 imóveis</span></a><a class="bairro rv" href="imoveis.html?bairro=Santo%20Antonio" data-foto="img/p/CA0040-03.webp"><span class="n num">05</span><b>Santo Antonio</b><span class="mono">São Martinho · 4 imóveis</span></a><a class="bairro rv" href="imoveis.html?bairro=Nichele" data-foto="img/p/CA0046-01.webp"><span class="n num">06</span><b>Nichele</b><span class="mono">São Martinho · 2 imóveis</span></a><a class="bairro rv" href="imoveis.html?bairro=Interior" data-foto="img/p/CH0005-01.webp"><span class="n num">07</span><b>Interior</b><span class="mono">Sede Nova · 1 imóvel</span></a><a class="bairro rv" href="imoveis.html?bairro=Nichelle" data-foto="img/p/CA0030-01.webp"><span class="n num">08</span><b>Nichelle</b><span class="mono">São Martinho · 1 imóvel</span></a></div>
+    <div class="cabeca rv"><div><span class="mono">Onde</span><h2>Imóveis por bairro</h2></div></div>
+    <div class="bairros" data-stagger><a class="bairro rv" href="imoveis.html?bairro=Centro" data-foto="img/p/CA0032-01.webp"><img class="th" src="img/p/CA0032-01.webp" alt="" loading="lazy" decoding="async" width="72" height="60"><span><b>Centro</b><span>São Martinho</span></span><span class="mono">19 imóveis</span></a><a class="bairro rv" href="imoveis.html?bairro=Novo" data-foto="img/p/CA0045-01.webp"><img class="th" src="img/p/CA0045-01.webp" alt="" loading="lazy" decoding="async" width="72" height="60"><span><b>Novo</b><span>São Martinho</span></span><span class="mono">6 imóveis</span></a><a class="bairro rv" href="imoveis.html?bairro=Jardim" data-foto="img/p/CA0036-03.webp"><img class="th" src="img/p/CA0036-03.webp" alt="" loading="lazy" decoding="async" width="72" height="60"><span><b>Jardim</b><span>São Martinho</span></span><span class="mono">4 imóveis</span></a><a class="bairro rv" href="imoveis.html?bairro=Interior" data-foto="img/p/CH0005-01.webp"><img class="th" src="img/p/CH0005-01.webp" alt="" loading="lazy" decoding="async" width="72" height="60"><span><b>Interior</b><span>São Martinho</span></span><span class="mono">4 imóveis</span></a><a class="bairro rv" href="imoveis.html?bairro=Santo%20Antonio" data-foto="img/p/CA0040-03.webp"><img class="th" src="img/p/CA0040-03.webp" alt="" loading="lazy" decoding="async" width="72" height="60"><span><b>Santo Antonio</b><span>São Martinho</span></span><span class="mono">4 imóveis</span></a><a class="bairro rv" href="imoveis.html?bairro=Nichele" data-foto="img/p/CA0046-01.webp"><img class="th" src="img/p/CA0046-01.webp" alt="" loading="lazy" decoding="async" width="72" height="60"><span><b>Nichele</b><span>São Martinho</span></span><span class="mono">2 imóveis</span></a><a class="bairro rv" href="imoveis.html?bairro=Interior" data-foto="img/p/CH0005-01.webp"><img class="th" src="img/p/CH0005-01.webp" alt="" loading="lazy" decoding="async" width="72" height="60"><span><b>Interior</b><span>Sede Nova</span></span><span class="mono">1 imóvel</span></a><a class="bairro rv" href="imoveis.html?bairro=Nichelle" data-foto="img/p/CA0030-01.webp"><img class="th" src="img/p/CA0030-01.webp" alt="" loading="lazy" decoding="async" width="72" height="60"><span><b>Nichelle</b><span>São Martinho</span></span><span class="mono">1 imóvel</span></a></div>
   </div>
 </section>
-<section class="secao" id="como">
+<section class="secao" id="anuncie-faixa" style="padding-top:0">
   <div class="miolo">
-    <div class="cabeca"><div><span class="mono rv">04 — Processo</span><h2 class="rv">Sem surpresa, do primeiro contato à escritura.</h2></div></div>
-    <div class="pilha" id="pilha">
-      <div class="cartao"><span class="n">01</span><h3>Conversa</h3><div><p>Você conta o que procura ou o que quer vender. A Kiesel responde pelo WhatsApp, sem formulário intermediário nem central de atendimento.</p><div class="mini"><span>WhatsApp</span><span>Balcão na Avenida</span></div></div></div>
-      <div class="cartao"><span class="n">02</span><h3>Visita</h3><div><p>Visita acompanhada pelo corretor, que conhece o imóvel, a vizinhança e o histórico de cada quadra. Você vê o que a foto não mostra.</p><div class="mini"><span>Agenda flexível</span><span>Corretor presente</span></div></div></div>
-      <div class="cartao"><span class="n">03</span><h3>Proposta, financiamento e escritura</h3><div><p>Negociação direta com o proprietário, orientação para financiar e documentação conferida até a assinatura. Simule aqui no site antes de visitar.</p><div class="mini"><span>Price e SAC</span><span>Documentação conferida</span></div></div></div>
+    <div class="faixa-azul rv">
+      <div><span class="mono" style="color:#9CC4EA">Proprietários</span><h2>Quer vender ou alugar o seu imóvel?</h2><p>Avaliação de mercado, fotos, anúncio neste site e no Facebook, visitas acompanhadas e documentação conferida. Você só fala com a Kiesel.</p></div>
+      <div class="acoes"><a class="btn btn-papel" href="anuncie.html">Anunciar meu imóvel <span class="seta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="btn btn-contorno" href="financiamento.html">Simular financiamento</a></div>
     </div>
   </div>
 </section>
-<section class="secao" id="sobre-breve" style="padding-top:0">
+<section class="secao secao-cinza" id="como">
+  <div class="miolo">
+    <div class="cabeca rv"><div><span class="mono">Como funciona</span><h2>Sem surpresa, do primeiro contato à escritura</h2></div></div>
+    <div class="pilha" id="pilha" data-stagger>
+      <div class="cartao rv"><span class="n">Passo 1</span><h3>Conversa</h3><p>Você conta o que procura ou o que quer vender. A Kiesel responde pelo WhatsApp, sem formulário intermediário nem central de atendimento.</p><div class="mini"><span>WhatsApp</span><span>Balcão na Avenida</span></div></div>
+      <div class="cartao rv"><span class="n">Passo 2</span><h3>Visita</h3><p>Visita acompanhada pelo corretor, que conhece o imóvel, a vizinhança e o histórico de cada quadra. Você vê o que a foto não mostra.</p><div class="mini"><span>Agenda flexível</span><span>Corretor presente</span></div></div>
+      <div class="cartao rv"><span class="n">Passo 3</span><h3>Proposta, financiamento e escritura</h3><p>Negociação direta com o proprietário, orientação para financiar e documentação conferida até a assinatura. Simule aqui no site antes de visitar.</p><div class="mini"><span>Price e SAC</span><span>Documentação conferida</span></div></div>
+    </div>
+  </div>
+</section>
+<section class="secao" id="sobre-breve">
   <div class="miolo">
     <div class="manifesto">
-      <div><p class="grande mask"><span>A imobiliária <em>da cidade</em>, registrada no CRECI sob o nº 45.125/RS.</span></p><div class="quadro rv"><img src="img/g/CH0007-02.webp" width="1280" height="720" alt="Chácara no Centro de São Martinho" loading="lazy" decoding="async" data-parallax="6"></div></div>
-      <div><p class="rv">A Kiesel Negócios Imobiliários atende São Martinho, o interior e os municípios vizinhos com casas, terrenos, chácaras, áreas rurais e salas comerciais. O escritório fica na Avenida Getúlio Vargas, no Centro.</p><p class="rv">Toda a carteira está neste site com preço, fotos e descrição. Não há imóvel escondido: o que você vê aqui é o que está disponível.</p><p class="rv" style="margin-top:28px"><a class="btn btn-contorno" href="sobre.html">Conheça a Kiesel <span class="seta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></p></div>
+      <div class="quadro"><img src="img/g/CA0044-02.webp" width="1280" height="720" alt="Casa no bairro Novo, São Martinho" loading="lazy" decoding="async" data-parallax="6"></div>
+      <div><span class="mono rv">A Kiesel</span><p class="grande rv" style="margin-top:10px">Por trás de cada negócio, <em>uma história de respeito e confiança.</em></p><p class="rv" style="margin-top:16px">A Kiesel Negócios Imobiliários atende São Martinho, o interior e os municípios vizinhos com casas, terrenos, chácaras, áreas rurais e salas comerciais. Toda a carteira está neste site com preço, fotos e descrição.</p><p class="rv" style="margin-top:22px"><a class="btn btn-azul" href="sobre.html">Conheça a Kiesel <span class="seta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a> <a class="btn btn-contorno" href="contato.html" style="margin-left:6px">Fale conosco</a></p></div>
     </div>
   </div>
 </section>
 <section class="chamada">
   <div class="miolo">
-    <h2 class="rv">Não achou? <em>A Kiesel procura</em> para você.</h2>
-    <div class="acoes rv"><a class="btn btn-papel" href="encomende.html">Encomendar um imóvel <span class="seta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="btn btn-contorno" href="https://wa.me/5555999479495?text=Ol%C3%A1%2C%20vi%20o%20site%20da%20Kiesel%20e%20quero%20conversar%20sobre%20um%20im%C3%B3vel." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.5 0 .2 5.3.2 11.8c0 2.1.5 4.1 1.6 5.9L0 24l6.5-1.7a11.8 11.8 0 0 0 5.6 1.4c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.4-8.4zM12 21.7c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.8 9.8 0 0 1-1.5-5.2C2.1 6.4 6.5 2 12 2c2.6 0 5.1 1 6.9 2.9a9.7 9.7 0 0 1 2.9 6.9c0 5.4-4.4 9.9-9.8 9.9zm5.4-7.3c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1l-.9 1.2c-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5v-.6l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>Chamar no WhatsApp</a></div>
+    <h2 class="rv">Não achou o que procura? <em>A Kiesel procura para você.</em></h2>
+    <div class="acoes rv"><a class="btn btn-azul" href="encomende.html">Encomendar um imóvel <span class="seta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="btn btn-zap" href="https://wa.me/5555999479495?text=Ol%C3%A1%2C%20vi%20o%20site%20da%20Kiesel%20e%20quero%20conversar%20sobre%20um%20im%C3%B3vel." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.5 0 .2 5.3.2 11.8c0 2.1.5 4.1 1.6 5.9L0 24l6.5-1.7a11.8 11.8 0 0 0 5.6 1.4c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.4-8.4zM12 21.7c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.8 9.8 0 0 1-1.5-5.2C2.1 6.4 6.5 2 12 2c2.6 0 5.1 1 6.9 2.9a9.7 9.7 0 0 1 2.9 6.9c0 5.4-4.4 9.9-9.8 9.9zm5.4-7.3c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1l-.9 1.2c-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5v-.6l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>Chamar no WhatsApp</a></div>
   </div>
 </section>
 </main>
 <footer class="rodape">
   <div class="miolo">
-    <div class="gigante mask" aria-hidden="true"><span>KIESEL</span></div>
     <div class="colunas">
-      <div><p>Kipper Kiesel Ltda · CRECI 45.125/RS<br>Av. Getúlio Vargas, Centro<br>São Martinho, RS · CEP 98690-000</p><div class="hud" style="margin-top:18px"><span>São Martinho · <b id="relogio" class="num">--:--</b></span><span>27°42'29"S · 53°57'56"W</span><span>Imóveis publicados · <b class="num">41</b></span></div></div>
+      <div><span class="logo-rod"><img src="assets/logo-kiesel-hd.png" width="1290" height="500" alt="Kiesel Negócios Imobiliários" loading="lazy"></span><p>Kipper Kiesel Ltda · CRECI 45.125/RS<br>Av. Getúlio Vargas, Centro<br>São Martinho, RS · CEP 98690-000</p><div class="hud" style="margin-top:18px"><span>Imóveis publicados · <b class="num">41</b></span></div></div>
       <div><h4>Imóveis</h4><a href="imoveis.html?tipo=Casa">Casas</a><a href="imoveis.html?tipo=Terreno">Terrenos</a><a href="imoveis.html?tipo=Ch%C3%A1cara">Chácaras e áreas</a><a href="imoveis.html?fin=alugar">Para alugar</a><a href="imoveis.html?fin=favoritos">Meus favoritos</a></div>
       <div><h4>A Kiesel</h4><a href="sobre.html">Quem somos</a><a href="financiamento.html">Financiamento</a><a href="anuncie.html">Anuncie seu imóvel</a><a href="encomende.html">Encomende um imóvel</a><a href="privacidade.html">Privacidade</a></div>
       <div><h4>Contato</h4><a href="https://wa.me/5555999479495" target="_blank" rel="noopener">(55) 99947-9495</a><a href="https://wa.me/5555996298532" target="_blank" rel="noopener">(55) 99629-8532</a><a href="https://www.facebook.com/imobiliariakiesel" target="_blank" rel="noopener">facebook.com/imobiliariakiesel</a><a href="contato.html">Como chegar</a></div>

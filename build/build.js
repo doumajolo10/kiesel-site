@@ -35,8 +35,9 @@ const ico = {
 const PAGS = [["index.html", "Início"], ["imoveis.html", "Imóveis"], ["financiamento.html", "Financiamento"], ["anuncie.html", "Anuncie"], ["sobre.html", "A Kiesel"], ["contato.html", "Contato"]];
 function topo(atual) {
   return `<a class="pular so-leitor" href="#conteudo">Ir para o conteúdo</a>
+<div class="faixa-topo"><div class="miolo"><div><span>Av. Getúlio Vargas, Centro · São Martinho/RS</span><span>CRECI 45.125/RS</span></div><div><span><a href="https://wa.me/5555999479495" target="_blank" rel="noopener">(55) 99947-9495</a></span><span><a href="https://wa.me/5555996298532" target="_blank" rel="noopener">(55) 99629-8532</a></span></div></div></div>
 <header class="topo" id="topo">
-  <a class="marca" href="index.html" aria-label="Kiesel Negócios Imobiliários, início"><img src="assets/logo-topo.png" width="391" height="190" alt="" decoding="async"><span><span class="nome">KIESEL</span><span class="sub">Negócios Imobiliários</span></span></a>
+  <a class="marca" href="index.html" aria-label="Kiesel Negócios Imobiliários, início"><img src="assets/logo-kiesel-hd.png" width="1290" height="500" alt="Kiesel Negócios Imobiliários" decoding="async"></a>
   <nav class="nav" aria-label="Principal">${PAGS.map(([h, t], i) => `<a href="${h}"${h === atual ? ' class="ativo" aria-current="page"' : ""}><span class="i">0${i + 1}</span>${t}</a>`).join("")}</nav>
   <div class="topo-acoes">
     <a class="ico-btn" id="favs-topo" href="imoveis.html?fin=favoritos" aria-label="Imóveis favoritos">${ico.coracao}<span class="conta num" id="favs-n">0</span></a>
@@ -53,9 +54,8 @@ function topo(atual) {
 function rodape() {
   return `<footer class="rodape">
   <div class="miolo">
-    <div class="gigante mask" aria-hidden="true"><span>KIESEL</span></div>
     <div class="colunas">
-      <div><p>Kipper Kiesel Ltda · CRECI 45.125/RS<br>Av. Getúlio Vargas, Centro<br>São Martinho, RS · CEP 98690-000</p><div class="hud" style="margin-top:18px"><span>São Martinho · <b id="relogio" class="num">--:--</b></span><span>27°42'29"S · 53°57'56"W</span><span>Imóveis publicados · <b class="num">${IMOVEIS.length}</b></span></div></div>
+      <div><span class="logo-rod"><img src="assets/logo-kiesel-hd.png" width="1290" height="500" alt="Kiesel Negócios Imobiliários" loading="lazy"></span><p>Kipper Kiesel Ltda · CRECI 45.125/RS<br>Av. Getúlio Vargas, Centro<br>São Martinho, RS · CEP 98690-000</p><div class="hud" style="margin-top:18px"><span>Imóveis publicados · <b class="num">${IMOVEIS.length}</b></span></div></div>
       <div><h4>Imóveis</h4><a href="imoveis.html?tipo=Casa">Casas</a><a href="imoveis.html?tipo=Terreno">Terrenos</a><a href="imoveis.html?tipo=Ch%C3%A1cara">Chácaras e áreas</a><a href="imoveis.html?fin=alugar">Para alugar</a><a href="imoveis.html?fin=favoritos">Meus favoritos</a></div>
       <div><h4>A Kiesel</h4><a href="sobre.html">Quem somos</a><a href="financiamento.html">Financiamento</a><a href="anuncie.html">Anuncie seu imóvel</a><a href="encomende.html">Encomende um imóvel</a><a href="privacidade.html">Privacidade</a></div>
       <div><h4>Contato</h4><a href="https://wa.me/5555999479495" target="_blank" rel="noopener">(55) 99947-9495</a><a href="https://wa.me/5555996298532" target="_blank" rel="noopener">(55) 99629-8532</a><a href="https://www.facebook.com/imobiliariakiesel" target="_blank" rel="noopener">facebook.com/imobiliariakiesel</a><a href="contato.html">Como chegar</a></div>
@@ -223,7 +223,7 @@ function paginaImovel(x) {
           <a class="btn btn-zap" id="ficha-zap" href="${zapMsg(msg)}" target="_blank" rel="noopener">${ico.zap}Falar sobre este imóvel</a>
           <div class="acoes-linha"><button class="btn btn-contorno" type="button" data-fav="${x.ref}" aria-pressed="false" id="ficha-fav">${ico.coracao}<span>Guardar</span></button><button class="btn btn-contorno" type="button" id="ficha-compart">${ico.compart}Compartilhar</button></div>
           ${x.finalidade === "comprar" ? `<a class="btn btn-contorno" href="financiamento.html?valor=${x.preco}">Simular financiamento</a>` : ""}
-          <div class="corretor"><img src="assets/logo-marca.png" alt="" width="72" height="35"><div>Kiesel Negócios Imobiliários<br>CRECI 45.125/RS · (55) 99947-9495</div></div>
+          <div class="corretor"><img src="assets/logo-kiesel-hd.png" alt="" width="72" height="33"><div>Kiesel Negócios Imobiliários<br>CRECI 45.125/RS · (55) 99947-9495</div></div>
         </div>
       </aside>
     </div>
@@ -248,7 +248,7 @@ const sobre = pagina({
 <section class="secao">
   <div class="miolo">
     <div class="manifesto">
-      <div><p class="grande mask">Quem vende uma casa em São Martinho vende também <em>uma rua, uma vizinhança e uma história.</em></p><div class="quadro rv"><img src="img/g/CA0044-02.webp" width="1280" height="720" alt="Casa no bairro Novo, São Martinho" loading="lazy" decoding="async" data-parallax="6"></div><img class="rv" src="img/logo-kiesel.png" width="418" height="209" alt="Logotipo Kiesel Negócios Imobiliários" style="margin-top:28px;max-width:200px" loading="lazy"></div>
+      <div><p class="grande mask">Quem vende uma casa em São Martinho vende também <em>uma rua, uma vizinhança e uma história.</em></p><div class="quadro rv"><img src="img/g/CA0044-02.webp" width="1280" height="720" alt="Casa no bairro Novo, São Martinho" loading="lazy" decoding="async" data-parallax="6"></div><img class="rv" src="assets/logo-kiesel-hd.png" width="1290" height="500" alt="Logotipo Kiesel Negócios Imobiliários" style="margin-top:28px;max-width:240px" loading="lazy"></div>
       <div>
         <p class="rv">A Kiesel trabalha com casas, terrenos, chácaras, áreas rurais e salas comerciais na cidade, no interior e nos municípios vizinhos. O escritório fica na Avenida Getúlio Vargas, no Centro, e o atendimento é direto com o corretor, pelo WhatsApp ou no balcão.</p>
         <p class="rv">Toda a carteira está publicada aqui com preço, fotos e descrição completa. Quem anuncia com a Kiesel recebe avaliação do valor de mercado, fotos do imóvel, divulgação neste site e no Facebook, e acompanhamento das visitas até a escritura.</p>
@@ -306,7 +306,7 @@ const financiamento = pagina({
         <p class="nota">Os bancos costumam limitar a parcela a 30% da renda bruta familiar. Com entrada de 20% e 360 meses, este é o valor de imóvel que essa parcela paga.</p>
         <div class="campo"><label for="bolso-renda">Renda bruta familiar (R$ por mês)</label><input class="ent num" id="bolso-renda" type="number" min="500" step="100" value="6000" inputmode="numeric"></div>
         <div class="campo"><label for="bolso-juros">Juros ao ano (%)</label><input class="ent num" id="bolso-juros" type="number" min="1" max="30" step="0.1" value="11" inputmode="decimal"></div>
-        <div class="resultado"><span class="rotulo" style="color:var(--claro-2)">Imóvel de até</span><b class="grande num" id="bolso-valor">R$ 0</b><small id="bolso-parcela">parcela de R$ 0 por mês</small></div>
+        <div class="resultado"><span class="rotulo">Imóvel de até</span><b class="grande num" id="bolso-valor">R$ 0</b><small id="bolso-parcela">parcela de R$ 0 por mês</small></div>
         <p class="nota">Estimativa para orientar a busca. O banco define o valor final conforme análise de crédito.</p>
       </form>
       <form class="form rv" id="form-fin" onsubmit="return false">
@@ -314,7 +314,7 @@ const financiamento = pagina({
         <div class="campo"><label for="fin-valor">Valor do imóvel (R$)</label><input class="ent num" id="fin-valor" type="number" min="20000" step="1000" value="420000" inputmode="numeric"></div>
         <div class="campo"><label for="fin-entrada">Entrada: <b class="num" id="fin-entrada-v">20%</b></label><input class="faixa" id="fin-entrada" type="range" min="10" max="90" step="5" value="20"></div>
         <div class="duas"><div class="campo"><label for="fin-juros">Juros ao ano (%)</label><input class="ent num" id="fin-juros" type="number" min="1" max="30" step="0.1" value="11" inputmode="decimal"></div><div class="campo"><label for="fin-prazo">Prazo (meses)</label><select class="sel num" id="fin-prazo"><option>120</option><option>180</option><option>240</option><option>300</option><option selected>360</option><option>420</option></select></div></div>
-        <div class="resultado"><span class="rotulo" style="color:var(--claro-2)">Price × SAC (1ª parcela)</span><b class="grande num" id="fin-parcela" style="font-size:32px">R$ 0 × R$ 0</b><small id="fin-financiado">financiando R$ 0</small></div>
+        <div class="resultado"><span class="rotulo">Price × SAC (1ª parcela)</span><b class="grande num" id="fin-parcela" style="font-size:32px">R$ 0 × R$ 0</b><small id="fin-financiado">financiando R$ 0</small></div>
         <table class="tabela num" aria-label="Comparação Price e SAC"><thead><tr><th>Sistema</th><th>1ª parcela</th><th>Última</th><th>Total pago</th></tr></thead><tbody id="fin-tabela"></tbody></table>
         <p class="nota">Juros simulados; a taxa real depende do banco, do seu perfil e do programa (SBPE, Minha Casa Minha Vida). Não inclui seguros e tarifas.</p>
       </form>
