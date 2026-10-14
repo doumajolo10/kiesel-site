@@ -10,7 +10,7 @@ module.exports = function (H) {
   const bairroFoto = b => { const y = IMOVEIS.find(x => x.bairro === b && x.tipo === "Casa") || IMOVEIS.find(x => x.bairro === b); return foto(capa(y), "p"); };
   return `
 <div class="pre" id="pre" aria-hidden="true">
-  <div class="pre-nome"><img src="assets/logo-topo.png" alt="" width="391" height="190"><span class="mono">Kiesel · Negócios Imobiliários</span></div>
+  <div class="pre-nome"><img src="assets/logo-topo.png" alt="" width="391" height="190" style="height:44px;width:auto"><span class="mono">Kiesel · Negócios Imobiliários</span></div>
   <div class="pre-num num" id="pre-conta">0</div>
   <div class="pre-linha"><i id="pre-barra"></i></div>
   <div class="pre-rot mono"><span>São Martinho, RS</span><span>CRECI 45.125/RS</span></div>
@@ -66,7 +66,7 @@ module.exports = function (H) {
     <div class="vitrine" data-stagger>${recentes.map(x => card(x)).join("")}</div>
   </div>
 </section>
-<section class="secao" id="bairros" data-tema="escuro">
+<section class="secao" id="bairros">
   <div class="miolo">
     <div class="cabeca"><div><span class="mono rv">03 — Onde</span><h2 class="rv">Cada bairro, um jeito de morar.</h2></div><p class="rv">Do Centro às chácaras do interior, a carteira cobre São Martinho inteira e o município vizinho de Sede Nova. Passe o mouse para ver.</p></div>
     <div class="bairros" data-stagger>${listaBairros.map(([k, n], i) => { const [b, c] = k.split("|"); return `<a class="bairro rv" href="imoveis.html?bairro=${encodeURIComponent(b)}" data-foto="${bairroFoto(b)}"><span class="n num">${String(i + 1).padStart(2, "0")}</span><b>${esc(b)}</b><span class="mono">${esc(c)} · ${n} ${n > 1 ? "imóveis" : "imóvel"}</span></a>`; }).join("")}</div>
