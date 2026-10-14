@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR" class="sem-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Encomende um imóvel · Imobiliária Kiesel</title>
+<meta name="description" content="Diga o que procura em São Martinho e região. A Kiesel busca na carteira e avisa quando entrar um imóvel com o seu perfil.">
+<meta name="theme-color" content="#F4F2ED">
+<meta property="og:type" content="website"><meta property="og:title" content="Encomende um imóvel · Imobiliária Kiesel"><meta property="og:description" content="Diga o que procura em São Martinho e região. A Kiesel busca na carteira e avisa quando entrar um imóvel com o seu perfil."><meta property="og:image" content="https://www.imobiliariakiesel.com.br/og.jpg"><meta property="og:locale" content="pt_BR">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="preload" href="fontes/InstrumentSans-400_700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fontes/DMMono-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fontes/fontes3.css">
+<link rel="stylesheet" href="estilo.css">
+
+<script>document.documentElement.classList.remove("sem-js")</script>
+
+</head>
+<body data-pagina="encomende">
+<a class="pular so-leitor" href="#conteudo">Ir para o conteúdo</a>
+<header class="topo" id="topo">
+  <a class="marca" href="index.html" aria-label="Kiesel Negócios Imobiliários, início"><img src="assets/logo-topo.png" width="391" height="190" alt="" decoding="async"><span><span class="nome">KIESEL</span><span class="sub">Negócios Imobiliários</span></span></a>
+  <nav class="nav" aria-label="Principal"><a href="index.html"><span class="i">01</span>Início</a><a href="imoveis.html"><span class="i">02</span>Imóveis</a><a href="financiamento.html"><span class="i">03</span>Financiamento</a><a href="anuncie.html"><span class="i">04</span>Anuncie</a><a href="sobre.html"><span class="i">05</span>A Kiesel</a><a href="contato.html"><span class="i">06</span>Contato</a></nav>
+  <div class="topo-acoes">
+    <a class="ico-btn" id="favs-topo" href="imoveis.html?fin=favoritos" aria-label="Imóveis favoritos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span class="conta num" id="favs-n">0</span></a>
+    <a class="btn btn-zap" id="zap-topo" href="https://wa.me/5555999479495?text=Ol%C3%A1%2C%20vi%20o%20site%20da%20Kiesel%20e%20quero%20conversar%20sobre%20um%20im%C3%B3vel." target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.5 0 .2 5.3.2 11.8c0 2.1.5 4.1 1.6 5.9L0 24l6.5-1.7a11.8 11.8 0 0 0 5.6 1.4c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.4-8.4zM12 21.7c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.8 9.8 0 0 1-1.5-5.2C2.1 6.4 6.5 2 12 2c2.6 0 5.1 1 6.9 2.9a9.7 9.7 0 0 1 2.9 6.9c0 5.4-4.4 9.9-9.8 9.9zm5.4-7.3c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1l-.9 1.2c-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5v-.6l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg><span>WhatsApp</span></a>
+    <button class="ico-btn menu-btn" id="btn-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-movel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
+  </div>
+</header>
+<nav class="menu-movel" id="menu-movel" aria-label="Menu">
+  <button class="ico-btn fechar" id="btn-menu-fechar" aria-label="Fechar menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  <a href="index.html">Início<small class="num">01</small></a><a href="imoveis.html">Imóveis<small class="num">02</small></a><a href="financiamento.html">Financiamento<small class="num">03</small></a><a href="anuncie.html">Anuncie<small class="num">04</small></a><a href="sobre.html">A Kiesel<small class="num">05</small></a><a href="contato.html">Contato<small class="num">06</small></a>
+  <div class="rod">Av. Getúlio Vargas, Centro · São Martinho/RS<br>(55) 99947-9495 · CRECI 45.125/RS</div>
+</nav>
+<main id="conteudo">
+
+<section class="pag-topo"><div class="miolo"><div class="trilha mono"><a href="index.html">Início</a> / Encomende</div><h1 class="mask"><span>Diga o que procura. <span class="ital">A Kiesel acha.</span></span></h1><p>Nem todo imóvel chega ao site no dia em que o dono decide vender. Deixe o seu pedido e você é avisado antes.</p></div></section>
+<section class="secao">
+  <div class="miolo">
+    <div class="duas-col">
+      <form class="form rv" id="form-enc">
+        <h3 style="font-size:30px">O que você procura</h3>
+        <div class="duas"><div class="campo"><label for="enc-nome">Seu nome</label><input class="ent" id="enc-nome" required autocomplete="name"></div><div class="campo"><label for="enc-fone">Telefone</label><input class="ent" id="enc-fone" type="tel" autocomplete="tel"></div></div>
+        <div class="duas"><div class="campo"><label for="enc-tipo">Tipo</label><select class="sel" id="enc-tipo"><option>Casa</option><option>Terreno</option><option>Chácara</option><option>Área rural</option><option>Sala comercial</option><option>Qualquer</option></select></div><div class="campo"><label for="enc-fin">Para</label><select class="sel" id="enc-fin"><option>Comprar</option><option>Alugar</option></select></div></div>
+        <div class="duas"><div class="campo"><label for="enc-bairro">Bairro preferido</label><input class="ent" id="enc-bairro" placeholder="Centro, Novo, interior…"></div><div class="campo"><label for="enc-valor">Até quanto (R$)</label><input class="ent num" id="enc-valor" type="number" min="0" step="10000" inputmode="numeric"></div></div>
+        <div class="campo"><label for="enc-obs">Detalhes</label><textarea class="ent" id="enc-obs" placeholder="Quartos, garagem, piscina, prazo…"></textarea></div>
+        <button class="btn btn-zap" type="submit"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.5 0 .2 5.3.2 11.8c0 2.1.5 4.1 1.6 5.9L0 24l6.5-1.7a11.8 11.8 0 0 0 5.6 1.4c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.4-8.4zM12 21.7c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.8 9.8 0 0 1-1.5-5.2C2.1 6.4 6.5 2 12 2c2.6 0 5.1 1 6.9 2.9a9.7 9.7 0 0 1 2.9 6.9c0 5.4-4.4 9.9-9.8 9.9zm5.4-7.3c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1l-.9 1.2c-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5v-.6l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>Enviar pelo WhatsApp</button>
+        <p class="nota">A mensagem abre no seu WhatsApp, pronta para enviar.</p>
+      </form>
+      <div class="manifesto" style="grid-template-columns:1fr"><p class="grande mask"><span>A carteira muda toda semana. <em>Quem encomenda, vê primeiro.</em></span></p><p class="rv">Enquanto isso, <a href="imoveis.html">o catálogo completo</a> está aberto, com preço e fotos de tudo o que está disponível hoje.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="rodape">
+  <div class="miolo">
+    <div class="gigante mask" aria-hidden="true"><span>KIESEL</span></div>
+    <div class="colunas">
+      <div><p>Kipper Kiesel Ltda · CRECI 45.125/RS<br>Av. Getúlio Vargas, Centro<br>São Martinho, RS · CEP 98690-000</p><div class="hud" style="margin-top:18px"><span>São Martinho · <b id="relogio" class="num">--:--</b></span><span>27°42'29"S · 53°57'56"W</span><span>Imóveis publicados · <b class="num">41</b></span></div></div>
+      <div><h4>Imóveis</h4><a href="imoveis.html?tipo=Casa">Casas</a><a href="imoveis.html?tipo=Terreno">Terrenos</a><a href="imoveis.html?tipo=Ch%C3%A1cara">Chácaras e áreas</a><a href="imoveis.html?fin=alugar">Para alugar</a><a href="imoveis.html?fin=favoritos">Meus favoritos</a></div>
+      <div><h4>A Kiesel</h4><a href="sobre.html">Quem somos</a><a href="financiamento.html">Financiamento</a><a href="anuncie.html">Anuncie seu imóvel</a><a href="encomende.html">Encomende um imóvel</a><a href="privacidade.html">Privacidade</a></div>
+      <div><h4>Contato</h4><a href="https://wa.me/5555999479495" target="_blank" rel="noopener">(55) 99947-9495</a><a href="https://wa.me/5555996298532" target="_blank" rel="noopener">(55) 99629-8532</a><a href="https://www.facebook.com/imobiliariakiesel" target="_blank" rel="noopener">facebook.com/imobiliariakiesel</a><a href="contato.html">Como chegar</a></div>
+    </div>
+    <div class="fim"><span>© 2026 Kiesel Negócios Imobiliários. Todos os direitos reservados.</span><span>Valores sujeitos a alteração sem aviso. Fotos dos imóveis são do acervo da imobiliária.</span></div>
+  </div>
+</footer>
+<div class="barra-zap"><a class="btn btn-zap" href="https://wa.me/5555999479495?text=Ol%C3%A1%2C%20vi%20o%20site%20da%20Kiesel%20e%20quero%20conversar%20sobre%20um%20im%C3%B3vel." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.5 0 .2 5.3.2 11.8c0 2.1.5 4.1 1.6 5.9L0 24l6.5-1.7a11.8 11.8 0 0 0 5.6 1.4c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.4-8.4zM12 21.7c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.8 9.8 0 0 1-1.5-5.2C2.1 6.4 6.5 2 12 2c2.6 0 5.1 1 6.9 2.9a9.7 9.7 0 0 1 2.9 6.9c0 5.4-4.4 9.9-9.8 9.9zm5.4-7.3c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1l-.9 1.2c-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5v-.6l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>Falar com a Kiesel no WhatsApp</a></div>
+<div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+<div class="grao" aria-hidden="true"></div>
+<div class="cortina" id="cortina" aria-hidden="true"></div>
+<div class="bairro-foto" id="bairro-foto" aria-hidden="true"><img alt="" src="" width="260" height="195"></div>
+<div class="cursor" aria-hidden="true"></div><div class="cursor-rotulo" id="cursor-rotulo" aria-hidden="true"><span>Ver imóvel</span></div>
+<script src="dados.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.1/dist/lenis.min.js" defer></script>
+<script src="app.js" defer></script>
+</body>
+</html>

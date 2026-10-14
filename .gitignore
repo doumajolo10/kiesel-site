@@ -1,0 +1,15 @@
+pesquisa/
+img/raw/
+assets/*.bin
+build/splice.js
+PRODUCT.md
+DESIGN.md
+fontes/Marcellus-*
+fontes/Alegreya*
+fontes/Archivo*
+fontes/BodoniModa-*
+fontes/Jost-*
+fontes/fontes.css
+fontes/fontes2.css
+.DS_Store
+Thumbs.db
