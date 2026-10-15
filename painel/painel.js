@@ -194,6 +194,8 @@
   const precoTela = x => x.preco ? M.preco({ finalidade: x.finalidade, preco: x.preco }) : "<span style='color:var(--tinta-3)'>Sem preço</span>";
   const dataBR = s => { if (!s) return ""; const d = new Date(s.length <= 10 ? s + "T12:00:00" : s); return d.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit", year: d.getFullYear() !== new Date().getFullYear() ? "numeric" : undefined }); };
   const inicial = s => (s || "?").trim().charAt(0);
+  // mesma regra configurada no Supabase: 8+ caracteres, letras e números
+  const senhaBoa = s => s.length >= 8 && /[A-Za-zÀ-ÿ]/.test(s) && /\d/.test(s);
 
   // =====================================================================
   // estado
@@ -256,7 +258,7 @@
     <h1>${tipo === "invite" ? "Crie a sua senha" : "Senha nova"}</h1>
     <p class="sub">${esc(sessao && sessao.email || "")}</p>
     <form id="f-senha" novalidate>
-      <div class="campo"><label for="s1">Senha nova</label><input class="ent" id="s1" type="password" autocomplete="new-password" minlength="8" required><span class="dica">Pelo menos 8 caracteres.</span></div>
+      <div class="campo"><label for="s1">Senha nova</label><input class="ent" id="s1" type="password" autocomplete="new-password" minlength="8" required><span class="dica">Pelo menos 8 caracteres, com letras e números.</span></div>
       <div class="campo"><label for="s2">Repita a senha</label><input class="ent" id="s2" type="password" autocomplete="new-password" required></div>
       <button class="btn btn-azul" type="submit" id="b-senha">Salvar e entrar</button>
     </form></div></div></main>`;
@@ -264,7 +266,7 @@
     $("#f-senha").addEventListener("submit", async e => {
       e.preventDefault();
       const a = $("#s1").value, b = $("#s2").value, msg = t => { let m = $("#f-senha .msg"); if (!m) { m = document.createElement("div"); m.className = "msg msg-erro"; m.setAttribute("role", "alert"); $("#f-senha").prepend(m); } m.textContent = t; };
-      if (a.length < 8) return msg("A senha precisa ter pelo menos 8 caracteres.");
+      if (!senhaBoa(a)) return msg("A senha precisa ter pelo menos 8 caracteres, com letras e números.");
       if (a !== b) return msg("As duas senhas não estão iguais.");
       const bt = $("#b-senha"); bt.classList.add("carregando"); bt.disabled = true;
       try { await api.novaSenha(a); aviso("Senha salva."); await iniciaSessao(); }
@@ -313,7 +315,7 @@
   }
   document.addEventListener("click", e => { if (!e.target.closest(".usuario")) { const m = $(".usuario .menu"); if (m) { m.remove(); const b = $("#b-usuario"); if (b) b.setAttribute("aria-expanded", "false"); } } if (!e.target.closest(".menu-cartao,[data-menu]")) fechaMenuCartao(); });
   async function trocaSenha() {
-    const r = await dialogo({ titulo: "Trocar minha senha", corpo: `<div class="campo"><label for="t1">Senha nova</label><input class="ent" id="t1" type="password" autocomplete="new-password"><span class="dica">Pelo menos 8 caracteres.</span></div><div class="campo"><label for="t2">Repita a senha nova</label><input class="ent" id="t2" type="password" autocomplete="new-password"></div>`, botoes: [{ texto: "Cancelar", valor: null }, { texto: "Salvar senha", classe: "btn-azul", valor: "ok", antes: async veu => { const a = $("#t1", veu).value, b = $("#t2", veu).value; if (a.length < 8) { mostraErroDialogo(veu, "A senha precisa ter pelo menos 8 caracteres."); return false; } if (a !== b) { mostraErroDialogo(veu, "As duas senhas não estão iguais."); return false; } await api.novaSenha(a); return true; } }] });
+    const r = await dialogo({ titulo: "Trocar minha senha", corpo: `<div class="campo"><label for="t1">Senha nova</label><input class="ent" id="t1" type="password" autocomplete="new-password"><span class="dica">Pelo menos 8 caracteres, com letras e números.</span></div><div class="campo"><label for="t2">Repita a senha nova</label><input class="ent" id="t2" type="password" autocomplete="new-password"></div>`, botoes: [{ texto: "Cancelar", valor: null }, { texto: "Salvar senha", classe: "btn-azul", valor: "ok", antes: async veu => { const a = $("#t1", veu).value, b = $("#t2", veu).value; if (!senhaBoa(a)) { mostraErroDialogo(veu, "A senha precisa ter pelo menos 8 caracteres, com letras e números."); return false; } if (a !== b) { mostraErroDialogo(veu, "As duas senhas não estão iguais."); return false; } await api.novaSenha(a); return true; } }] });
     if (r) aviso("Senha trocada.");
   }
 
@@ -470,7 +472,11 @@
     aviso(er.message || "Algo deu errado. Tente de novo.", { erro: true });
   }
   // linha do banco -> objeto da lista do painel
-  function linha(r) { return Object.assign(M.normaliza(r), { status: r.status || "disponivel", alterado_em: r.alterado_em || null, alterado_por: r.alterado_por || null }); }
+  function linha(r) {
+    const x = Object.assign(M.normaliza(r), { status: r.status || "disponivel", alterado_em: r.alterado_em || null, alterado_por: r.alterado_por || null });
+    if (DEMO) x.fotos = (r.fotos || []).filter(f => typeof f === "string" && f); // na demonstração as fotos novas são blob: locais
+    return x;
+  }
 
   // =====================================================================
   // editor

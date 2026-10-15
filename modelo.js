@@ -37,6 +37,8 @@
   const inteiro = v => Math.max(0, Math.round(Number(v) || 0));
   const PLURAL = { "Casa": "Todas as casas", "Apartamento": "Todos os apartamentos", "Terreno": "Todos os terrenos", "Chácara": "Todas as chácaras", "Área rural": "Todas as áreas rurais", "Prédio": "Todos os prédios", "Sala comercial": "Todas as salas comerciais" };
   const TIPOS = ["Casa", "Apartamento", "Terreno", "Chácara", "Área rural", "Prédio", "Sala comercial"];
+  const PUBLICO = SUPA.url + "/storage/v1/object/public/" + SUPA.balde + "/";
+  const fotoValida = f => typeof f === "string" && (/^[A-Z]{2}\d{4}-\d{2}$/.test(f) || (f.indexOf(PUBLICO) === 0 && /^[\w\-\/.%]+$/.test(f.slice(PUBLICO.length))));
   // linha da tabela (Supabase) -> formato usado pelas páginas
   function normaliza(r) {
     const area = Number(r.area) || 0;
@@ -46,8 +48,8 @@
       bairro: r.bairro || "", cidade: r.cidade || "São Martinho", uf: r.uf || "RS",
       preco: Number(r.preco) || 0, quartos: inteiro(r.quartos), banheiros: inteiro(r.banheiros), vagas: inteiro(r.vagas), suites: inteiro(r.suites),
       area, titulo: r.titulo || (tipo + " no " + (r.bairro || "")), areaInvalida: area <= 1, destaque: inteiro(r.destaque),
-      comodidades: Array.isArray(r.comodidades) ? r.comodidades.filter(Boolean) : [], descricao: r.descricao || "",
-      fotos: Array.isArray(r.fotos) ? r.fotos.filter(Boolean) : [], atualizado: String(r.atualizado || "").slice(0, 10)
+      comodidades: Array.isArray(r.comodidades) ? r.comodidades.filter(Boolean) : [], descricao: String(r.descricao || "").replace(/\r\n?/g, "\n"),
+      fotos: Array.isArray(r.fotos) ? r.fotos.filter(fotoValida) : [], atualizado: String(r.atualizado || "").slice(0, 10)
     };
   }
   // ordem da carteira: destaques na ordem escolhida, depois do maior para o menor preço
@@ -206,7 +208,7 @@
 <section class="pag-topo"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Imóveis</div><h1 class="mask">Catálogo <span class="ital">completo.</span></h1><p>Todos os imóveis disponíveis hoje, com preço, fotos e descrição. Filtre por finalidade, tipo, bairro e quartos, ou guarde favoritos para comparar depois.</p></div></section>
 <section class="secao" style="padding-top:clamp(28px,4vw,48px);min-height:100vh">
   <div class="miolo">
-    <form class="filtros" id="filtros" onsubmit="return false">
+    <form class="filtros" id="filtros" data-sem-envio>
       <div class="alterna" role="group" aria-label="Finalidade"><button type="button" data-fin="comprar" aria-pressed="true">Comprar</button><button type="button" data-fin="alugar" aria-pressed="false">Alugar</button><button type="button" data-fin="favoritos" aria-pressed="false">Favoritos</button></div>
       <div class="campo"><label for="f-tipo">Tipo</label><select class="sel" id="f-tipo"><option value="">Todos</option>${tipos.map(t => `<option>${esc(t)}</option>`).join("")}</select></div>
       <div class="campo"><label for="f-bairro">Bairro</label><select class="sel" id="f-bairro"><option value="">Todos</option>${listaBairros.map(([k]) => { const [b, c] = k.split("|"); return `<option value="${esc(b)}">${esc(b)} · ${esc(c)}</option>`; }).join("")}</select></div>

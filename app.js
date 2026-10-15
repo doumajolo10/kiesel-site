@@ -1,4 +1,6 @@
 /* Kiesel Negócios Imobiliários — comportamento do site (v3) */
+/* formulários que só rodam no navegador (simuladores, filtros) nunca recarregam a página */
+document.addEventListener("submit", function (e) { if (e.target.matches("[data-sem-envio]")) e.preventDefault(); }, true);
 /* espera o vivo.js trazer a carteira atualizada pelo painel (no máximo ~2,5 s) antes de ligar os efeitos */
 (window.KIESEL_VIVO || Promise.resolve()).then(function () {
   "use strict";
