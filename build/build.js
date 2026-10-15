@@ -8,7 +8,7 @@ const IMOVEIS = M.ordena(w.IMOVEIS.map(M.normaliza));
 const { SITE, esc, num, precoTxt, onde, zapMsg, foto, capa, ico } = M;
 
 // ---------- pedaços comuns ----------
-const PAGS = [["index.html", "Início"], ["imoveis.html", "Imóveis"], ["financiamento.html", "Financiamento"], ["anuncie.html", "Anuncie"], ["sobre.html", "A Kiesel"], ["contato.html", "Contato"]];
+const PAGS = [["index.html", "Início"], ["imoveis.html", "Imóveis"], ["financiamento.html", "Financiamento"], ["anuncie.html", "Anuncie"], ["sobre.html", "Imobiliária Kiesel"], ["contato.html", "Contato"]];
 function topo(atual) {
   return `<a class="pular so-leitor" href="#conteudo">Ir para o conteúdo</a>
 <div class="faixa-topo"><div class="miolo"><div><span>Av. Getúlio Vargas, Centro · São Martinho/RS</span><span>CRECI 45.125/RS</span></div><div><span><a href="https://wa.me/5555999479495" target="_blank" rel="noopener">(55) 99947-9495</a></span><span><a href="https://wa.me/5555996298532" target="_blank" rel="noopener">(55) 99629-8532</a></span></div></div></div>
