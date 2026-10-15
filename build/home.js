@@ -33,10 +33,10 @@ module.exports = function (H) {
 </section>
 <section class="numeros" aria-label="Números da Kiesel">
   <div class="miolo">
-    <div class="fato rv"><b class="num" data-n="${IMOVEIS.length}">0</b><span>imóveis publicados hoje</span></div>
-    <div class="fato rv"><b class="num" data-n="${cont("Casa")}">0</b><span>casas à venda</span></div>
-    <div class="fato rv"><b class="num" data-n="${cont("Terreno") + cont("Chácara") + cont("Área rural")}">0</b><span>terrenos, chácaras e áreas</span></div>
-    <div class="fato rv"><b class="num" data-n="${listaBairros.length}">0</b><span>bairros em São Martinho e Sede Nova</span></div>
+    <div class="fato rv"><b class="num" data-n="${IMOVEIS.length}">${IMOVEIS.length}</b><span>imóveis publicados hoje</span></div>
+    <div class="fato rv"><b class="num" data-n="${cont("Casa")}">${cont("Casa")}</b><span>casas à venda</span></div>
+    <div class="fato rv"><b class="num" data-n="${cont("Terreno") + cont("Chácara") + cont("Área rural")}">${cont("Terreno") + cont("Chácara") + cont("Área rural")}</b><span>terrenos, chácaras e áreas</span></div>
+    <div class="fato rv"><b class="num" data-n="${listaBairros.length}">${listaBairros.length}</b><span>bairros em São Martinho e Sede Nova</span></div>
   </div>
 </section>
 <section class="secao" id="categorias">

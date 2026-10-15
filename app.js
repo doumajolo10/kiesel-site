@@ -68,12 +68,17 @@
 
   // ---------- preloader ----------
   const pre = $("#pre"), heroi = $("#heroi");
+  // Os números já vêm certos no HTML (leitura de tela, buscador e celular sem animação veem o valor real).
+  // A contagem só roda quando o número aparece na tela, e termina sempre no valor certo.
   function contaNumeros() {
-    $$("[data-n]").forEach(el => {
-      const fim = +el.dataset.n; if (reduz) { el.textContent = fim; return; }
-      const t0 = performance.now(), dur = 1600;
-      (function passo(t) { const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3); el.textContent = Math.round(fim * e); if (p < 1) requestAnimationFrame(passo); })(t0);
-    });
+    const els = $$("[data-n]"); if (!els.length || reduz || !("IntersectionObserver" in window)) return;
+    const ioN = new IntersectionObserver(ents => ents.forEach(en => {
+      if (!en.isIntersecting) return; ioN.unobserve(en.target);
+      const el = en.target, fim = +el.dataset.n, t0 = performance.now(), dur = 1400;
+      (function passo(t) { const p = Math.min(1, Math.max(0, (t - t0) / dur)), e = 1 - Math.pow(1 - p, 3); el.textContent = p < 1 ? Math.round(fim * e) : fim; if (p < 1) requestAnimationFrame(passo); })(t0);
+      setTimeout(() => { el.textContent = fim; }, dur + 400);
+    }), { threshold: 0.4 });
+    els.forEach(el => ioN.observe(el));
   }
   function mostraHeroi() { if (heroi) heroi.classList.add("pronto"); contaNumeros(); }
   if (pre && sessao.get("kiesel-pre") !== "1" && !reduz) {
