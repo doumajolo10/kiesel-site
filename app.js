@@ -1,5 +1,6 @@
 /* Kiesel Negócios Imobiliários — comportamento do site (v3) */
-(function () {
+/* espera o vivo.js trazer a carteira atualizada pelo painel (no máximo ~2,5 s) antes de ligar os efeitos */
+(window.KIESEL_VIVO || Promise.resolve()).then(function () {
   "use strict";
   const $ = (s, r) => (r || document).querySelector(s);
   const $$ = (s, r) => Array.prototype.slice.call((r || document).querySelectorAll(s));
@@ -325,4 +326,4 @@
     e.preventDefault();
     abreZap("Olá, meu nome é " + v("#ct-nome") + "." + (v("#ct-fone") ? " Telefone: " + v("#ct-fone") + "." : "") + (v("#ct-msg") ? "\n" + v("#ct-msg") : " Quero conversar sobre um imóvel."));
   });
-})();
+});

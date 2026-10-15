@@ -1,35 +1,11 @@
-// Gera as páginas do site da Kiesel a partir de dados.js. Rodar: node build/build.js
+// Gera as páginas do site da Kiesel a partir de dados.js (que o build/puxa.js atualiza com o painel). Rodar: node build/build.js
+// Os modelos das páginas de imóveis ficam em modelo.js, o mesmo arquivo que o navegador usa para mostrar mudanças do painel na hora.
 const fs = require("fs"), path = require("path");
 const RAIZ = path.resolve(__dirname, "..");
+const M = require(path.join(RAIZ, "modelo.js"));
 const w = {}; global.window = w; require(path.join(RAIZ, "dados.js"));
-const IMOVEIS = w.IMOVEIS;
-const ZAP = "5555999479495";
-const SITE = "https://www.imobiliariakiesel.com.br";
-
-const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-const num = n => Number(n).toLocaleString("pt-BR", { maximumFractionDigits: 0 });
-const preco = x => x.finalidade === "alugar" ? "R$ " + num(x.preco) + "<small>/mês</small>" : "R$ " + num(x.preco);
-const precoTxt = x => x.finalidade === "alugar" ? "R$ " + num(x.preco) + "/mês" : "R$ " + num(x.preco);
-const areaTxt = x => !x.area || x.area <= 1 ? "" : x.area < 50 ? Number(x.area).toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + " ha" : num(x.area) + " m²";
-const onde = x => x.bairro + " · " + x.cidade + (x.uf ? "/" + x.uf : "");
-const zapMsg = t => "https://wa.me/" + ZAP + "?text=" + encodeURIComponent(t);
-const foto = (f, t = "g") => "img/" + t + "/" + f + ".webp";
-const CAPA = { CA0044: 1, CA0036: 2, CH0002: 2, CA0047: 1, CA0040: 2 };
-const capa = x => x.fotos[CAPA[x.ref] || 0];
-const capa2 = x => x.fotos.find((f, i) => i !== (CAPA[x.ref] || 0));
-const ico = {
-  cama: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 18V8h18v10M3 12h18M6 8V5h5v3M13 8V5h5v3"/></svg>',
-  banho: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3zM6 12V5a2 2 0 0 1 4 0M7 19l-1 2M17 19l1 2"/></svg>',
-  carro: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 16l1.5-5h11L19 16M3 16h18v3H3zM7 19v1M17 19v1"/><circle cx="7.5" cy="16" r="1"/><circle cx="16.5" cy="16" r="1"/></svg>',
-  area: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h5V4M15 20v-5h5"/></svg>',
-  coracao: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>',
-  zap: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.5 0 .2 5.3.2 11.8c0 2.1.5 4.1 1.6 5.9L0 24l6.5-1.7a11.8 11.8 0 0 0 5.6 1.4c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.4-8.4zM12 21.7c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.8 9.8 0 0 1-1.5-5.2C2.1 6.4 6.5 2 12 2c2.6 0 5.1 1 6.9 2.9a9.7 9.7 0 0 1 2.9 6.9c0 5.4-4.4 9.9-9.8 9.9zm5.4-7.3c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1l-.9 1.2c-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5v-.6l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>',
-  seta: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
-  esq: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>',
-  menu: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>',
-  x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>',
-  compart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5M5 13v7h14v-7"/></svg>'
-};
+const IMOVEIS = M.ordena(w.IMOVEIS.map(M.normaliza));
+const { SITE, esc, num, precoTxt, onde, zapMsg, foto, capa, ico } = M;
 
 // ---------- pedaços comuns ----------
 const PAGS = [["index.html", "Início"], ["imoveis.html", "Imóveis"], ["financiamento.html", "Financiamento"], ["anuncie.html", "Anuncie"], ["sobre.html", "A Kiesel"], ["contato.html", "Contato"]];
@@ -70,7 +46,7 @@ function rodape() {
 <div class="bairro-foto" id="bairro-foto" aria-hidden="true"><img alt="" src="" width="260" height="195"></div>
 <div class="cursor" aria-hidden="true"></div><div class="cursor-rotulo" id="cursor-rotulo" aria-hidden="true"><span>Ver imóvel</span></div>`;
 }
-function pagina({ arquivo, titulo, desc, corpo, jsonld, escuro, extraHead = "", atual }) {
+function pagina({ arquivo, titulo, desc, corpo, jsonld, escuro, extraHead = "", atual, vivo = false }) {
   return `<!doctype html>
 <html lang="pt-BR" class="sem-js">
 <head>
@@ -92,10 +68,12 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
 <body${escuro ? ' class="escuro"' : ""} data-pagina="${arquivo.replace(".html", "")}">
 ${topo(atual || arquivo)}
 <main id="conteudo">
-${corpo.replace(/<(h1|p) class="(mask|grande mask)">([\s\S]*?)<\/\1>/g, '<$1 class="$2"><span>$3</span></$1>').replace(/class="(trilha|onde)"/g, 'class="$1 mono"').replace(/class="num-sec rv"/g, 'class="mono rv"')}
+${M.ajusta(corpo)}
 </main>
 ${rodape()}
-<script src="dados.js" defer></script>
+<script src="dados.js" defer></script>${vivo ? `
+<script src="modelo.js" defer></script>
+<script src="vivo.js" defer></script>` : ""}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.1/dist/lenis.min.js" defer></script>
@@ -104,140 +82,41 @@ ${rodape()}
 </html>`;
 }
 
-// ---------- cartões ----------
-function specs(x, escuro) {
-  const s = [];
-  if (x.quartos) s.push(`<span>${ico.cama}${x.quartos} ${x.quartos > 1 ? "quartos" : "quarto"}</span>`);
-  if (x.banheiros) s.push(`<span>${ico.banho}${x.banheiros} ${x.banheiros > 1 ? "banheiros" : "banheiro"}</span>`);
-  if (x.vagas) s.push(`<span>${ico.carro}${x.vagas} ${x.vagas > 1 ? "vagas" : "vaga"}</span>`);
-  const a = areaTxt(x); if (a) s.push(`<span>${ico.area}${a}</span>`);
-  return s.join("");
-}
-function card(x, lazy = true) {
-  const f1 = capa(x), f2 = capa2(x);
-  return `<a class="item" href="imovel-${x.ref}.html" data-cursor="Ver imóvel" data-ref="${x.ref}" data-tipo="${esc(x.tipo)}" data-fin="${x.finalidade}" data-bairro="${esc(x.bairro)}" data-preco="${x.preco}" data-quartos="${x.quartos}" data-area="${x.area}" data-data="${x.atualizado}" data-busca="${esc((x.titulo + " " + x.bairro + " " + x.cidade + " " + x.ref + " " + x.comodidades.join(" ") + " " + x.descricao).toLowerCase())}">
-  <div class="moldura"><img class="a" src="${foto(f1, "p")}" srcset="${foto(f1, "p")} 640w, ${foto(f1, "g")} 1280w" sizes="(max-width:600px) 100vw, (max-width:1000px) 50vw, 33vw" width="640" height="360" alt="${esc(x.titulo)} em ${esc(x.bairro)}"${lazy ? ' loading="lazy" decoding="async"' : ""}>${f2 ? `<img class="b" src="${foto(f2, "p")}" alt="" loading="lazy" decoding="async">` : ""}<span class="cod">${x.ref}</span><span class="tipo">${esc(x.tipo)}${x.finalidade === "alugar" ? " · aluguel" : ""}</span><button class="fav" type="button" data-fav="${x.ref}" aria-label="Guardar ${x.ref} nos favoritos" aria-pressed="false">${ico.coracao}</button></div>
-  <div class="dados"><h3>${esc(x.titulo)}</h3><span class="preco num">${preco(x)}</span></div>
-  <span class="onde">${esc(onde(x))}</span>
-  <div class="specs">${specs(x)}</div>
-</a>`;
-}
-function peca(x, i) {
-  return `<a class="peca" href="imovel-${x.ref}.html" data-cursor="Ver imóvel">
-  <div class="moldura"><img src="${foto(capa(x), "g")}" width="1280" height="720" alt="${esc(x.titulo)} em ${esc(x.bairro)}"${i < 2 ? "" : ' loading="lazy" decoding="async"'}><span class="cod">${x.ref}</span></div>
-  <div class="legenda"><div><h3>${esc(x.titulo)}</h3><span class="mono">${esc(onde(x))}</span></div><span class="preco num">${preco(x)}</span></div>
-</a>`;
-}
 
-// ---------- home ----------
-const venda = IMOVEIS.filter(x => x.finalidade === "comprar");
-const cont = t => IMOVEIS.filter(x => x.tipo === t).length;
-const bairros = {}; for (const x of IMOVEIS) { const k = x.bairro + "|" + x.cidade; bairros[k] = (bairros[k] || 0) + 1; }
-const listaBairros = Object.entries(bairros).sort((a, b) => b[1] - a[1]);
-const recentes = [...IMOVEIS].sort((a, b) => b.atualizado.localeCompare(a.atualizado) || b.preco - a.preco).slice(0, 6);
-const porRef = r => IMOVEIS.find(x => x.ref === r);
-const selecao = [porRef("CA0018"), porRef("CA0035"), porRef("CH0007"), porRef("CA0044")];
-
+// ---------- páginas de imóveis (modelos em modelo.js) ----------
+const ctx = M.contexto(IMOVEIS);
 const home = pagina({
-  arquivo: "index.html",
+  arquivo: "index.html", vivo: true,
   titulo: "Imobiliária Kiesel · Casas, terrenos e chácaras em São Martinho/RS",
   desc: `Kiesel Negócios Imobiliários, CRECI 45.125/RS. ${IMOVEIS.length} imóveis à venda e para alugar em São Martinho e região, com atendimento direto pelo WhatsApp.`,
   jsonld: { "@context": "https://schema.org", "@type": "RealEstateAgent", name: "Kiesel Negócios Imobiliários", legalName: "Kipper Kiesel Ltda", url: SITE + "/", telephone: "+55 55 99947-9495", address: { "@type": "PostalAddress", streetAddress: "Avenida Getúlio Vargas", addressLocality: "São Martinho", addressRegion: "RS", postalCode: "98690-000", addressCountry: "BR" }, sameAs: ["https://www.facebook.com/imobiliariakiesel"], identifier: { "@type": "PropertyValue", name: "CRECI", value: "45.125/RS" } },
-  extraHead: `<link rel="preload" href="img/g/CA0036-03.webp" as="image">`,
-  corpo: require("./home.js")({ IMOVEIS, esc, num, preco, precoTxt, onde, foto, capa, card, peca, ico, zapMsg, listaBairros, cont, recentes, porRef })
+  extraHead: ctx.heroi[0] ? `<link rel="preload" href="${foto(capa(ctx.heroi[0]))}" as="image">` : "",
+  corpo: M.corpoHome(IMOVEIS)
 });
-
-// ---------- catálogo ----------
-const tipos = [...new Set(IMOVEIS.map(x => x.tipo))];
 const catalogo = pagina({
-  arquivo: "imoveis.html",
+  arquivo: "imoveis.html", vivo: true,
   titulo: "Imóveis à venda e para alugar em São Martinho · Imobiliária Kiesel",
   desc: `Catálogo completo da Kiesel: ${IMOVEIS.length} casas, terrenos, chácaras, áreas e salas comerciais em São Martinho/RS e região, com preço e fotos.`,
-  corpo: `
-<section class="pag-topo"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Imóveis</div><h1 class="mask">Catálogo <span class="ital">completo.</span></h1><p>Todos os imóveis disponíveis hoje, com preço, fotos e descrição. Filtre por finalidade, tipo, bairro e quartos, ou guarde favoritos para comparar depois.</p></div></section>
-<section class="secao" style="padding-top:clamp(28px,4vw,48px);min-height:100vh">
-  <div class="miolo">
-    <form class="filtros" id="filtros" onsubmit="return false">
-      <div class="alterna" role="group" aria-label="Finalidade"><button type="button" data-fin="comprar" aria-pressed="true">Comprar</button><button type="button" data-fin="alugar" aria-pressed="false">Alugar</button><button type="button" data-fin="favoritos" aria-pressed="false">Favoritos</button></div>
-      <div class="campo"><label for="f-tipo">Tipo</label><select class="sel" id="f-tipo"><option value="">Todos</option>${tipos.map(t => `<option>${esc(t)}</option>`).join("")}</select></div>
-      <div class="campo"><label for="f-bairro">Bairro</label><select class="sel" id="f-bairro"><option value="">Todos</option>${listaBairros.map(([k]) => { const [b, c] = k.split("|"); return `<option value="${esc(b)}">${esc(b)} · ${esc(c)}</option>`; }).join("")}</select></div>
-      <div class="campo"><label for="f-quartos">Quartos</label><select class="sel" id="f-quartos"><option value="">Qualquer</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option></select></div>
-      <div class="campo"><label for="f-ordem">Ordem</label><select class="sel" id="f-ordem"><option value="recentes">Mais recentes</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option><option value="area">Maior área</option></select></div>
-      <div class="campo campo-busca"><label for="f-busca">Buscar</label><input class="ent" id="f-busca" type="search" placeholder="piscina, Centro, CA0018…" autocomplete="off"></div>
-      <button class="limpar" type="button" id="f-limpar">Limpar</button>
-    </form>
-    <div class="resumo"><span><b class="num" id="res-n">${IMOVEIS.length}</b> <span id="res-txt">imóveis</span></span><span id="res-fil"></span></div>
-    <div class="vitrine" id="grade">${IMOVEIS.map(x => card(x)).join("")}<div class="vazio" id="vazio" hidden><h3>Nenhum imóvel com esses filtros.</h3><p>Tente outro bairro ou tipo, ou <a href="encomende.html">encomende</a> o imóvel que você procura.</p></div></div>
-    <nav class="paginacao" id="paginacao" aria-label="Páginas"></nav>
-  </div>
-</section>`
+  corpo: M.corpoCatalogo(IMOVEIS)
 });
-
-// ---------- página de imóvel ----------
-function semelhantes(x) {
-  return IMOVEIS.filter(y => y.ref !== x.ref && y.finalidade === x.finalidade).map(y => ({ y, d: (y.tipo === x.tipo ? 0 : 1e9) + Math.abs(y.preco - x.preco) })).sort((a, b) => a.d - b.d).slice(0, 3).map(o => o.y);
-}
 function paginaImovel(x) {
-  const fotos = x.fotos;
-  const esp = [];
-  if (x.quartos) esp.push([x.quartos, x.quartos > 1 ? "quartos" : "quarto"]);
-  if (x.suites) esp.push([x.suites, x.suites > 1 ? "suítes" : "suíte"]);
-  if (x.banheiros) esp.push([x.banheiros, x.banheiros > 1 ? "banheiros" : "banheiro"]);
-  if (x.vagas) esp.push([x.vagas, x.vagas > 1 ? "vagas" : "vaga"]);
-  const a = areaTxt(x); if (a) esp.push([a.split(" ")[0], a.split(" ")[1] === "ha" ? "hectares" : "m² de área"]);
-  const msg = `Olá, tenho interesse no imóvel ${x.ref} (${x.titulo}, ${onde(x)}, ${precoTxt(x)}). Pode me passar mais informações?`;
-  const desc = `${x.titulo} em ${onde(x)}, ${precoTxt(x)}. ${x.descricao.split("\n")[0].slice(0, 140)}`;
+  const fotos = x.fotos, meta = M.metaImovel(x);
   return pagina({
-    arquivo: `imovel-${x.ref}.html`, atual: "imoveis.html",
-    titulo: `${x.titulo} · ${x.bairro}, ${x.cidade} · ${precoTxt(x)} · Kiesel ${x.ref}`,
-    desc,
-    jsonld: { "@context": "https://schema.org", "@type": "RealEstateListing", name: x.titulo, url: `${SITE}/imovel-${x.ref}.html`, datePosted: x.atualizado, image: fotos.slice(0, 5).map(f => `${SITE}/${foto(f)}`), offers: { "@type": "Offer", price: x.preco, priceCurrency: "BRL", availability: "https://schema.org/InStock" }, address: { "@type": "PostalAddress", addressLocality: x.cidade, addressRegion: x.uf || "RS", addressCountry: "BR" } },
-    extraHead: `<link rel="preload" href="${foto(fotos[0])}" as="image">`,
-    corpo: `
-<section class="imovel-galeria">
-  <div class="galeria" id="galeria" aria-roledescription="galeria" aria-label="Fotos do imóvel ${x.ref}">
-    ${fotos.map((f, i) => `<div class="slide${i === 0 ? " ativo" : ""}" data-i="${i}"><img src="${foto(f)}" width="1280" height="720" alt="${esc(x.titulo)}, foto ${i + 1} de ${fotos.length}"${i === 0 ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"'}></div>`).join("")}
-    ${fotos.length > 1 ? `<button class="seta ant" id="g-ant" type="button" aria-label="Foto anterior">${ico.esq}</button><button class="seta prox" id="g-prox" type="button" aria-label="Próxima foto">${ico.seta}</button>` : ""}
-    <div class="contador num" id="g-contador"><span id="g-atual">1</span><i>/</i>${fotos.length}</div>
-  </div>
-  ${fotos.length > 1 ? `<div class="miniaturas" id="miniaturas">${fotos.map((f, i) => `<button type="button" class="${i === 0 ? "ativa" : ""}" data-i="${i}" aria-label="Ver foto ${i + 1}"><img src="${foto(f, "p")}" width="108" height="81" alt="" loading="lazy" decoding="async"></button>`).join("")}</div>` : ""}
-</section>
-<section class="secao" style="padding-top:clamp(28px,4vw,48px)">
-  <div class="miolo">
-    <div class="trilha" style="font-size:13px;color:var(--tinta-3);margin-bottom:18px;font-weight:500"><a href="index.html" style="text-decoration:none;color:var(--azul)">Início</a> / <a href="imoveis.html" style="text-decoration:none;color:var(--azul)">Imóveis</a> / ${x.ref}</div>
-    <div class="imovel">
-      <div>
-        <h1 class="mask">${esc(x.titulo)}</h1>
-        <div class="onde">${esc(x.tipo)} ${x.finalidade === "alugar" ? "para alugar" : "à venda"} · ${esc(onde(x))} · ref. ${x.ref}</div>
-        <div class="preco num">${preco(x)}${x.finalidade === "comprar" ? `<small>à venda</small>` : ""}</div>
-        <div class="especs" data-stagger>${esp.map(([n, t]) => `<div class="rv"><b class="num">${n}</b><span>${t}</span></div>`).join("")}</div>
-        <h2>Sobre o imóvel</h2>
-        <div class="descricao">${esc(x.descricao)}</div>
-        ${x.comodidades.length ? `<h2>Características</h2><div class="chips">${x.comodidades.map(c => `<span>${esc(c)}</span>`).join("")}</div>` : ""}
-        <p class="nota" style="margin-top:28px;font-size:13px;color:var(--tinta-3)">Atualizado em ${x.atualizado.split("-").reverse().join("/")}. Valores sujeitos a alteração sem aviso prévio.</p>
-      </div>
-      <aside class="imovel-lado">
-        <div class="placa">
-          <h3>Quer visitar?</h3>
-          <p>Fale direto com o corretor. A mensagem já vai com o código ${x.ref} para agilizar.</p>
-          <a class="btn btn-zap" id="ficha-zap" href="${zapMsg(msg)}" target="_blank" rel="noopener">${ico.zap}Falar sobre este imóvel</a>
-          <div class="acoes-linha"><button class="btn btn-contorno" type="button" data-fav="${x.ref}" aria-pressed="false" id="ficha-fav">${ico.coracao}<span>Guardar</span></button><button class="btn btn-contorno" type="button" id="ficha-compart">${ico.compart}Compartilhar</button></div>
-          ${x.finalidade === "comprar" ? `<a class="btn btn-contorno" href="financiamento.html?valor=${x.preco}">Simular financiamento</a>` : ""}
-          <div class="corretor"><img src="assets/logo-topo.png" alt="" width="72" height="33"><div>Kiesel Negócios Imobiliários<br>CRECI 45.125/RS · (55) 99947-9495</div></div>
-        </div>
-      </aside>
-    </div>
-  </div>
-</section>
-<section class="secao secao-escura" id="semelhantes">
-  <div class="miolo">
-    <div class="cabeca"><div><span class="num-sec rv">Veja também</span><h2 class="rv">Imóveis semelhantes.</h2></div><a class="btn btn-contorno rv" href="imoveis.html?tipo=${encodeURIComponent(x.tipo)}">Todos os ${esc(x.tipo.toLowerCase())}s ${ico.seta}</a></div>
-    <div class="vitrine" data-stagger>${semelhantes(x).map(y => card(y)).join("")}</div>
-  </div>
-</section>
-<nav class="prox-ant" aria-label="Outros imóveis">${(() => { const i = IMOVEIS.indexOf(x), n = IMOVEIS.length, a = IMOVEIS[(i - 1 + n) % n], p = IMOVEIS[(i + 1) % n]; return `<a href="imovel-${a.ref}.html"><span class="mono">Anterior · ${a.ref}</span><b>${esc(a.titulo)}</b><span class="mono">${esc(onde(a))} · ${precoTxt(a)}</span></a><a href="imovel-${p.ref}.html"><span class="mono">Próximo · ${p.ref}</span><b>${esc(p.titulo)}</b><span class="mono">${esc(onde(p))} · ${precoTxt(p)}</span></a>`; })()}</nav>`
+    arquivo: `imovel-${x.ref}.html`, atual: "imoveis.html", vivo: true,
+    titulo: meta.titulo, desc: meta.desc,
+    jsonld: { "@context": "https://schema.org", "@type": "RealEstateListing", name: x.titulo, url: `${SITE}/imovel-${x.ref}.html`, datePosted: x.atualizado, image: fotos.slice(0, 5).map(f => /^https?:/.test(f) ? f : `${SITE}/${foto(f)}`), offers: { "@type": "Offer", price: x.preco, priceCurrency: "BRL", availability: "https://schema.org/InStock" }, address: { "@type": "PostalAddress", addressLocality: x.cidade, addressRegion: x.uf || "RS", addressCountry: "BR" } },
+    extraHead: fotos[0] ? `<link rel="preload" href="${foto(fotos[0])}" as="image">` : "",
+    corpo: M.corpoImovel(x, IMOVEIS)
   });
 }
+// página-molde: atende imóveis cadastrados no painel depois do último build (vercel.json manda /imovel-XXXX para cá)
+const molde = pagina({
+  arquivo: "imovel.html", atual: "imoveis.html", vivo: true,
+  titulo: "Imóvel · Imobiliária Kiesel",
+  desc: "Imóvel da carteira da Kiesel Negócios Imobiliários em São Martinho/RS.",
+  extraHead: '<meta name="robots" content="noindex">',
+  corpo: `<section class="pag-topo"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / <a href="imoveis.html">Imóveis</a></div><h1 class="mask">Carregando o imóvel…</h1><p>Só um instante.</p></div></section>`
+});
 
 // ---------- páginas institucionais ----------
 const sobre = pagina({
@@ -383,13 +262,16 @@ const privacidade = pagina({
 <section class="pag-topo"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Privacidade</div><h1 class="mask">Privacidade.</h1><p>Este site foi feito para ser simples também nisso.</p></div></section>
 <section class="secao"><div class="miolo"><div class="manifesto" style="grid-template-columns:1fr;max-width:72ch">
 <p class="rv">Este site não tem cadastro, não usa cookies de rastreamento nem ferramentas de publicidade. Os formulários não enviam nada para um servidor: eles montam uma mensagem e abrem o seu WhatsApp, e só você decide se envia.</p>
-<p class="rv">A lista de favoritos fica guardada apenas no seu navegador (armazenamento local) e pode ser apagada limpando os dados do site. O mapa da página de contato é carregado do OpenStreetMap, que pode registrar o seu acesso conforme a política de privacidade dele.</p>
+<p class="rv">A lista de favoritos fica guardada apenas no seu navegador (armazenamento local) e pode ser apagada limpando os dados do site. Os mapas são carregados do Google Maps, que pode registrar o seu acesso conforme a política de privacidade dele.</p>
 <p class="rv">Ao conversar pelo WhatsApp, os seus dados são tratados pela Kiesel Negócios Imobiliários (Kipper Kiesel Ltda, CRECI 45.125/RS) somente para o atendimento solicitado, conforme a Lei Geral de Proteção de Dados (Lei nº 13.709/2018). Para pedir acesso, correção ou exclusão, fale pelo (55) 99947-9495.</p>
 </div></div></section>`
 });
 
 // ---------- grava ----------
-const saida = { "index.html": home, "imoveis.html": catalogo, "sobre.html": sobre, "contato.html": contato, "financiamento.html": financiamento, "anuncie.html": anuncie, "encomende.html": encomende, "privacidade.html": privacidade };
+const saida = { "index.html": home, "imoveis.html": catalogo, "imovel.html": molde, "sobre.html": sobre, "contato.html": contato, "financiamento.html": financiamento, "anuncie.html": anuncie, "encomende.html": encomende, "privacidade.html": privacidade };
 for (const x of IMOVEIS) saida[`imovel-${x.ref}.html`] = paginaImovel(x);
+// páginas de imóveis que saíram da carteira: apaga (o endereço antigo cai na página-molde, que avisa "não está mais disponível")
+const velhas = fs.readdirSync(RAIZ).filter(f => /^imovel-[A-Z]{2}\d{4}\.html$/.test(f) && !saida[f]);
+for (const f of velhas) fs.unlinkSync(path.join(RAIZ, f));
 for (const [n, h] of Object.entries(saida)) fs.writeFileSync(path.join(RAIZ, n), h);
-console.log("gerado:", Object.keys(saida).length, "páginas");
+console.log("gerado:", Object.keys(saida).length, "páginas", velhas.length ? "| removidas: " + velhas.join(", ") : "");
