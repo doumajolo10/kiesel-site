@@ -406,3 +406,25 @@ img[src$="logo-topo.png"]{height:auto}
 .cortina:not(.entra):not(.sai){visibility:hidden}
 .quadro-mapa iframe{position:absolute;inset:0;width:100%;height:100%}
 .quadro-mapa .selo-mapa img{width:auto;max-width:200px}
+
+/* mapa sob demanda (LGPD) */
+.mapa-aviso{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;width:100%;height:100%;min-height:inherit;padding:28px 24px;background:var(--fundo-2);color:var(--tinta-2);text-align:center}
+.quadro-mapa .mapa-aviso{justify-content:flex-start;padding-top:clamp(28px,7%,56px)}
+.mapa .mapa-aviso{min-height:420px}
+.mapa-aviso .pino{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:#fff;color:var(--azul);box-shadow:var(--sombra)}
+.mapa-aviso .pino svg{width:26px;height:26px}
+.mapa-aviso b{color:var(--tinta);font-size:15px;font-weight:600}
+.mapa-aviso small{max-width:34ch;font-size:12.5px;line-height:1.5;color:var(--tinta-3)}
+.mapa-aviso small a{color:var(--azul)}
+/* texto da política de privacidade */
+.texto-legal{max-width:74ch}
+.texto-legal h2{margin:40px 0 12px;font-size:clamp(20px,2vw,24px);color:var(--marinho)}
+.texto-legal h2:first-child{margin-top:0}
+.texto-legal p,.texto-legal li{font-size:16.5px;line-height:1.65;color:var(--tinta-2)}
+.texto-legal p+p,.texto-legal ul+p,.texto-legal p+ul{margin-top:12px}
+.texto-legal ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px}
+.texto-legal b{color:var(--tinta)}
+.texto-legal a{color:var(--azul)}
+.mapa .mapa-aviso{justify-content:flex-start;padding-top:clamp(48px,10vh,96px)}
+.quadro-mapa:has(.mapa-aviso) .selo-mapa{display:none}
+.quadro-mapa .mapa-aviso{justify-content:center;padding-top:28px}

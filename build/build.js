@@ -74,9 +74,9 @@ ${rodape()}
 <script src="dados.js" defer></script>${vivo ? `
 <script src="modelo.js" defer></script>
 <script src="vivo.js" defer></script>` : ""}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.1/dist/lenis.min.js" integrity="sha384-HOhEGwtEOoOqYLe/uKOml49IX3btH2saMNoBxmhl7d8YdSk1Z6UIQpJ20copTA6J" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<script src="assets/vendor/gsap-3.13.0.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" defer></script>
+<script src="assets/vendor/ScrollTrigger-3.13.0.min.js" integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh" defer></script>
+<script src="assets/vendor/lenis-1.3.1.min.js" integrity="sha384-HOhEGwtEOoOqYLe/uKOml49IX3btH2saMNoBxmhl7d8YdSk1Z6UIQpJ20copTA6J" defer></script>
 <script src="app.js" defer></script>
 </body>
 </html>`;
@@ -256,15 +256,9 @@ const encomende = pagina({
 });
 
 const privacidade = pagina({
-  arquivo: "privacidade.html", titulo: "Privacidade · Imobiliária Kiesel",
-  desc: "Como este site trata os seus dados.",
-  corpo: `
-<section class="pag-topo"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Privacidade</div><h1 class="mask">Privacidade.</h1><p>Este site foi feito para ser simples também nisso.</p></div></section>
-<section class="secao"><div class="miolo"><div class="manifesto" style="grid-template-columns:1fr;max-width:72ch">
-<p class="rv">Este site não tem cadastro, não usa cookies de rastreamento nem ferramentas de publicidade. Os formulários não enviam nada para um servidor: eles montam uma mensagem e abrem o seu WhatsApp, e só você decide se envia.</p>
-<p class="rv">A lista de favoritos fica guardada apenas no seu navegador (armazenamento local) e pode ser apagada limpando os dados do site. Os mapas são carregados do Google Maps, que pode registrar o seu acesso conforme a política de privacidade dele.</p>
-<p class="rv">Ao conversar pelo WhatsApp, os seus dados são tratados pela Kiesel Negócios Imobiliários (Kipper Kiesel Ltda, CRECI 45.125/RS) somente para o atendimento solicitado, conforme a Lei Geral de Proteção de Dados (Lei nº 13.709/2018). Para pedir acesso, correção ou exclusão, fale pelo (55) 99947-9495.</p>
-</div></div></section>`
+  arquivo: "privacidade.html", titulo: "Política de privacidade · Imobiliária Kiesel",
+  desc: "Como o site da Kiesel trata os seus dados, conforme a LGPD (Lei nº 13.709/2018).",
+  corpo: require("./privacidade.js")()
 });
 
 // ---------- grava ----------

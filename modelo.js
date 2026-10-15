@@ -298,8 +298,11 @@ ${vizinhos.length ? `<nav class="prox-ant" aria-label="Outros imóveis">${vizinh
 ${sug.length ? `<section class="secao secao-cinza"><div class="miolo"><div class="cabeca"><div><span class="mono">Carteira</span><h2>Atualizados recentemente</h2></div></div><div class="vitrine">${sug.map(y => card(y)).join("")}</div></div></section>` : ""}`;
   }
 
+  // mapa do Google só depois do clique (LGPD: o Google não recebe o acesso de quem não pediu o mapa)
+  const PINO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>';
+  const mapaSob = (titulo, src) => `<div class="mapa-aviso" data-mapa="${src}" data-titulo="${titulo}"><span class="pino">${PINO}</span><b>Av. Getúlio Vargas, Centro · São Martinho/RS</b><button type="button" class="btn btn-contorno">Mostrar o mapa</button><small>O mapa é do Google. Ao abrir, o Google recebe o seu acesso. <a href="https://www.google.com/maps?q=-27.70806,-53.96561" target="_blank" rel="noopener">Abrir no Google Maps</a></small></div>`;
   // o mesmo ajuste que o build aplica em todo <main>
-  const ajusta = corpo => corpo.replace(/<(h1|p) class="(mask|grande mask)">([\s\S]*?)<\/\1>/g, '<$1 class="$2"><span>$3</span></$1>').replace(/class="(trilha|onde)"/g, 'class="$1 mono"').replace(/class="num-sec rv"/g, 'class="mono rv"');
+  const ajusta = corpo => corpo.replace(/<iframe title="([^"]*)" loading="lazy" referrerpolicy="[^"]*" src="(https:\/\/www\.google\.com\/maps[^"]*)"><\/iframe>/g, (t, a, b) => mapaSob(a, b)).replace(/<(h1|p) class="(mask|grande mask)">([\s\S]*?)<\/\1>/g, '<$1 class="$2"><span>$3</span></$1>').replace(/class="(trilha|onde)"/g, 'class="$1 mono"').replace(/class="num-sec rv"/g, 'class="mono rv"');
 
   const M = { ZAP, SITE, SUPA, TIPOS, esc, num, preco, precoTxt, areaTxt, onde, zapMsg, foto, fotoOu, capa, capa2, ico, normaliza, ordena, assinatura, specs, card, contexto, corpoHome, corpoCatalogo, corpoImovel, corpoIndisponivel, metaImovel, semelhantes, ajusta };
   if (typeof module !== "undefined" && module.exports) module.exports = M; else raiz.KieselModelo = M;

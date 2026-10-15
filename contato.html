@@ -52,7 +52,7 @@
           <p class="nota">A mensagem abre no seu WhatsApp, pronta para enviar. Nenhum dado fica guardado neste site.</p>
         </form>
       </div>
-      <div class="mapa mask"><iframe title="Mapa: Avenida Getúlio Vargas, Centro, São Martinho" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=-27.70806,-53.96561&z=16&hl=pt-BR&output=embed"></iframe></div>
+      <div class="mapa mask"><div class="mapa-aviso" data-mapa="https://www.google.com/maps?q=-27.70806,-53.96561&z=16&hl=pt-BR&output=embed" data-titulo="Mapa: Avenida Getúlio Vargas, Centro, São Martinho"><span class="pino"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><b>Av. Getúlio Vargas, Centro · São Martinho/RS</b><button type="button" class="btn btn-contorno">Mostrar o mapa</button><small>O mapa é do Google. Ao abrir, o Google recebe o seu acesso. <a href="https://www.google.com/maps?q=-27.70806,-53.96561" target="_blank" rel="noopener">Abrir no Google Maps</a></small></div></div>
     </div>
   </div>
 </section>
@@ -75,9 +75,9 @@
 <div class="bairro-foto" id="bairro-foto" aria-hidden="true"><img alt="" src="" width="260" height="195"></div>
 <div class="cursor" aria-hidden="true"></div><div class="cursor-rotulo" id="cursor-rotulo" aria-hidden="true"><span>Ver imóvel</span></div>
 <script src="dados.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.1/dist/lenis.min.js" integrity="sha384-HOhEGwtEOoOqYLe/uKOml49IX3btH2saMNoBxmhl7d8YdSk1Z6UIQpJ20copTA6J" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<script src="assets/vendor/gsap-3.13.0.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" defer></script>
+<script src="assets/vendor/ScrollTrigger-3.13.0.min.js" integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh" defer></script>
+<script src="assets/vendor/lenis-1.3.1.min.js" integrity="sha384-HOhEGwtEOoOqYLe/uKOml49IX3btH2saMNoBxmhl7d8YdSk1Z6UIQpJ20copTA6J" defer></script>
 <script src="app.js" defer></script>
 </body>
 </html>

@@ -1,6 +1,13 @@
 /* Kiesel Negócios Imobiliários — comportamento do site (v3) */
 /* formulários que só rodam no navegador (simuladores, filtros) nunca recarregam a página */
 document.addEventListener("submit", function (e) { if (e.target.matches("[data-sem-envio]")) e.preventDefault(); }, true);
+/* mapa do Google: carrega só quando a pessoa pede */
+document.addEventListener("click", function (e) {
+  var b = e.target.closest && e.target.closest(".mapa-aviso button"); if (!b) return;
+  var box = b.closest(".mapa-aviso"), f = document.createElement("iframe");
+  f.title = box.getAttribute("data-titulo") || "Mapa"; f.src = box.getAttribute("data-mapa"); f.referrerPolicy = "no-referrer-when-downgrade"; f.setAttribute("allowfullscreen", "");
+  box.replaceWith(f);
+});
 /* espera o vivo.js trazer a carteira atualizada pelo painel (no máximo ~2,5 s) antes de ligar os efeitos */
 (window.KIESEL_VIVO || Promise.resolve()).then(function () {
   "use strict";
