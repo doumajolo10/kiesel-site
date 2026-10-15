@@ -1,5 +1,7 @@
-build/
-.github/
-supabase/
-pesquisa/
+build
+.github
+supabase
+pesquisa
 *.md
+.gitignore
+.vercelignore
