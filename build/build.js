@@ -37,7 +37,7 @@ function topo(atual) {
   return `<a class="pular so-leitor" href="#conteudo">Ir para o conteúdo</a>
 <div class="faixa-topo"><div class="miolo"><div><span>Av. Getúlio Vargas, Centro · São Martinho/RS</span><span>CRECI 45.125/RS</span></div><div><span><a href="https://wa.me/5555999479495" target="_blank" rel="noopener">(55) 99947-9495</a></span><span><a href="https://wa.me/5555996298532" target="_blank" rel="noopener">(55) 99629-8532</a></span></div></div></div>
 <header class="topo" id="topo">
-  <a class="marca" href="index.html" aria-label="Kiesel Negócios Imobiliários, início"><img src="assets/logo-kiesel-hd.png" width="1290" height="500" alt="Kiesel Negócios Imobiliários" decoding="async"></a>
+  <a class="marca" href="index.html" aria-label="Kiesel Negócios Imobiliários, início"><img src="assets/logo-topo.png" width="391" height="190" alt="Kiesel Negócios Imobiliários" decoding="async"></a>
   <nav class="nav" aria-label="Principal">${PAGS.map(([h, t], i) => `<a href="${h}"${h === atual ? ' class="ativo" aria-current="page"' : ""}><span class="i">0${i + 1}</span>${t}</a>`).join("")}</nav>
   <div class="topo-acoes">
     <a class="ico-btn" id="favs-topo" href="imoveis.html?fin=favoritos" aria-label="Imóveis favoritos">${ico.coracao}<span class="conta num" id="favs-n">0</span></a>
@@ -55,7 +55,7 @@ function rodape() {
   return `<footer class="rodape">
   <div class="miolo">
     <div class="colunas">
-      <div><span class="logo-rod"><img src="assets/logo-kiesel-hd.png" width="1290" height="500" alt="Kiesel Negócios Imobiliários" loading="lazy"></span><p>Kipper Kiesel Ltda · CRECI 45.125/RS<br>Av. Getúlio Vargas, Centro<br>São Martinho, RS · CEP 98690-000</p><div class="hud" style="margin-top:18px"><span>Imóveis publicados · <b class="num">${IMOVEIS.length}</b></span></div></div>
+      <div><span class="logo-rod"><img src="assets/logo-topo.png" width="391" height="190" alt="Kiesel Negócios Imobiliários" loading="lazy"></span><p>Kipper Kiesel Ltda · CRECI 45.125/RS<br>Av. Getúlio Vargas, Centro<br>São Martinho, RS · CEP 98690-000</p><div class="hud" style="margin-top:18px"><span>Imóveis publicados · <b class="num">${IMOVEIS.length}</b></span></div></div>
       <div><h4>Imóveis</h4><a href="imoveis.html?tipo=Casa">Casas</a><a href="imoveis.html?tipo=Terreno">Terrenos</a><a href="imoveis.html?tipo=Ch%C3%A1cara">Chácaras e áreas</a><a href="imoveis.html?fin=alugar">Para alugar</a><a href="imoveis.html?fin=favoritos">Meus favoritos</a></div>
       <div><h4>A Kiesel</h4><a href="sobre.html">Quem somos</a><a href="financiamento.html">Financiamento</a><a href="anuncie.html">Anuncie seu imóvel</a><a href="encomende.html">Encomende um imóvel</a><a href="privacidade.html">Privacidade</a></div>
       <div><h4>Contato</h4><a href="https://wa.me/5555999479495" target="_blank" rel="noopener">(55) 99947-9495</a><a href="https://wa.me/5555996298532" target="_blank" rel="noopener">(55) 99629-8532</a><a href="https://www.facebook.com/imobiliariakiesel" target="_blank" rel="noopener">facebook.com/imobiliariakiesel</a><a href="contato.html">Como chegar</a></div>
@@ -223,7 +223,7 @@ function paginaImovel(x) {
           <a class="btn btn-zap" id="ficha-zap" href="${zapMsg(msg)}" target="_blank" rel="noopener">${ico.zap}Falar sobre este imóvel</a>
           <div class="acoes-linha"><button class="btn btn-contorno" type="button" data-fav="${x.ref}" aria-pressed="false" id="ficha-fav">${ico.coracao}<span>Guardar</span></button><button class="btn btn-contorno" type="button" id="ficha-compart">${ico.compart}Compartilhar</button></div>
           ${x.finalidade === "comprar" ? `<a class="btn btn-contorno" href="financiamento.html?valor=${x.preco}">Simular financiamento</a>` : ""}
-          <div class="corretor"><img src="assets/logo-kiesel-hd.png" alt="" width="72" height="33"><div>Kiesel Negócios Imobiliários<br>CRECI 45.125/RS · (55) 99947-9495</div></div>
+          <div class="corretor"><img src="assets/logo-topo.png" alt="" width="72" height="33"><div>Kiesel Negócios Imobiliários<br>CRECI 45.125/RS · (55) 99947-9495</div></div>
         </div>
       </aside>
     </div>
@@ -248,7 +248,7 @@ const sobre = pagina({
 <section class="secao">
   <div class="miolo">
     <div class="manifesto">
-      <div><p class="grande mask">Quem vende uma casa em São Martinho vende também <em>uma rua, uma vizinhança e uma história.</em></p><div class="quadro rv quadro-mapa"><iframe title="Mapa: escritório da Kiesel, Avenida Getúlio Vargas, Centro, São Martinho" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=-53.9780%2C-27.7150%2C-53.9530%2C-27.7010&layer=mapnik&marker=-27.70806%2C-53.96561"></iframe><span class="selo-mapa"><img src="assets/logo-kiesel-hd.png" width="1290" height="500" alt="" loading="lazy"><b>Av. Getúlio Vargas, Centro</b><span>São Martinho/RS · CRECI 45.125/RS</span></span></div></div>
+      <div><p class="grande mask">Quem vende uma casa em São Martinho vende também <em>uma rua, uma vizinhança e uma história.</em></p><div class="quadro rv quadro-mapa"><iframe title="Mapa: escritório da Kiesel, Avenida Getúlio Vargas, Centro, São Martinho" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=-27.70806,-53.96561&z=16&hl=pt-BR&output=embed"></iframe><span class="selo-mapa"><img src="assets/logo-topo.png" width="391" height="190" alt="" loading="lazy"><b>Av. Getúlio Vargas, Centro</b><span>São Martinho/RS · CRECI 45.125/RS</span></span></div></div>
       <div>
         <p class="rv">A Kiesel trabalha com casas, terrenos, chácaras, áreas rurais e salas comerciais na cidade, no interior e nos municípios vizinhos. O escritório fica na Avenida Getúlio Vargas, no Centro, e o atendimento é direto com o corretor, pelo WhatsApp ou no balcão.</p>
         <p class="rv">Toda a carteira está publicada aqui com preço, fotos e descrição completa. Quem anuncia com a Kiesel recebe avaliação do valor de mercado, fotos do imóvel, divulgação neste site e no Facebook, e acompanhamento das visitas até a escritura.</p>
@@ -276,7 +276,7 @@ const contato = pagina({
     <div class="contato">
       <div data-stagger>
         <div class="dado rv"><b>WhatsApp e telefone</b><a href="https://wa.me/5555999479495" target="_blank" rel="noopener" class="num">(55) 99947-9495</a><a href="https://wa.me/5555996298532" target="_blank" rel="noopener" class="num">(55) 99629-8532</a></div>
-        <div class="dado rv"><b>Endereço</b><a href="https://www.openstreetmap.org/?mlat=-27.70806&mlon=-53.96561#map=17/-27.70806/-53.96561" target="_blank" rel="noopener">Av. Getúlio Vargas, Centro<br>São Martinho, RS · CEP 98690-000</a></div>
+        <div class="dado rv"><b>Endereço</b><a href="https://www.google.com/maps/search/?api=1&query=-27.70806,-53.96561" target="_blank" rel="noopener">Av. Getúlio Vargas, Centro<br>São Martinho, RS · CEP 98690-000</a></div>
         <div class="dado rv"><b>Redes</b><a href="https://www.facebook.com/imobiliariakiesel" target="_blank" rel="noopener">facebook.com/imobiliariakiesel</a></div>
         <div class="dado rv"><b>Registro</b><span style="font-size:clamp(20px,2vw,26px);font-weight:600;color:var(--marinho)">Kipper Kiesel Ltda · CRECI 45.125/RS</span></div>
         <form class="form rv" id="form-contato" style="margin-top:30px">
@@ -287,7 +287,7 @@ const contato = pagina({
           <p class="nota">A mensagem abre no seu WhatsApp, pronta para enviar. Nenhum dado fica guardado neste site.</p>
         </form>
       </div>
-      <div class="mapa mask"><iframe title="Mapa: Avenida Getúlio Vargas, Centro, São Martinho" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=-53.9780%2C-27.7150%2C-53.9530%2C-27.7010&layer=mapnik&marker=-27.70806%2C-53.96561"></iframe></div>
+      <div class="mapa mask"><iframe title="Mapa: Avenida Getúlio Vargas, Centro, São Martinho" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=-27.70806,-53.96561&z=16&hl=pt-BR&output=embed"></iframe></div>
     </div>
   </div>
 </section>`

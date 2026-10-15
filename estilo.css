@@ -394,13 +394,13 @@ p{margin:0}
 
 /* mapa do escritório com selo do logotipo */
 .quadro-mapa{aspect-ratio:4/3;position:relative}
-.quadro-mapa iframe{width:100%;height:100%;border:0;pointer-events:none;filter:saturate(.85)}
+.quadro-mapa iframe{width:100%;height:100%;border:0}
 .quadro-mapa .selo-mapa{position:absolute;left:16px;bottom:16px;background:#fff;border-radius:10px;padding:12px 14px;box-shadow:var(--sombra-2);display:grid;gap:2px;max-width:calc(100% - 32px)}
 .quadro-mapa .selo-mapa img{height:40px;width:auto;margin-bottom:6px}
 .quadro-mapa .selo-mapa b{font-size:14px;color:var(--marinho)}
 .quadro-mapa .selo-mapa span{font-size:12px;color:var(--tinta-3)}
 .quadro-mapa.ok img,.quadro-mapa img{transform:none}
-img[src$="logo-kiesel-hd.png"]{height:auto}
+img[src$="logo-topo.png"]{height:auto}
 .marca img,.rodape .logo-rod img,.pre img,.quadro-mapa .selo-mapa img{height:48px}
 .rodape .logo-rod img{height:48px}.pre img{height:64px}.quadro-mapa .selo-mapa img{height:40px}.imovel-lado .corretor img{height:auto}
 .cortina:not(.entra):not(.sai){visibility:hidden}

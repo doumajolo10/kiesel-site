@@ -10,7 +10,7 @@ module.exports = function (H) {
   const icoSelo = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3l2.5 2 3.2-.3.6 3.1 2.7 1.7-1.3 2.9 1.3 2.9-2.7 1.7-.6 3.1-3.2-.3L12 21l-2.5-2-3.2.3-.6-3.1L3 14.5l1.3-2.9L3 8.7l2.7-1.7.6-3.1 3.2.3z"/><path d="M9 12l2 2 4-4"/></svg>';
   const icoEtiq = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.5"/></svg>';
   return `
-<div class="pre" id="pre" aria-hidden="true"><img src="assets/logo-kiesel-hd.png" alt="" width="391" height="190"><span class="pre-num" id="pre-conta">0</span><i class="pre-linha"><i id="pre-barra"></i></i></div>
+<div class="pre" id="pre" aria-hidden="true"><img src="assets/logo-topo.png" alt="" width="391" height="190"><span class="pre-num" id="pre-conta">0</span><i class="pre-linha"><i id="pre-barra"></i></i></div>
 <section class="heroi" id="heroi">
   <div class="heroi-fotos" id="heroi-fotos">${heroi.map((h, i) => `<div class="foto${i === 0 ? " ativa" : ""}" data-ref="${h.x.ref}"><img src="${foto(h.f)}" width="1280" height="720" alt="${esc(h.x.titulo)} em ${esc(h.x.bairro)}"${i === 0 ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"'}></div>`).join("")}</div>
   <div class="heroi-veu"></div>
@@ -94,7 +94,7 @@ module.exports = function (H) {
 <section class="secao" id="sobre-breve">
   <div class="miolo">
     <div class="manifesto">
-      <div class="quadro quadro-mapa"><iframe title="Mapa: escritório da Kiesel, Avenida Getúlio Vargas, Centro, São Martinho" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=-53.9780%2C-27.7150%2C-53.9530%2C-27.7010&layer=mapnik&marker=-27.70806%2C-53.96561"></iframe><span class="selo-mapa"><img src="assets/logo-kiesel-hd.png" width="1290" height="500" alt="" loading="lazy"><b>Av. Getúlio Vargas, Centro</b><span>São Martinho/RS · CRECI 45.125/RS</span></span></div>
+      <div class="quadro quadro-mapa"><iframe title="Mapa: escritório da Kiesel, Avenida Getúlio Vargas, Centro, São Martinho" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=-27.70806,-53.96561&z=16&hl=pt-BR&output=embed"></iframe><span class="selo-mapa"><img src="assets/logo-topo.png" width="391" height="190" alt="" loading="lazy"><b>Av. Getúlio Vargas, Centro</b><span>São Martinho/RS · CRECI 45.125/RS</span></span></div>
       <div><span class="mono rv">A Kiesel</span><p class="grande rv" style="margin-top:10px">Por trás de cada negócio, <em>uma história de respeito e confiança.</em></p><p class="rv" style="margin-top:16px">A Kiesel Negócios Imobiliários atende São Martinho, o interior e os municípios vizinhos com casas, terrenos, chácaras, áreas rurais e salas comerciais. Toda a carteira está neste site com preço, fotos e descrição.</p><p class="rv" style="margin-top:22px"><a class="btn btn-azul" href="sobre.html">Conheça a Kiesel <span class="seta">${ico.seta}</span></a> <a class="btn btn-contorno" href="contato.html" style="margin-left:6px">Fale conosco</a></p></div>
     </div>
   </div>
