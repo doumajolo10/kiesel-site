@@ -7,7 +7,7 @@ module.exports = function () {
 ${sec("Em resumo",
     "Este site não tem cadastro, não usa cookies de rastreamento, de publicidade ou de estatística, e não vende nem empresta dados de ninguém. Os formulários não guardam nada: eles montam uma mensagem e abrem o seu WhatsApp, e só você decide se envia.")}
 ${sec("Quem cuida dos seus dados",
-    "A controladora é a <b>Kipper Kiesel Ltda</b> (Kiesel Negócios Imobiliários), CRECI 45.125/RS, Avenida Getúlio Vargas, Centro, São Martinho/RS, CEP 98690-000.",
+    "A controladora é a <b>Kipper Kiesel Ltda</b> (Kiesel Negócios Imobiliários), CNPJ 19.758.552/0001-91, CRECI 45.125/RS, Avenida Getúlio Vargas, 873, sala 02, Centro, São Martinho/RS, CEP 98690-000.",
     "Para qualquer assunto sobre os seus dados, fale com a Kiesel pelo WhatsApp <a href=\"https://wa.me/5555999479495\" target=\"_blank\" rel=\"noopener\">(55) 99947-9495</a> ou no escritório. A Kiesel é agente de tratamento de pequeno porte (Resolução CD/ANPD nº 2/2022), e este é o canal de atendimento ao titular.")}
 ${sec("Quais dados e para quê",
     `<ul>

@@ -31,7 +31,7 @@ function rodape() {
   return `<footer class="rodape">
   <div class="miolo">
     <div class="colunas">
-      <div><span class="logo-rod"><img src="assets/logo-topo.png" width="391" height="190" alt="Kiesel Negócios Imobiliários" loading="lazy"></span><p>Kipper Kiesel Ltda · CRECI 45.125/RS<br>Av. Getúlio Vargas, Centro<br>São Martinho, RS · CEP 98690-000</p><div class="hud" style="margin-top:18px"><span>Imóveis publicados · <b class="num">${IMOVEIS.length}</b></span></div></div>
+      <div><span class="logo-rod"><img src="assets/logo-topo.png" width="391" height="190" alt="Kiesel Negócios Imobiliários" loading="lazy"></span><p>Kipper Kiesel Ltda · CRECI 45.125/RS<br>CNPJ 19.758.552/0001-91<br>Av. Getúlio Vargas, Centro<br>São Martinho, RS · CEP 98690-000</p><div class="hud" style="margin-top:18px"><span>Imóveis publicados · <b class="num">${IMOVEIS.length}</b></span></div></div>
       <div><h4>Imóveis</h4><a href="imoveis.html?tipo=Casa">Casas</a><a href="imoveis.html?tipo=Terreno">Terrenos</a><a href="imoveis.html?tipo=Ch%C3%A1cara">Chácaras e áreas</a><a href="imoveis.html?fin=alugar">Para alugar</a><a href="imoveis.html?fin=favoritos">Meus favoritos</a></div>
       <div><h4>A Kiesel</h4><a href="sobre.html">Quem somos</a><a href="financiamento.html">Financiamento</a><a href="anuncie.html">Anuncie seu imóvel</a><a href="encomende.html">Encomende um imóvel</a><a href="privacidade.html">Privacidade</a></div>
       <div><h4>Contato</h4><a href="https://wa.me/5555999479495" target="_blank" rel="noopener">(55) 99947-9495</a><a href="https://wa.me/5555996298532" target="_blank" rel="noopener">(55) 99629-8532</a><a href="https://www.facebook.com/imobiliariakiesel" target="_blank" rel="noopener">facebook.com/imobiliariakiesel</a><a href="contato.html">Como chegar</a></div>
@@ -89,7 +89,7 @@ const home = pagina({
   arquivo: "index.html", vivo: true,
   titulo: "Imobiliária Kiesel · Casas, terrenos e chácaras em São Martinho/RS",
   desc: `Kiesel Negócios Imobiliários, CRECI 45.125/RS. ${IMOVEIS.length} imóveis à venda e para alugar em São Martinho e região, com atendimento direto pelo WhatsApp.`,
-  jsonld: { "@context": "https://schema.org", "@type": "RealEstateAgent", name: "Kiesel Negócios Imobiliários", legalName: "Kipper Kiesel Ltda", url: SITE + "/", telephone: "+55 55 99947-9495", address: { "@type": "PostalAddress", streetAddress: "Avenida Getúlio Vargas", addressLocality: "São Martinho", addressRegion: "RS", postalCode: "98690-000", addressCountry: "BR" }, sameAs: ["https://www.facebook.com/imobiliariakiesel"], identifier: { "@type": "PropertyValue", name: "CRECI", value: "45.125/RS" } },
+  jsonld: { "@context": "https://schema.org", "@type": "RealEstateAgent", name: "Kiesel Negócios Imobiliários", legalName: "Kipper Kiesel Ltda", taxID: "19.758.552/0001-91", url: SITE + "/", telephone: "+55 55 99947-9495", address: { "@type": "PostalAddress", streetAddress: "Avenida Getúlio Vargas, 873, sala 02", addressLocality: "São Martinho", addressRegion: "RS", postalCode: "98690-000", addressCountry: "BR" }, sameAs: ["https://www.facebook.com/imobiliariakiesel"], identifier: { "@type": "PropertyValue", name: "CRECI", value: "45.125/RS" } },
   extraHead: ctx.heroi[0] ? `<link rel="preload" href="${foto(capa(ctx.heroi[0]))}" as="image">` : "",
   corpo: M.corpoHome(IMOVEIS)
 });
@@ -132,7 +132,7 @@ const sobre = pagina({
         <p class="rv">A Kiesel trabalha com casas, terrenos, chácaras, áreas rurais e salas comerciais na cidade, no interior e nos municípios vizinhos. O escritório fica na Avenida Getúlio Vargas, no Centro, e o atendimento é direto com o corretor, pelo WhatsApp ou no balcão.</p>
         <p class="rv">Toda a carteira está publicada aqui com preço, fotos e descrição completa. Quem anuncia com a Kiesel recebe avaliação do valor de mercado, fotos do imóvel, divulgação neste site e no Facebook, e acompanhamento das visitas até a escritura.</p>
         <p class="rv">O lema da casa resume o jeito de trabalhar: por trás de cada negócio, uma história de respeito e confiança.</p>
-        <p class="assin rv">Kipper Kiesel Ltda · CRECI 45.125/RS</p>
+        <p class="assin rv">Kipper Kiesel Ltda · CNPJ 19.758.552/0001-91 · CRECI 45.125/RS</p>
       </div>
     </div>
     <div class="valores" data-stagger>
@@ -157,7 +157,7 @@ const contato = pagina({
         <div class="dado rv"><b>WhatsApp e telefone</b><a href="https://wa.me/5555999479495" target="_blank" rel="noopener" class="num">(55) 99947-9495</a><a href="https://wa.me/5555996298532" target="_blank" rel="noopener" class="num">(55) 99629-8532</a></div>
         <div class="dado rv"><b>Endereço</b><a href="https://www.google.com/maps/search/?api=1&query=-27.70806,-53.96561" target="_blank" rel="noopener">Av. Getúlio Vargas, Centro<br>São Martinho, RS · CEP 98690-000</a></div>
         <div class="dado rv"><b>Redes</b><a href="https://www.facebook.com/imobiliariakiesel" target="_blank" rel="noopener">facebook.com/imobiliariakiesel</a></div>
-        <div class="dado rv"><b>Registro</b><span style="font-size:clamp(20px,2vw,26px);font-weight:600;color:var(--marinho)">Kipper Kiesel Ltda · CRECI 45.125/RS</span></div>
+        <div class="dado rv"><b>Registro</b><span style="font-size:clamp(20px,2vw,26px);font-weight:600;color:var(--marinho)">Kipper Kiesel Ltda · CRECI 45.125/RS</span><span style="display:block;margin-top:4px;font-size:15px;color:var(--tinta-3)">CNPJ 19.758.552/0001-91</span></div>
         <form class="form rv" id="form-contato" style="margin-top:30px">
           <h3 style="font-size:24px">Mande uma mensagem</h3>
           <div class="duas"><div class="campo"><label for="ct-nome">Seu nome</label><input class="ent" id="ct-nome" required autocomplete="name"></div><div class="campo"><label for="ct-fone">Telefone</label><input class="ent" id="ct-fone" type="tel" autocomplete="tel"></div></div>
