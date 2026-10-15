@@ -95,8 +95,7 @@
 
   // ---------- filme aéreo da capa (build/video.sh) ----------
   // O navegador pega a primeira fonte que sabe tocar: AV1 (Chrome, Edge, Firefox), HEVC (Safari, iPhone), H.264 (o resto).
-  // As de 720p só valem no celular (media). O filme completo (4 min) fica no YouTube da Kiesel e só carrega no clique.
-  const FILME_YT = "M6XJv324bRg";
+  // As de 720p só valem no celular (media).
   const VIDEO_FONTES = [
     ["(max-width: 900px)", "heroi-720.av1.mp4", "av01.0.05M.08"],
     ["(max-width: 900px)", "heroi-720.hevc.mp4", "hvc1.1.6.L93.90"],
@@ -125,23 +124,23 @@
     <video id="heroi-video" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1">${VIDEO_FONTES}</video>
   </div>
   <div class="heroi-veu"></div>
+  <div class="heroi-hud">
+    <div class="filme-legenda"><b>São Martinho vista do alto</b><span>Imagens aéreas da Kiesel</span></div>
+    <button type="button" class="filme-pausa" id="heroi-pausa" aria-pressed="false" aria-label="Pausar o vídeo de fundo" hidden>${ICO_PAUSA.replace("<svg", '<svg class="i-pausa"')}${ICO_PLAY.replace("<svg", '<svg class="i-play"')}</button>
+  </div>
   <div class="heroi-miolo">
-    <div class="cartao-busca">
-      <div><h1>Encontre seu imóvel em São Martinho e região</h1><p class="sub">${IMOVEIS.length} imóveis à venda e para alugar, com preço, fotos e atendimento direto com o corretor. CRECI 45.125/RS.</p></div>
-      <form class="busca" id="form-busca" action="imoveis.html" method="get">
-        <div class="alterna" role="group" aria-label="Finalidade"><input type="hidden" name="fin" id="b-fin" value="comprar"><button type="button" data-fin="comprar" aria-pressed="true">Comprar</button><button type="button" data-fin="alugar" aria-pressed="false">Alugar</button></div>
-        <div class="campo"><label for="b-tipo">Tipo de imóvel</label><select class="sel" id="b-tipo" name="tipo"><option value="">Todos os tipos</option>${tipos.map(t => `<option>${esc(t)}</option>`).join("")}</select></div>
-        <div class="campo"><label for="b-bairro">Bairro</label><select class="sel" id="b-bairro" name="bairro"><option value="">Todos os bairros</option>${listaBairros.map(([k]) => { const [b, c] = k.split("|"); return `<option value="${esc(b)}">${esc(b)} · ${esc(c)}</option>`; }).join("")}</select></div>
-        <div class="campo"><label for="b-quartos">Quartos</label><select class="sel" id="b-quartos" name="quartos"><option value="">Qualquer</option><option value="1">1 ou mais</option><option value="2">2 ou mais</option><option value="3">3 ou mais</option><option value="4">4 ou mais</option></select></div>
-        <button class="btn btn-azul" type="submit">Buscar imóveis <span class="seta">${ico.seta}</span></button>
-      </form>
-    </div>
-    <div class="heroi-hud">
-      <div class="filme-legenda"><b>São Martinho vista do alto</b><span>Imagens aéreas da Kiesel</span></div>
-      <div class="filme-acoes"><button type="button" class="filme-pausa" id="heroi-pausa" aria-pressed="false" aria-label="Pausar o vídeo de fundo" hidden>${ICO_PAUSA.replace("<svg", '<svg class="i-pausa"')}${ICO_PLAY.replace("<svg", '<svg class="i-play"')}</button><button type="button" class="filme-abrir" id="filme-abrir" data-yt="${FILME_YT}">${ICO_PLAY}<span>Assistir ao filme completo</span><small>4 min</small></button></div>
-    </div>
+    <div class="heroi-titulo"><h1>Encontre seu imóvel em São Martinho e região</h1><p class="sub">${IMOVEIS.length} imóveis à venda e para alugar, com preço, fotos e atendimento direto com o corretor. CRECI 45.125/RS.</p></div>
   </div>
 </section>
+<div class="busca-faixa">
+  <form class="busca busca-barra" id="form-busca" action="imoveis.html" method="get" aria-label="Buscar imóveis">
+    <div class="alterna" role="group" aria-label="Finalidade"><input type="hidden" name="fin" id="b-fin" value="comprar"><button type="button" data-fin="comprar" aria-pressed="true">Comprar</button><button type="button" data-fin="alugar" aria-pressed="false">Alugar</button></div>
+    <div class="campo"><label for="b-tipo">Tipo de imóvel</label><select class="sel" id="b-tipo" name="tipo"><option value="">Todos os tipos</option>${tipos.map(t => `<option>${esc(t)}</option>`).join("")}</select></div>
+    <div class="campo"><label for="b-bairro">Bairro</label><select class="sel" id="b-bairro" name="bairro"><option value="">Todos os bairros</option>${listaBairros.map(([k]) => { const [b, c] = k.split("|"); return `<option value="${esc(b)}">${esc(b)} · ${esc(c)}</option>`; }).join("")}</select></div>
+    <div class="campo"><label for="b-quartos">Quartos</label><select class="sel" id="b-quartos" name="quartos"><option value="">Qualquer</option><option value="1">1 ou mais</option><option value="2">2 ou mais</option><option value="3">3 ou mais</option><option value="4">4 ou mais</option></select></div>
+    <button class="btn btn-azul" type="submit">Buscar <span class="seta">${ico.seta}</span></button>
+  </form>
+</div>
 <section class="numeros" aria-label="Números da Kiesel">
   <div class="miolo">
     <div class="fato rv"><b class="num" data-n="${IMOVEIS.length}">${IMOVEIS.length}</b><span>imóveis publicados hoje</span></div>

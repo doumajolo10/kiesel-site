@@ -42,23 +42,23 @@
     <video id="heroi-video" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1"><source media="(max-width: 900px)" src="assets/video/heroi-720.av1.mp4" type='video/mp4; codecs="av01.0.05M.08"'><source media="(max-width: 900px)" src="assets/video/heroi-720.hevc.mp4" type='video/mp4; codecs="hvc1.1.6.L93.90"'><source src="assets/video/heroi-1440.av1.mp4" type='video/mp4; codecs="av01.0.12M.08"'><source src="assets/video/heroi-1080.hevc.mp4" type='video/mp4; codecs="hvc1.1.6.L120.90"'><source src="assets/video/heroi-720.h264.mp4" type='video/mp4; codecs="avc1.640028"'></video>
   </div>
   <div class="heroi-veu"></div>
+  <div class="heroi-hud">
+    <div class="filme-legenda"><b>São Martinho vista do alto</b><span>Imagens aéreas da Kiesel</span></div>
+    <button type="button" class="filme-pausa" id="heroi-pausa" aria-pressed="false" aria-label="Pausar o vídeo de fundo" hidden><svg class="i-pausa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l11-6.5a1 1 0 0 0 0-1.72l-11-6.5A1 1 0 0 0 8 5.5z"/></svg></button>
+  </div>
   <div class="heroi-miolo">
-    <div class="cartao-busca">
-      <div><h1>Encontre seu imóvel em São Martinho e região</h1><p class="sub">41 imóveis à venda e para alugar, com preço, fotos e atendimento direto com o corretor. CRECI 45.125/RS.</p></div>
-      <form class="busca" id="form-busca" action="imoveis.html" method="get">
-        <div class="alterna" role="group" aria-label="Finalidade"><input type="hidden" name="fin" id="b-fin" value="comprar"><button type="button" data-fin="comprar" aria-pressed="true">Comprar</button><button type="button" data-fin="alugar" aria-pressed="false">Alugar</button></div>
-        <div class="campo"><label for="b-tipo">Tipo de imóvel</label><select class="sel" id="b-tipo" name="tipo"><option value="">Todos os tipos</option><option>Casa</option><option>Terreno</option><option>Chácara</option><option>Área rural</option><option>Prédio</option><option>Sala comercial</option></select></div>
-        <div class="campo"><label for="b-bairro">Bairro</label><select class="sel" id="b-bairro" name="bairro"><option value="">Todos os bairros</option><option value="Centro">Centro · São Martinho</option><option value="Novo">Novo · São Martinho</option><option value="Interior">Interior · São Martinho</option><option value="Jardim">Jardim · São Martinho</option><option value="Santo Antonio">Santo Antonio · São Martinho</option><option value="Nichele">Nichele · São Martinho</option><option value="Interior">Interior · Sede Nova</option></select></div>
-        <div class="campo"><label for="b-quartos">Quartos</label><select class="sel" id="b-quartos" name="quartos"><option value="">Qualquer</option><option value="1">1 ou mais</option><option value="2">2 ou mais</option><option value="3">3 ou mais</option><option value="4">4 ou mais</option></select></div>
-        <button class="btn btn-azul" type="submit">Buscar imóveis <span class="seta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
-      </form>
-    </div>
-    <div class="heroi-hud">
-      <div class="filme-legenda"><b>São Martinho vista do alto</b><span>Imagens aéreas da Kiesel</span></div>
-      <div class="filme-acoes"><button type="button" class="filme-pausa" id="heroi-pausa" aria-pressed="false" aria-label="Pausar o vídeo de fundo" hidden><svg class="i-pausa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l11-6.5a1 1 0 0 0 0-1.72l-11-6.5A1 1 0 0 0 8 5.5z"/></svg></button><button type="button" class="filme-abrir" id="filme-abrir" data-yt="M6XJv324bRg"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l11-6.5a1 1 0 0 0 0-1.72l-11-6.5A1 1 0 0 0 8 5.5z"/></svg><span>Assistir ao filme completo</span><small>4 min</small></button></div>
-    </div>
+    <div class="heroi-titulo"><h1>Encontre seu imóvel em São Martinho e região</h1><p class="sub">41 imóveis à venda e para alugar, com preço, fotos e atendimento direto com o corretor. CRECI 45.125/RS.</p></div>
   </div>
 </section>
+<div class="busca-faixa">
+  <form class="busca busca-barra" id="form-busca" action="imoveis.html" method="get" aria-label="Buscar imóveis">
+    <div class="alterna" role="group" aria-label="Finalidade"><input type="hidden" name="fin" id="b-fin" value="comprar"><button type="button" data-fin="comprar" aria-pressed="true">Comprar</button><button type="button" data-fin="alugar" aria-pressed="false">Alugar</button></div>
+    <div class="campo"><label for="b-tipo">Tipo de imóvel</label><select class="sel" id="b-tipo" name="tipo"><option value="">Todos os tipos</option><option>Casa</option><option>Terreno</option><option>Chácara</option><option>Área rural</option><option>Prédio</option><option>Sala comercial</option></select></div>
+    <div class="campo"><label for="b-bairro">Bairro</label><select class="sel" id="b-bairro" name="bairro"><option value="">Todos os bairros</option><option value="Centro">Centro · São Martinho</option><option value="Novo">Novo · São Martinho</option><option value="Interior">Interior · São Martinho</option><option value="Jardim">Jardim · São Martinho</option><option value="Santo Antonio">Santo Antonio · São Martinho</option><option value="Nichele">Nichele · São Martinho</option><option value="Interior">Interior · Sede Nova</option></select></div>
+    <div class="campo"><label for="b-quartos">Quartos</label><select class="sel" id="b-quartos" name="quartos"><option value="">Qualquer</option><option value="1">1 ou mais</option><option value="2">2 ou mais</option><option value="3">3 ou mais</option><option value="4">4 ou mais</option></select></div>
+    <button class="btn btn-azul" type="submit">Buscar <span class="seta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+  </form>
+</div>
 <section class="numeros" aria-label="Números da Kiesel">
   <div class="miolo">
     <div class="fato rv"><b class="num" data-n="41">41</b><span>imóveis publicados hoje</span></div>
