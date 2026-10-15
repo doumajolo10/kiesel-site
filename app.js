@@ -88,7 +88,7 @@
 
   // ---------- herói: troca lenta de fotos ----------
   const fotos = $$("#heroi-fotos .foto");
-  if (fotos.length > 1 && !reduz) {
+  if (fotos.length > 1) {
     const itens = $$("#heroi-atual a"), barras = $$("#heroi-barras i"); let i = 0;
     setInterval(() => {
       i = (i + 1) % fotos.length;
