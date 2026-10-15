@@ -93,6 +93,20 @@
     return { listaBairros, cont, porRef, tipos, destaques, heroi, recentes };
   }
 
+  // ---------- filme aéreo da capa (build/video.sh) ----------
+  // O navegador pega a primeira fonte que sabe tocar: AV1 (Chrome, Edge, Firefox), HEVC (Safari, iPhone), H.264 (o resto).
+  // As de 720p só valem no celular (media). O filme completo (4 min) fica no YouTube da Kiesel e só carrega no clique.
+  const FILME_YT = "M6XJv324bRg";
+  const VIDEO_FONTES = [
+    ["(max-width: 900px)", "heroi-720.av1.mp4", "av01.0.05M.08"],
+    ["(max-width: 900px)", "heroi-720.hevc.mp4", "hvc1.1.6.L93.90"],
+    ["", "heroi-1440.av1.mp4", "av01.0.12M.08"],
+    ["", "heroi-1080.hevc.mp4", "hvc1.1.6.L120.90"],
+    ["", "heroi-720.h264.mp4", "avc1.640028"]
+  ].map(([m, a, c]) => `<source${m ? ` media="${m}"` : ""} src="assets/video/${a}" type='video/mp4; codecs="${c}"'>`).join("");
+  const ICO_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l11-6.5a1 1 0 0 0 0-1.72l-11-6.5A1 1 0 0 0 8 5.5z"/></svg>';
+  const ICO_PAUSA = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
+
   // ---------- home ----------
   const CATEGORIAS = [["Casa", "Casas", "CA0047"], ["Apartamento", "Apartamentos", ""], ["Terreno", "Terrenos", "TE0028"], ["Chácara", "Chácaras", "CH0007"], ["Área rural", "Áreas rurais", "AR0001"], ["Prédio", "Prédios", "PR0001"], ["Sala comercial", "Salas comerciais", "SA0003"]];
   function corpoHome(IMOVEIS) {
@@ -106,7 +120,10 @@
     return `
 <div class="pre" id="pre" aria-hidden="true"><img src="assets/logo-topo.png" alt="" width="391" height="190"><span class="pre-num" id="pre-conta">0</span><i class="pre-linha"><i id="pre-barra"></i></i></div>
 <section class="heroi" id="heroi">
-  <div class="heroi-fotos" id="heroi-fotos">${heroi.map((x, i) => `<div class="foto${i === 0 ? " ativa" : ""}" data-ref="${x.ref}"><img src="${foto(capa(x))}" width="1280" height="720" alt="${esc(x.titulo)} em ${esc(x.bairro)}"${i === 0 ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"'}></div>`).join("")}</div>
+  <div class="heroi-fotos heroi-filme" id="heroi-fotos">
+    <img class="heroi-poster" src="assets/video/heroi-poster.webp" srcset="assets/video/heroi-poster-p.webp 960w, assets/video/heroi-poster.webp 1920w" sizes="(max-width:900px) 100vw, 1360px" width="1920" height="1080" alt="Vista aérea de São Martinho/RS, com a igreja matriz e o letreiro da cidade" fetchpriority="high">
+    <video id="heroi-video" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1">${VIDEO_FONTES}</video>
+  </div>
   <div class="heroi-veu"></div>
   <div class="heroi-miolo">
     <div class="cartao-busca">
@@ -120,8 +137,8 @@
       </form>
     </div>
     <div class="heroi-hud">
-      <div class="atual" id="heroi-atual" aria-live="polite">${heroi.map((x, i) => `<a href="imovel-${x.ref}.html" data-i="${i}"${i ? " hidden" : ""}><b>${esc(x.titulo)}</b><span>${esc(onde(x))} · ${precoTxt(x)}</span><span>Ref. ${x.ref} · ver imóvel →</span></a>`).join("")}</div>
-      <div class="barras" id="heroi-barras">${heroi.map((x, i) => `<i${i === 0 ? ' class="ativa"' : ""}></i>`).join("")}</div>
+      <div class="filme-legenda"><b>São Martinho vista do alto</b><span>Imagens aéreas da Kiesel</span></div>
+      <div class="filme-acoes"><button type="button" class="filme-pausa" id="heroi-pausa" aria-pressed="false" aria-label="Pausar o vídeo de fundo" hidden>${ICO_PAUSA.replace("<svg", '<svg class="i-pausa"')}${ICO_PLAY.replace("<svg", '<svg class="i-play"')}</button><button type="button" class="filme-abrir" id="filme-abrir" data-yt="${FILME_YT}">${ICO_PLAY}<span>Assistir ao filme completo</span><small>4 min</small></button></div>
     </div>
   </div>
 </section>

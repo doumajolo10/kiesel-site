@@ -101,17 +101,40 @@ document.addEventListener("click", function (e) {
     })(t0);
   } else { if (pre) pre.remove(); mostraHeroi(); }
 
-  // ---------- herói: troca lenta de fotos ----------
-  const fotos = $$("#heroi-fotos .foto");
-  if (fotos.length > 1) {
-    const itens = $$("#heroi-atual a"), barras = $$("#heroi-barras i"); let i = 0;
-    setInterval(() => {
-      i = (i + 1) % fotos.length;
-      fotos.forEach((f, k) => f.classList.toggle("ativa", k === i));
-      itens.forEach((f, k) => { f.hidden = k !== i; });
-      barras.forEach((b, k) => { b.classList.remove("ativa"); if (k === i) { void b.offsetWidth; b.classList.add("ativa"); } });
-    }, 7000);
+  // ---------- herói: filme aéreo em loop ----------
+  // Toca sem som e em repetição; pausa fora da tela e com a aba escondida. Quem economiza dados vê o quadro parado
+  // e o botão de tocar. O botão de pausa atende quem não quer movimento (WCAG 2.2.2).
+  const vid = $("#heroi-video"), pausa = $("#heroi-pausa"), filme = $("#heroi-fotos");
+  let querPausado = false, heroiVisivel = true, modalAberto = false;
+  if (vid) {
+    const economia = !!(navigator.connection && navigator.connection.saveData) || matchMedia("(prefers-reduced-data: reduce)").matches;
+    const botao = () => { const p = vid.paused; pausa.setAttribute("aria-pressed", String(p)); pausa.setAttribute("aria-label", p ? "Tocar o vídeo de fundo" : "Pausar o vídeo de fundo"); pausa.classList.toggle("parado", p); };
+    const tenta = () => {
+      if (querPausado || !heroiVisivel || modalAberto || document.hidden) return;
+      vid.preload = "auto";
+      const r = vid.play(); if (r && r.catch) r.catch(() => { pausa.hidden = false; botao(); });
+    };
+    vid.addEventListener("playing", () => { filme.classList.add("tocando"); pausa.hidden = false; botao(); });
+    vid.addEventListener("pause", botao);
+    pausa.addEventListener("click", () => { if (vid.paused) { querPausado = false; tenta(); } else { querPausado = true; vid.pause(); } });
+    if ("IntersectionObserver" in window) new IntersectionObserver(ents => { heroiVisivel = ents[0].isIntersecting; if (heroiVisivel) tenta(); else vid.pause(); }, { threshold: 0.05 }).observe(filme);
+    document.addEventListener("visibilitychange", () => { if (document.hidden) vid.pause(); else tenta(); });
+    if (economia) { querPausado = true; pausa.hidden = false; botao(); } else tenta();
   }
+  // filme completo: YouTube da Kiesel, só depois do clique (sem cookies de rastreamento até a pessoa pedir)
+  const abreFilme = $("#filme-abrir");
+  if (abreFilme) abreFilme.addEventListener("click", () => {
+    const veu = document.createElement("div");
+    veu.className = "filme-modal"; veu.setAttribute("role", "dialog"); veu.setAttribute("aria-modal", "true"); veu.setAttribute("aria-label", "Filme: São Martinho vista do alto");
+    veu.innerHTML = '<div class="filme-caixa"><div class="filme-topo"><b>São Martinho vista do alto</b><button type="button" class="filme-fechar" aria-label="Fechar o filme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="filme-tela"><iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(abreFilme.dataset.yt) + '?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="São Martinho vista do alto, filme no YouTube" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div><p class="filme-nota">Filme exibido pelo YouTube da Kiesel. Ao assistir, o YouTube recebe o seu acesso.</p></div>';
+    modalAberto = true; if (vid) vid.pause();
+    const fecha = () => { veu.remove(); document.body.classList.remove("travada"); document.removeEventListener("keydown", tecla); if (lenis) lenis.start(); modalAberto = false; abreFilme.focus(); if (vid) setTimeout(() => { if (!querPausado && heroiVisivel) vid.play().catch(() => { }); }, 50); };
+    const tecla = e => { if (e.key === "Escape") fecha(); };
+    veu.addEventListener("click", e => { if (e.target === veu || e.target.closest(".filme-fechar")) fecha(); });
+    document.addEventListener("keydown", tecla);
+    document.body.appendChild(veu); document.body.classList.add("travada"); if (lenis) lenis.stop();
+    $(".filme-fechar", veu).focus();
+  });
 
   // ---------- revelação por rolagem ----------
   const io = new IntersectionObserver(ents => {

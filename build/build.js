@@ -90,7 +90,7 @@ const home = pagina({
   titulo: "Imobiliária Kiesel · Casas, terrenos e chácaras em São Martinho/RS",
   desc: `Kiesel Negócios Imobiliários, CRECI 45.125/RS. ${IMOVEIS.length} imóveis à venda e para alugar em São Martinho e região, com atendimento direto pelo WhatsApp.`,
   jsonld: { "@context": "https://schema.org", "@type": "RealEstateAgent", name: "Kiesel Negócios Imobiliários", legalName: "Kipper Kiesel Ltda", taxID: "19.758.552/0001-91", url: SITE + "/", telephone: "+55 55 99947-9495", address: { "@type": "PostalAddress", streetAddress: "Avenida Getúlio Vargas, 873, sala 02", addressLocality: "São Martinho", addressRegion: "RS", postalCode: "98690-000", addressCountry: "BR" }, sameAs: ["https://www.facebook.com/imobiliariakiesel"], identifier: { "@type": "PropertyValue", name: "CRECI", value: "45.125/RS" } },
-  extraHead: ctx.heroi[0] ? `<link rel="preload" href="${foto(capa(ctx.heroi[0]))}" as="image">` : "",
+  extraHead: `<link rel="preload" as="image" href="assets/video/heroi-poster.webp" imagesrcset="assets/video/heroi-poster-p.webp 960w, assets/video/heroi-poster.webp 1920w" imagesizes="(max-width:900px) 100vw, 1360px" fetchpriority="high">`,
   corpo: M.corpoHome(IMOVEIS)
 });
 const catalogo = pagina({

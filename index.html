@@ -12,7 +12,7 @@
 <link rel="preload" href="fontes/DMMono-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fontes/fontes3.css">
 <link rel="stylesheet" href="estilo.css">
-<link rel="preload" href="img/g/CA0036-03.webp" as="image">
+<link rel="preload" as="image" href="assets/video/heroi-poster.webp" imagesrcset="assets/video/heroi-poster-p.webp 960w, assets/video/heroi-poster.webp 1920w" imagesizes="(max-width:900px) 100vw, 1360px" fetchpriority="high">
 <script>document.documentElement.classList.remove("sem-js")</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"RealEstateAgent","name":"Kiesel Negócios Imobiliários","legalName":"Kipper Kiesel Ltda","taxID":"19.758.552/0001-91","url":"https://www.imobiliariakiesel.com.br/","telephone":"+55 55 99947-9495","address":{"@type":"PostalAddress","streetAddress":"Avenida Getúlio Vargas, 873, sala 02","addressLocality":"São Martinho","addressRegion":"RS","postalCode":"98690-000","addressCountry":"BR"},"sameAs":["https://www.facebook.com/imobiliariakiesel"],"identifier":{"@type":"PropertyValue","name":"CRECI","value":"45.125/RS"}}</script>
 </head>
@@ -37,7 +37,10 @@
 
 <div class="pre" id="pre" aria-hidden="true"><img src="assets/logo-topo.png" alt="" width="391" height="190"><span class="pre-num" id="pre-conta">0</span><i class="pre-linha"><i id="pre-barra"></i></i></div>
 <section class="heroi" id="heroi">
-  <div class="heroi-fotos" id="heroi-fotos"><div class="foto ativa" data-ref="CA0036"><img src="img/g/CA0036-03.webp" width="1280" height="720" alt="Casa com 2 quartos, 105 m² em Jardim" fetchpriority="high"></div><div class="foto" data-ref="CA0044"><img src="img/g/CA0044-02.webp" width="1280" height="720" alt="Casa com 2 quartos, 303 m² em Novo" loading="lazy" decoding="async"></div><div class="foto" data-ref="CH0005"><img src="img/g/CH0005-01.webp" width="1280" height="720" alt="Chácara com 3 quartos, 3 hectares em Interior" loading="lazy" decoding="async"></div><div class="foto" data-ref="CH0002"><img src="img/g/CH0002-03.webp" width="1280" height="720" alt="Chácara com 3 quartos, 4.500 m² em Interior" loading="lazy" decoding="async"></div></div>
+  <div class="heroi-fotos heroi-filme" id="heroi-fotos">
+    <img class="heroi-poster" src="assets/video/heroi-poster.webp" srcset="assets/video/heroi-poster-p.webp 960w, assets/video/heroi-poster.webp 1920w" sizes="(max-width:900px) 100vw, 1360px" width="1920" height="1080" alt="Vista aérea de São Martinho/RS, com a igreja matriz e o letreiro da cidade" fetchpriority="high">
+    <video id="heroi-video" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1"><source media="(max-width: 900px)" src="assets/video/heroi-720.av1.mp4" type='video/mp4; codecs="av01.0.05M.08"'><source media="(max-width: 900px)" src="assets/video/heroi-720.hevc.mp4" type='video/mp4; codecs="hvc1.1.6.L93.90"'><source src="assets/video/heroi-1440.av1.mp4" type='video/mp4; codecs="av01.0.12M.08"'><source src="assets/video/heroi-1080.hevc.mp4" type='video/mp4; codecs="hvc1.1.6.L120.90"'><source src="assets/video/heroi-720.h264.mp4" type='video/mp4; codecs="avc1.640028"'></video>
+  </div>
   <div class="heroi-veu"></div>
   <div class="heroi-miolo">
     <div class="cartao-busca">
@@ -51,8 +54,8 @@
       </form>
     </div>
     <div class="heroi-hud">
-      <div class="atual" id="heroi-atual" aria-live="polite"><a href="imovel-CA0036.html" data-i="0"><b>Casa com 2 quartos, 105 m²</b><span>Jardim · São Martinho/RS · R$ 550.000</span><span>Ref. CA0036 · ver imóvel →</span></a><a href="imovel-CA0044.html" data-i="1" hidden><b>Casa com 2 quartos, 303 m²</b><span>Novo · São Martinho/RS · R$ 1.350.000</span><span>Ref. CA0044 · ver imóvel →</span></a><a href="imovel-CH0005.html" data-i="2" hidden><b>Chácara com 3 quartos, 3 hectares</b><span>Interior · Sede Nova/RS · R$ 950.000</span><span>Ref. CH0005 · ver imóvel →</span></a><a href="imovel-CH0002.html" data-i="3" hidden><b>Chácara com 3 quartos, 4.500 m²</b><span>Interior · São Martinho/RS · R$ 900.000</span><span>Ref. CH0002 · ver imóvel →</span></a></div>
-      <div class="barras" id="heroi-barras"><i class="ativa"></i><i></i><i></i><i></i></div>
+      <div class="filme-legenda"><b>São Martinho vista do alto</b><span>Imagens aéreas da Kiesel</span></div>
+      <div class="filme-acoes"><button type="button" class="filme-pausa" id="heroi-pausa" aria-pressed="false" aria-label="Pausar o vídeo de fundo" hidden><svg class="i-pausa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l11-6.5a1 1 0 0 0 0-1.72l-11-6.5A1 1 0 0 0 8 5.5z"/></svg></button><button type="button" class="filme-abrir" id="filme-abrir" data-yt="M6XJv324bRg"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l11-6.5a1 1 0 0 0 0-1.72l-11-6.5A1 1 0 0 0 8 5.5z"/></svg><span>Assistir ao filme completo</span><small>4 min</small></button></div>
     </div>
   </div>
 </section>

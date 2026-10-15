@@ -428,3 +428,33 @@ img[src$="logo-topo.png"]{height:auto}
 .mapa .mapa-aviso{justify-content:flex-start;padding-top:clamp(48px,10vh,96px)}
 .quadro-mapa:has(.mapa-aviso) .selo-mapa{display:none}
 .quadro-mapa .mapa-aviso{justify-content:center;padding-top:28px}
+/* ---------- capa: filme aéreo (build/video.sh) ---------- */
+.heroi-filme{background:var(--marinho)}
+.heroi-filme .heroi-poster,.heroi-filme video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%}
+.heroi-filme video{opacity:0;transition:opacity 1.2s var(--ease)}
+.heroi-filme.tocando video{opacity:1}
+.heroi-hud .filme-legenda{display:grid;gap:3px;justify-items:end;padding:12px 16px;border-radius:8px;background:rgba(15,42,68,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;text-align:right}
+.heroi-hud .filme-legenda b{font-size:15px;font-weight:600}
+.heroi-hud .filme-legenda span{font-size:13px;color:rgba(255,255,255,.78)}
+.heroi-hud .filme-acoes{display:flex;gap:8px;align-items:center}
+.filme-abrir{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 16px 0 6px;border-radius:999px;background:#fff;color:var(--marinho);font-size:14px;font-weight:600;box-shadow:0 6px 20px -8px rgba(0,0,0,.45);transition:transform .2s var(--ease),box-shadow .2s}
+.filme-abrir:hover{transform:translateY(-1px);box-shadow:0 10px 26px -10px rgba(0,0,0,.5)}
+.filme-abrir svg{width:32px;height:32px;padding:9px;border-radius:50%;background:var(--azul);color:#fff}
+.filme-abrir small{font-size:12.5px;font-weight:500;color:var(--tinta-3)}
+.filme-pausa{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:rgba(15,42,68,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;transition:background .2s}
+.filme-pausa:hover{background:rgba(15,42,68,.92)}
+.filme-pausa svg{width:18px;height:18px}
+.filme-pausa .i-play,.filme-pausa.parado .i-pausa{display:none}
+.filme-pausa.parado .i-play{display:block}
+.filme-modal{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:clamp(12px,3vw,40px);background:rgba(8,18,30,.9);animation:filmeEntra .25s ease}
+@keyframes filmeEntra{from{opacity:0}}
+.filme-caixa{width:min(1180px,100%);display:grid;gap:12px}
+.filme-topo{display:flex;align-items:center;justify-content:space-between;color:#fff;font-size:15px}
+.filme-fechar{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.12);color:#fff}
+.filme-fechar:hover{background:rgba(255,255,255,.22)}
+.filme-fechar svg{width:20px;height:20px}
+.filme-tela{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000;box-shadow:0 30px 80px -30px rgba(0,0,0,.8)}
+.filme-tela iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.filme-nota{font-size:12.5px;color:rgba(255,255,255,.6);text-align:center}
+@media (max-width:900px){.heroi-hud .filme-legenda{justify-items:start;text-align:left}.heroi-hud{grid-template-columns:1fr;justify-items:start}}
+@media (max-width:560px){.filme-abrir small{display:none}}
