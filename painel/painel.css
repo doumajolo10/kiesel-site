@@ -346,3 +346,17 @@ select.ent{appearance:none;padding-right:36px;background-image:url("data:image/s
 .mini .tirar{z-index:2}
 .mini:has(.progresso.erro) .tirar{opacity:1}
 .mini:has(.progresso.erro) .mover{display:none}
+/* lado da marca nas telas de entrada (substitui a foto de imóvel) */
+.entrada-marca{display:flex;flex-direction:column;justify-content:space-between;gap:40px;padding:clamp(28px,4vw,56px);background:var(--marinho);color:#fff}
+.entrada-marca .placa-logo{align-self:flex-start;padding:14px 18px;background:#fff;border-radius:12px}
+.entrada-marca .placa-logo img{width:150px;height:auto}
+.entrada-marca .miolo-marca{max-width:460px}
+.entrada-marca .rotulo-marca{display:block;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#9CC4EA}
+.entrada-marca b{display:block;margin-top:12px;font-size:clamp(24px,2.4vw,32px);font-weight:600;letter-spacing:-.02em;line-height:1.15}
+.entrada-marca ul{list-style:none;margin:32px 0 0;padding:0;display:flex;flex-direction:column;gap:16px}
+.entrada-marca li{display:flex;align-items:center;gap:14px;font-size:15.5px;color:rgba(255,255,255,.88)}
+.entrada-marca li .ic{display:grid;place-items:center;flex:none;width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:#9CC4EA}
+.entrada-marca li .ic svg{width:18px;height:18px}
+.entrada-marca .pe-marca{font-size:13px;line-height:1.6;color:rgba(255,255,255,.6)}
+@media (min-width:861px){.entrada:has(.entrada-marca) .entrada-cartao .logo{display:none}}
+@media (max-width:860px){.entrada-marca{display:none}}

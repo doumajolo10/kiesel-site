@@ -207,11 +207,21 @@
   // =====================================================================
   // entrada, senha nova e sem acesso
   // =====================================================================
+  // lado esquerdo das telas de entrada: a marca e o que o painel faz (sem foto de imóvel)
+  function ladoMarca(frase) {
+    const itens = [[I.mais, "Cadastre imóveis com fotos, preço e descrição"], [I.editar, "Edite qualquer informação quando quiser"], [I.etiqueta, "Marque como vendido e ele sai do site"], [I.estrela, "Escolha os destaques da página inicial"]];
+    return `<div class="entrada-marca">
+    <div class="placa-logo"><img src="/assets/logo-topo.png" width="391" height="190" alt="Kiesel Negócios Imobiliários"></div>
+    <div class="miolo-marca"><span class="rotulo-marca">Painel de imóveis</span><b>${esc(frase)}</b>
+      <ul>${itens.map(([i, t]) => `<li><span class="ic">${i}</span>${t}</li>`).join("")}</ul></div>
+    <p class="pe-marca">O site muda na hora em que você salva.<br>Kiesel Negócios Imobiliários · CRECI 45.125/RS</p>
+  </div>`;
+  }
   function telaEntrada(msg, tipoMsg) {
     document.title = "Entrar · Painel Kiesel";
     app.innerHTML = `${DEMO ? '<div class="demo-faixa">Modo demonstração: nada aqui vai para o site. Use qualquer e-mail e senha.</div>' : ""}
 <main class="entrada">
-  <div class="entrada-foto"><img src="/img/g/CA0036-03.webp" alt=""><div class="legenda"><b>Os imóveis da Kiesel, atualizados por quem conhece cada um.</b><span>Cadastre, edite e tire do ar em poucos minutos. O site muda na hora.</span></div></div>
+  ${ladoMarca("Os imóveis da Kiesel, atualizados por quem conhece cada um.")}
   <div class="entrada-miolo">
     <div class="entrada-cartao">
       <img class="logo" src="/assets/logo-topo.png" width="391" height="190" alt="Kiesel Negócios Imobiliários">
@@ -252,7 +262,7 @@
   }
   function telaNovaSenha(tipo) {
     document.title = "Nova senha · Painel Kiesel";
-    app.innerHTML = `<main class="entrada"><div class="entrada-foto"><img src="/img/g/CA0044-02.webp" alt=""><div class="legenda"><b>${tipo === "invite" ? "Boas-vindas ao painel da Kiesel." : "Vamos criar uma senha nova."}</b><span>Depois disso você já entra direto nos imóveis.</span></div></div>
+    app.innerHTML = `<main class="entrada">${ladoMarca(tipo === "invite" ? "Boas-vindas ao painel da Kiesel." : "Vamos criar uma senha nova.")}
   <div class="entrada-miolo"><div class="entrada-cartao">
     <img class="logo" src="/assets/logo-topo.png" width="391" height="190" alt="Kiesel Negócios Imobiliários">
     <h1>${tipo === "invite" ? "Crie a sua senha" : "Senha nova"}</h1>
