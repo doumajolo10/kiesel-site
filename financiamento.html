@@ -40,7 +40,7 @@
   <div class="miolo">
     <div class="duas-col">
       <form class="form rv" id="form-bolso" onsubmit="return false">
-        <h3 style="font-size:30px">Cabe no bolso</h3>
+        <h3 style="font-size:24px">Cabe no bolso</h3>
         <p class="nota">Os bancos costumam limitar a parcela a 30% da renda bruta familiar. Com entrada de 20% e 360 meses, este é o valor de imóvel que essa parcela paga.</p>
         <div class="campo"><label for="bolso-renda">Renda bruta familiar (R$ por mês)</label><input class="ent num" id="bolso-renda" type="number" min="500" step="100" value="6000" inputmode="numeric"></div>
         <div class="campo"><label for="bolso-juros">Juros ao ano (%)</label><input class="ent num" id="bolso-juros" type="number" min="1" max="30" step="0.1" value="11" inputmode="decimal"></div>
@@ -48,11 +48,11 @@
         <p class="nota">Estimativa para orientar a busca. O banco define o valor final conforme análise de crédito.</p>
       </form>
       <form class="form rv" id="form-fin" onsubmit="return false">
-        <h3 style="font-size:30px">Parcela do financiamento</h3>
+        <h3 style="font-size:24px">Parcela do financiamento</h3>
         <div class="campo"><label for="fin-valor">Valor do imóvel (R$)</label><input class="ent num" id="fin-valor" type="number" min="20000" step="1000" value="420000" inputmode="numeric"></div>
         <div class="campo"><label for="fin-entrada">Entrada: <b class="num" id="fin-entrada-v">20%</b></label><input class="faixa" id="fin-entrada" type="range" min="10" max="90" step="5" value="20"></div>
         <div class="duas"><div class="campo"><label for="fin-juros">Juros ao ano (%)</label><input class="ent num" id="fin-juros" type="number" min="1" max="30" step="0.1" value="11" inputmode="decimal"></div><div class="campo"><label for="fin-prazo">Prazo (meses)</label><select class="sel num" id="fin-prazo"><option>120</option><option>180</option><option>240</option><option>300</option><option selected>360</option><option>420</option></select></div></div>
-        <div class="resultado"><span class="rotulo">Price × SAC (1ª parcela)</span><b class="grande num" id="fin-parcela" style="font-size:32px">R$ 0 × R$ 0</b><small id="fin-financiado">financiando R$ 0</small></div>
+        <div class="resultado"><span class="rotulo">Price × SAC (1ª parcela)</span><b class="grande num" id="fin-parcela" style="font-size:26px">R$ 0 × R$ 0</b><small id="fin-financiado">financiando R$ 0</small></div>
         <table class="tabela num" aria-label="Comparação Price e SAC"><thead><tr><th>Sistema</th><th>1ª parcela</th><th>Última</th><th>Total pago</th></tr></thead><tbody id="fin-tabela"></tbody></table>
         <p class="nota">Juros simulados; a taxa real depende do banco, do seu perfil e do programa (SBPE, Minha Casa Minha Vida). Não inclui seguros e tarifas.</p>
       </form>

@@ -202,9 +202,9 @@ function paginaImovel(x) {
   </div>
   ${fotos.length > 1 ? `<div class="miniaturas" id="miniaturas">${fotos.map((f, i) => `<button type="button" class="${i === 0 ? "ativa" : ""}" data-i="${i}" aria-label="Ver foto ${i + 1}"><img src="${foto(f, "p")}" width="108" height="81" alt="" loading="lazy" decoding="async"></button>`).join("")}</div>` : ""}
 </section>
-<section class="secao" style="padding-top:clamp(36px,5vw,70px)">
+<section class="secao" style="padding-top:clamp(28px,4vw,48px)">
   <div class="miolo">
-    <div class="trilha rotulo" style="color:var(--tinta-3);margin-bottom:26px"><a href="index.html" style="text-decoration:none;color:var(--ouro-3)">Início</a> / <a href="imoveis.html" style="text-decoration:none;color:var(--ouro-3)">Imóveis</a> / ${x.ref}</div>
+    <div class="trilha" style="font-size:13px;color:var(--tinta-3);margin-bottom:18px;font-weight:500"><a href="index.html" style="text-decoration:none;color:var(--azul)">Início</a> / <a href="imoveis.html" style="text-decoration:none;color:var(--azul)">Imóveis</a> / ${x.ref}</div>
     <div class="imovel">
       <div>
         <h1 class="mask">${esc(x.titulo)}</h1>
@@ -278,9 +278,9 @@ const contato = pagina({
         <div class="dado rv"><b>WhatsApp e telefone</b><a href="https://wa.me/5555999479495" target="_blank" rel="noopener" class="num">(55) 99947-9495</a><a href="https://wa.me/5555996298532" target="_blank" rel="noopener" class="num">(55) 99629-8532</a></div>
         <div class="dado rv"><b>Endereço</b><a href="https://www.openstreetmap.org/?mlat=-27.70806&mlon=-53.96561#map=17/-27.70806/-53.96561" target="_blank" rel="noopener">Av. Getúlio Vargas, Centro<br>São Martinho, RS · CEP 98690-000</a></div>
         <div class="dado rv"><b>Redes</b><a href="https://www.facebook.com/imobiliariakiesel" target="_blank" rel="noopener">facebook.com/imobiliariakiesel</a></div>
-        <div class="dado rv"><b>Registro</b><span style="font-family:var(--display);font-size:clamp(22px,2.4vw,30px)">Kipper Kiesel Ltda · CRECI 45.125/RS</span></div>
+        <div class="dado rv"><b>Registro</b><span style="font-size:clamp(20px,2vw,26px);font-weight:600;color:var(--marinho)">Kipper Kiesel Ltda · CRECI 45.125/RS</span></div>
         <form class="form rv" id="form-contato" style="margin-top:30px">
-          <h3 style="font-size:28px">Mande uma mensagem</h3>
+          <h3 style="font-size:24px">Mande uma mensagem</h3>
           <div class="duas"><div class="campo"><label for="ct-nome">Seu nome</label><input class="ent" id="ct-nome" required autocomplete="name"></div><div class="campo"><label for="ct-fone">Telefone</label><input class="ent" id="ct-fone" type="tel" autocomplete="tel"></div></div>
           <div class="campo"><label for="ct-msg">Mensagem</label><textarea class="ent" id="ct-msg" placeholder="Quero informações sobre…"></textarea></div>
           <button class="btn btn-zap" type="submit">${ico.zap}Enviar pelo WhatsApp</button>
@@ -302,7 +302,7 @@ const financiamento = pagina({
   <div class="miolo">
     <div class="duas-col">
       <form class="form rv" id="form-bolso" onsubmit="return false">
-        <h3 style="font-size:30px">Cabe no bolso</h3>
+        <h3 style="font-size:24px">Cabe no bolso</h3>
         <p class="nota">Os bancos costumam limitar a parcela a 30% da renda bruta familiar. Com entrada de 20% e 360 meses, este é o valor de imóvel que essa parcela paga.</p>
         <div class="campo"><label for="bolso-renda">Renda bruta familiar (R$ por mês)</label><input class="ent num" id="bolso-renda" type="number" min="500" step="100" value="6000" inputmode="numeric"></div>
         <div class="campo"><label for="bolso-juros">Juros ao ano (%)</label><input class="ent num" id="bolso-juros" type="number" min="1" max="30" step="0.1" value="11" inputmode="decimal"></div>
@@ -310,11 +310,11 @@ const financiamento = pagina({
         <p class="nota">Estimativa para orientar a busca. O banco define o valor final conforme análise de crédito.</p>
       </form>
       <form class="form rv" id="form-fin" onsubmit="return false">
-        <h3 style="font-size:30px">Parcela do financiamento</h3>
+        <h3 style="font-size:24px">Parcela do financiamento</h3>
         <div class="campo"><label for="fin-valor">Valor do imóvel (R$)</label><input class="ent num" id="fin-valor" type="number" min="20000" step="1000" value="420000" inputmode="numeric"></div>
         <div class="campo"><label for="fin-entrada">Entrada: <b class="num" id="fin-entrada-v">20%</b></label><input class="faixa" id="fin-entrada" type="range" min="10" max="90" step="5" value="20"></div>
         <div class="duas"><div class="campo"><label for="fin-juros">Juros ao ano (%)</label><input class="ent num" id="fin-juros" type="number" min="1" max="30" step="0.1" value="11" inputmode="decimal"></div><div class="campo"><label for="fin-prazo">Prazo (meses)</label><select class="sel num" id="fin-prazo"><option>120</option><option>180</option><option>240</option><option>300</option><option selected>360</option><option>420</option></select></div></div>
-        <div class="resultado"><span class="rotulo">Price × SAC (1ª parcela)</span><b class="grande num" id="fin-parcela" style="font-size:32px">R$ 0 × R$ 0</b><small id="fin-financiado">financiando R$ 0</small></div>
+        <div class="resultado"><span class="rotulo">Price × SAC (1ª parcela)</span><b class="grande num" id="fin-parcela" style="font-size:26px">R$ 0 × R$ 0</b><small id="fin-financiado">financiando R$ 0</small></div>
         <table class="tabela num" aria-label="Comparação Price e SAC"><thead><tr><th>Sistema</th><th>1ª parcela</th><th>Última</th><th>Total pago</th></tr></thead><tbody id="fin-tabela"></tbody></table>
         <p class="nota">Juros simulados; a taxa real depende do banco, do seu perfil e do programa (SBPE, Minha Casa Minha Vida). Não inclui seguros e tarifas.</p>
       </form>
@@ -333,14 +333,14 @@ const anuncie = pagina({
   <div class="miolo">
     <div class="duas-col">
       <div>
-        <div class="valores" data-stagger style="margin-top:0;grid-template-columns:1fr;border-top:0">
-          <div class="valor rv" style="border-right:0;border-bottom:1px solid rgba(0,0,0,.12)"><i class="num">01</i><h3>Avaliação honesta</h3><p>Preço compatível com o que a cidade paga hoje, comparado com a carteira e com os negócios recentes.</p></div>
-          <div class="valor rv" style="border-right:0;border-bottom:1px solid rgba(0,0,0,.12);padding-left:0"><i class="num">02</i><h3>Fotos e anúncio completo</h3><p>Ficha com todas as fotos, descrição, características e preço visível, igual às que você vê neste site.</p></div>
-          <div class="valor rv" style="border-right:0;padding-left:0"><i class="num">03</i><h3>Divulgação onde o comprador está</h3><p>Este site, o Facebook da imobiliária e a lista de clientes que já encomendaram um imóvel como o seu.</p></div>
+        <div class="valores" data-stagger style="margin-top:0;grid-template-columns:1fr">
+          <div class="valor rv"><i class="num">01</i><h3>Avaliação honesta</h3><p>Preço compatível com o que a cidade paga hoje, comparado com a carteira e com os negócios recentes.</p></div>
+          <div class="valor rv"><i class="num">02</i><h3>Fotos e anúncio completo</h3><p>Ficha com todas as fotos, descrição, características e preço visível, igual às que você vê neste site.</p></div>
+          <div class="valor rv"><i class="num">03</i><h3>Divulgação onde o comprador está</h3><p>Este site, o Facebook da imobiliária e a lista de clientes que já encomendaram um imóvel como o seu.</p></div>
         </div>
       </div>
       <form class="form rv" id="form-anuncie">
-        <h3 style="font-size:30px">Conte sobre o imóvel</h3>
+        <h3 style="font-size:24px">Conte sobre o imóvel</h3>
         <div class="duas"><div class="campo"><label for="an-nome">Seu nome</label><input class="ent" id="an-nome" required autocomplete="name"></div><div class="campo"><label for="an-fone">Telefone</label><input class="ent" id="an-fone" type="tel" autocomplete="tel"></div></div>
         <div class="duas"><div class="campo"><label for="an-tipo">Tipo</label><select class="sel" id="an-tipo"><option>Casa</option><option>Terreno</option><option>Chácara</option><option>Área rural</option><option>Apartamento</option><option>Sala comercial</option><option>Prédio</option></select></div><div class="campo"><label for="an-fin">Quero</label><select class="sel" id="an-fin"><option>Vender</option><option>Alugar</option></select></div></div>
         <div class="campo"><label for="an-end">Bairro ou endereço</label><input class="ent" id="an-end" placeholder="Centro, Rua…"></div>
@@ -362,7 +362,7 @@ const encomende = pagina({
   <div class="miolo">
     <div class="duas-col">
       <form class="form rv" id="form-enc">
-        <h3 style="font-size:30px">O que você procura</h3>
+        <h3 style="font-size:24px">O que você procura</h3>
         <div class="duas"><div class="campo"><label for="enc-nome">Seu nome</label><input class="ent" id="enc-nome" required autocomplete="name"></div><div class="campo"><label for="enc-fone">Telefone</label><input class="ent" id="enc-fone" type="tel" autocomplete="tel"></div></div>
         <div class="duas"><div class="campo"><label for="enc-tipo">Tipo</label><select class="sel" id="enc-tipo"><option>Casa</option><option>Terreno</option><option>Chácara</option><option>Área rural</option><option>Sala comercial</option><option>Qualquer</option></select></div><div class="campo"><label for="enc-fin">Para</label><select class="sel" id="enc-fin"><option>Comprar</option><option>Alugar</option></select></div></div>
         <div class="duas"><div class="campo"><label for="enc-bairro">Bairro preferido</label><input class="ent" id="enc-bairro" placeholder="Centro, Novo, interior…"></div><div class="campo"><label for="enc-valor">Até quanto (R$)</label><input class="ent num" id="enc-valor" type="number" min="0" step="10000" inputmode="numeric"></div></div>

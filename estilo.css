@@ -403,3 +403,6 @@ p{margin:0}
 img[src$="logo-kiesel-hd.png"]{height:auto}
 .marca img,.rodape .logo-rod img,.pre img,.quadro-mapa .selo-mapa img{height:48px}
 .rodape .logo-rod img{height:48px}.pre img{height:64px}.quadro-mapa .selo-mapa img{height:40px}.imovel-lado .corretor img{height:auto}
+.cortina:not(.entra):not(.sai){visibility:hidden}
+.quadro-mapa iframe{position:absolute;inset:0;width:100%;height:100%}
+.quadro-mapa .selo-mapa img{width:auto;max-width:200px}
