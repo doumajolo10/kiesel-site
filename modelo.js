@@ -163,7 +163,7 @@
 </section>
 <section class="secao" id="porque">
   <div class="miolo">
-    <div class="cabeca rv"><div><span class="mono">Por que a Kiesel</span><h2>A imobiliária da cidade</h2></div></div>
+    <div class="cabeca rv"><div><span class="mono">Por que a Kiesel</span><h2>A imobiliária da cidade</h2><p>A primeira imobiliária da cidade, com tradição, experiência e compromisso em cada negócio.</p></div></div>
     <div class="porques" data-stagger>
       <div class="porque rv"><span class="ic">${icoSelo}</span><h3>Corretagem registrada</h3><p>CRECI 45.125/RS. Contrato, documentação conferida e orientação em cada etapa, da visita à escritura.</p></div>
       <div class="porque rv"><span class="ic">${icoCasa}</span><h3>Conhece cada quadra</h3><p>Escritório na Avenida Getúlio Vargas, no Centro. Sabe o histórico dos imóveis, a vizinhança e o que cada bairro oferece.</p></div>
@@ -205,7 +205,7 @@
   <div class="miolo">
     <div class="manifesto">
       <div class="quadro quadro-mapa"><iframe title="Mapa: escritório da Kiesel, Avenida Getúlio Vargas, Centro, São Martinho" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=-27.70806,-53.96561&z=16&hl=pt-BR&output=embed"></iframe><span class="selo-mapa"><img src="assets/logo-topo.png" width="391" height="190" alt="" loading="lazy"><b>Av. Getúlio Vargas, Centro</b><span>São Martinho/RS · CRECI 45.125/RS</span></span></div>
-      <div><span class="mono rv">A Kiesel</span><p class="grande rv" style="margin-top:10px">Por trás de cada negócio, <em>uma história de respeito e confiança.</em></p><p class="rv" style="margin-top:16px">A Kiesel Negócios Imobiliários atende São Martinho, o interior e os municípios vizinhos com casas, terrenos, chácaras, áreas rurais e salas comerciais. Toda a carteira está neste site com preço, fotos e descrição.</p><p class="rv" style="margin-top:22px"><a class="btn btn-azul" href="sobre.html">Conheça a Kiesel <span class="seta">${ico.seta}</span></a> <a class="btn btn-contorno" href="contato.html" style="margin-left:6px">Fale conosco</a></p></div>
+      <div><span class="mono rv">A Kiesel</span><p class="grande rv" style="margin-top:10px">Por trás de cada negócio, <em>uma história de respeito e confiança.</em></p><p class="desde rv" style="margin-top:16px">Atuamos no mercado desde fevereiro de 2014.</p><p class="rv" style="margin-top:10px">A Kiesel Negócios Imobiliários atende São Martinho, o interior e os municípios vizinhos com casas, terrenos, chácaras, áreas rurais e salas comerciais. Toda a carteira está neste site com preço, fotos e descrição.</p><p class="rv" style="margin-top:22px"><a class="btn btn-azul" href="sobre.html">Conheça a Kiesel <span class="seta">${ico.seta}</span></a> <a class="btn btn-contorno" href="contato.html" style="margin-left:6px">Fale conosco</a></p></div>
     </div>
   </div>
 </section>

@@ -89,7 +89,7 @@ const home = pagina({
   arquivo: "index.html", vivo: true,
   titulo: "Imobiliária Kiesel · Casas, terrenos e chácaras em São Martinho/RS",
   desc: `Kiesel Negócios Imobiliários, CRECI 45.125/RS. ${IMOVEIS.length} imóveis à venda e para alugar em São Martinho e região, com atendimento direto pelo WhatsApp.`,
-  jsonld: { "@context": "https://schema.org", "@type": "RealEstateAgent", name: "Kiesel Negócios Imobiliários", legalName: "Kipper Kiesel Ltda", taxID: "19.758.552/0001-91", url: SITE + "/", telephone: "+55 55 99947-9495", address: { "@type": "PostalAddress", streetAddress: "Avenida Getúlio Vargas, 873, sala 02", addressLocality: "São Martinho", addressRegion: "RS", postalCode: "98690-000", addressCountry: "BR" }, sameAs: ["https://www.facebook.com/imobiliariakiesel"], identifier: { "@type": "PropertyValue", name: "CRECI", value: "45.125/RS" } },
+  jsonld: { "@context": "https://schema.org", "@type": "RealEstateAgent", name: "Kiesel Negócios Imobiliários", legalName: "Kipper Kiesel Ltda", foundingDate: "2014-02-20", slogan: "A primeira imobiliária da cidade, com tradição, experiência e compromisso em cada negócio", taxID: "19.758.552/0001-91", url: SITE + "/", telephone: "+55 55 99947-9495", address: { "@type": "PostalAddress", streetAddress: "Avenida Getúlio Vargas, 873, sala 02", addressLocality: "São Martinho", addressRegion: "RS", postalCode: "98690-000", addressCountry: "BR" }, sameAs: ["https://www.facebook.com/imobiliariakiesel"], identifier: { "@type": "PropertyValue", name: "CRECI", value: "45.125/RS" } },
   extraHead: `<link rel="preload" as="image" href="assets/video/heroi-poster.webp" imagesrcset="assets/video/heroi-poster-p.webp 960w, assets/video/heroi-poster.webp 1920w" imagesizes="(max-width:900px) 100vw, 1360px" fetchpriority="high">`,
   corpo: M.corpoHome(IMOVEIS)
 });
@@ -120,15 +120,17 @@ const molde = pagina({
 
 // ---------- páginas institucionais ----------
 const sobre = pagina({
-  arquivo: "sobre.html", titulo: "A Kiesel · Imobiliária em São Martinho/RS desde o balcão da Avenida",
+  arquivo: "sobre.html", titulo: "Imobiliária Kiesel · A primeira imobiliária de São Martinho/RS, desde 2014",
   desc: "Kiesel Negócios Imobiliários (Kipper Kiesel Ltda), CRECI 45.125/RS. Corretagem de casas, terrenos, chácaras e salas em São Martinho e região.",
   corpo: `
-<section class="pag-topo"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / A Kiesel</div><h1 class="mask">Respeito e <span class="ital">confiança,</span> negócio a negócio.</h1><p>A Kiesel Negócios Imobiliários é o escritório de corretagem de São Martinho, no noroeste gaúcho, registrado no CRECI sob o nº 45.125/RS.</p></div></section>
+<section class="pag-topo"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Imobiliária Kiesel</div><h1 class="mask">Respeito e <span class="ital">confiança,</span> negócio a negócio.</h1><p>A Kiesel Negócios Imobiliários é o escritório de corretagem de São Martinho, no noroeste gaúcho, registrado no CRECI sob o nº 45.125/RS.</p></div></section>
 <section class="secao">
   <div class="miolo">
     <div class="manifesto">
       <div><p class="grande mask">Quem vende uma casa em São Martinho vende também <em>uma rua, uma vizinhança e uma história.</em></p><div class="quadro rv quadro-mapa"><iframe title="Mapa: escritório da Kiesel, Avenida Getúlio Vargas, Centro, São Martinho" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=-27.70806,-53.96561&z=16&hl=pt-BR&output=embed"></iframe><span class="selo-mapa"><img src="assets/logo-topo.png" width="391" height="190" alt="" loading="lazy"><b>Av. Getúlio Vargas, Centro</b><span>São Martinho/RS · CRECI 45.125/RS</span></span></div></div>
       <div>
+        <p class="destaque-texto rv">A primeira imobiliária da cidade, com tradição, experiência e compromisso em cada negócio.</p>
+        <p class="desde rv">Atuamos no mercado desde fevereiro de 2014.</p>
         <p class="rv">A Kiesel trabalha com casas, terrenos, chácaras, áreas rurais e salas comerciais na cidade, no interior e nos municípios vizinhos. O escritório fica na Avenida Getúlio Vargas, no Centro, e o atendimento é direto com o corretor, pelo WhatsApp ou no balcão.</p>
         <p class="rv">Toda a carteira está publicada aqui com preço, fotos e descrição completa. Quem anuncia com a Kiesel recebe avaliação do valor de mercado, fotos do imóvel, divulgação neste site e no Facebook, e acompanhamento das visitas até a escritura.</p>
         <p class="rv">O lema da casa resume o jeito de trabalhar: por trás de cada negócio, uma história de respeito e confiança.</p>

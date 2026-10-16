@@ -497,3 +497,12 @@ img[src$="logo-topo.png"]{height:auto}
   .busca-barra .btn{grid-column:auto;padding:0 16px}
   .heroi-titulo .sub{font-size:15px}
 }
+
+/* textos institucionais (16/10/2026) */
+.destaque-texto{font-size:clamp(22px,2.4vw,30px)!important;font-weight:600;line-height:1.2;letter-spacing:-.02em;color:var(--marinho)!important;max-width:26ch}
+.desde{display:inline-flex;align-items:center;gap:10px;font-size:15px!important;font-weight:600;color:var(--azul)!important}
+.desde::before{content:"";width:28px;height:2px;border-radius:2px;background:var(--azul)}
+.destaque-texto+.desde{margin:14px 0 22px}
+.desde{align-items:baseline}
+.desde::before{flex:none;transform:translateY(-4px)}
+@media (max-width:560px){.desde{font-size:14px!important;gap:8px}.desde::before{width:18px}}
