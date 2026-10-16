@@ -33,13 +33,13 @@ function rodape() {
     <div class="colunas">
       <div><span class="logo-rod"><img src="assets/logo-topo.png" width="391" height="190" alt="Kiesel Negócios Imobiliários" loading="lazy"></span><p>Kipper Kiesel Ltda · CRECI 45.125/RS<br>CNPJ 19.758.552/0001-91<br>Av. Getúlio Vargas, Centro<br>São Martinho, RS · CEP 98690-000</p><div class="hud" style="margin-top:18px"><span>Imóveis publicados · <b class="num">${IMOVEIS.length}</b></span></div></div>
       <div><h4>Imóveis</h4><a href="imoveis.html?tipo=Casa">Casas</a><a href="imoveis.html?tipo=Terreno">Terrenos</a><a href="imoveis.html?tipo=Ch%C3%A1cara">Chácaras e áreas</a><a href="imoveis.html?fin=alugar">Para alugar</a><a href="imoveis.html?fin=favoritos">Meus favoritos</a></div>
-      <div><h4>A Kiesel</h4><a href="sobre.html">Quem somos</a><a href="financiamento.html">Financiamento</a><a href="anuncie.html">Anuncie seu imóvel</a><a href="encomende.html">Encomende um imóvel</a><a href="privacidade.html">Privacidade</a></div>
+      <div><h4>A Imobiliária Kiesel</h4><a href="sobre.html">Quem somos</a><a href="financiamento.html">Financiamento</a><a href="anuncie.html">Anuncie seu imóvel</a><a href="encomende.html">Encomende um imóvel</a><a href="privacidade.html">Privacidade</a></div>
       <div><h4>Contato</h4><a href="https://wa.me/5555999479495" target="_blank" rel="noopener">(55) 99947-9495</a><a href="https://wa.me/5555996298532" target="_blank" rel="noopener">(55) 99629-8532</a><a href="https://www.facebook.com/imobiliariakiesel" target="_blank" rel="noopener">facebook.com/imobiliariakiesel</a><a href="contato.html">Como chegar</a></div>
     </div>
     <div class="fim"><span>© ${new Date().getFullYear()} Kiesel Negócios Imobiliários. Todos os direitos reservados.</span><span>Valores sujeitos a alteração sem aviso. Fotos dos imóveis são do acervo da imobiliária.</span></div>
   </div>
 </footer>
-<div class="barra-zap"><a class="btn btn-zap" href="${zapMsg("Olá, vi o site da Kiesel e quero conversar sobre um imóvel.")}" target="_blank" rel="noopener">${ico.zap}Falar com a Kiesel no WhatsApp</a></div>
+<div class="barra-zap"><a class="btn btn-zap" href="${zapMsg("Olá, vi o site da Kiesel e quero conversar sobre um imóvel.")}" target="_blank" rel="noopener">${ico.zap}Falar com a Imobiliária Kiesel</a></div>
 <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
 <div class="grao" aria-hidden="true"></div>
 <div class="cortina" id="cortina" aria-hidden="true"></div>
@@ -131,8 +131,8 @@ const sobre = pagina({
       <div>
         <p class="destaque-texto rv">A primeira imobiliária da cidade, com tradição, experiência e compromisso em cada negócio.</p>
         <p class="desde rv">Atuamos no mercado desde fevereiro de 2014.</p>
-        <p class="rv">A Kiesel trabalha com casas, terrenos, chácaras, áreas rurais e salas comerciais na cidade, no interior e nos municípios vizinhos. O escritório fica na Avenida Getúlio Vargas, no Centro, e o atendimento é direto com o corretor, pelo WhatsApp ou no balcão.</p>
-        <p class="rv">Toda a carteira está publicada aqui com preço, fotos e descrição completa. Quem anuncia com a Kiesel recebe avaliação do valor de mercado, fotos do imóvel, divulgação neste site e no Facebook, e acompanhamento das visitas até a escritura.</p>
+        <p class="rv">A Imobiliária Kiesel trabalha com casas, terrenos, chácaras, áreas rurais e salas comerciais na cidade, no interior e nos municípios vizinhos. O escritório fica na Avenida Getúlio Vargas, no Centro, e o atendimento é direto com o corretor, pelo WhatsApp ou no balcão.</p>
+        <p class="rv">Toda a carteira está publicada aqui com preço, fotos e descrição completa. Quem anuncia com a Imobiliária Kiesel recebe avaliação do valor de mercado, fotos do imóvel, divulgação neste site e no Facebook, e acompanhamento das visitas até a escritura.</p>
         <p class="rv">O lema da casa resume o jeito de trabalhar: por trás de cada negócio, uma história de respeito e confiança.</p>
         <p class="assin rv">Kipper Kiesel Ltda · CNPJ 19.758.552/0001-91 · CRECI 45.125/RS</p>
       </div>
@@ -149,7 +149,7 @@ const sobre = pagina({
 
 const contato = pagina({
   arquivo: "contato.html", titulo: "Contato · Imobiliária Kiesel, Av. Getúlio Vargas, São Martinho/RS",
-  desc: "Fale com a Kiesel pelo WhatsApp (55) 99947-9495 ou visite o escritório na Avenida Getúlio Vargas, Centro, São Martinho/RS, CEP 98690-000.",
+  desc: "Fale com a Imobiliária Kiesel pelo WhatsApp (55) 99947-9495 ou visite o escritório na Avenida Getúlio Vargas, Centro, São Martinho/RS, CEP 98690-000.",
   corpo: `
 <section class="pag-topo"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Contato</div><h1 class="mask">Na Avenida, <span class="ital">ou no seu celular.</span></h1><p>O atendimento é direto com o corretor. Mande mensagem a qualquer hora ou passe no escritório, no Centro de São Martinho.</p></div></section>
 <section class="secao">
@@ -207,9 +207,9 @@ const financiamento = pagina({
 
 const anuncie = pagina({
   arquivo: "anuncie.html", titulo: "Anuncie seu imóvel · Imobiliária Kiesel",
-  desc: "Venda ou alugue seu imóvel em São Martinho com a Kiesel: avaliação, fotos, divulgação neste site e no Facebook e acompanhamento até a escritura.",
+  desc: "Venda ou alugue seu imóvel em São Martinho com a Imobiliária Kiesel: avaliação, fotos, divulgação neste site e no Facebook e acompanhamento até a escritura.",
   corpo: `
-<section class="pag-topo"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Anuncie</div><h1 class="mask">Seu imóvel, <span class="ital">bem apresentado.</span></h1><p>Avaliação de mercado, fotos, anúncio neste site e no Facebook, visitas acompanhadas e documentação conferida. Você só fala com a Kiesel.</p></div></section>
+<section class="pag-topo"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Anuncie</div><h1 class="mask">Seu imóvel, <span class="ital">bem apresentado.</span></h1><p>Avaliação de mercado, fotos, anúncio neste site e no Facebook, visitas acompanhadas e documentação conferida. Você só fala com a Imobiliária Kiesel.</p></div></section>
 <section class="secao">
   <div class="miolo">
     <div class="duas-col">
@@ -236,9 +236,9 @@ const anuncie = pagina({
 
 const encomende = pagina({
   arquivo: "encomende.html", titulo: "Encomende um imóvel · Imobiliária Kiesel",
-  desc: "Diga o que procura em São Martinho e região. A Kiesel busca na carteira e avisa quando entrar um imóvel com o seu perfil.",
+  desc: "Diga o que procura em São Martinho e região. A Imobiliária Kiesel busca na carteira e avisa quando entrar um imóvel com o seu perfil.",
   corpo: `
-<section class="pag-topo"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Encomende</div><h1 class="mask">Diga o que procura. <span class="ital">A Kiesel acha.</span></h1><p>Nem todo imóvel chega ao site no dia em que o dono decide vender. Deixe o seu pedido e você é avisado antes.</p></div></section>
+<section class="pag-topo"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Encomende</div><h1 class="mask">Diga o que procura. <span class="ital">A Imobiliária Kiesel acha.</span></h1><p>Nem todo imóvel chega ao site no dia em que o dono decide vender. Deixe o seu pedido e você é avisado antes.</p></div></section>
 <section class="secao">
   <div class="miolo">
     <div class="duas-col">

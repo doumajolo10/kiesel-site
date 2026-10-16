@@ -335,7 +335,7 @@ document.addEventListener("click", function (e) {
   const fAn = $("#form-anuncie");
   if (fAn) fAn.addEventListener("submit", e => {
     e.preventDefault();
-    let m = "Olá, quero anunciar um imóvel com a Kiesel.\nNome: " + v("#an-nome") + (v("#an-fone") ? "\nTelefone: " + v("#an-fone") : "") + "\n" + v("#an-tipo") + " para " + v("#an-fin").toLowerCase();
+    let m = "Olá, quero anunciar um imóvel com a Imobiliária Kiesel.\nNome: " + v("#an-nome") + (v("#an-fone") ? "\nTelefone: " + v("#an-fone") : "") + "\n" + v("#an-tipo") + " para " + v("#an-fin").toLowerCase();
     if (v("#an-end")) m += "\nLocal: " + v("#an-end"); if (v("#an-obs")) m += "\nDetalhes: " + v("#an-obs");
     abreZap(m);
   });

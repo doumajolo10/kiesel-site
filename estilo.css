@@ -506,3 +506,5 @@ img[src$="logo-topo.png"]{height:auto}
 .desde{align-items:baseline}
 .desde::before{flex:none;transform:translateY(-4px)}
 @media (max-width:560px){.desde{font-size:14px!important;gap:8px}.desde::before{width:18px}}
+
+@media (max-width:400px){.imovel-lado .acoes-linha .btn{padding:0 10px;font-size:14px;gap:6px;min-width:0}}

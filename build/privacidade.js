@@ -8,18 +8,18 @@ ${sec("Em resumo",
     "Este site não tem cadastro, não usa cookies de rastreamento, de publicidade ou de estatística, e não vende nem empresta dados de ninguém. Os formulários não guardam nada: eles montam uma mensagem e abrem o seu WhatsApp, e só você decide se envia.")}
 ${sec("Quem cuida dos seus dados",
     "A controladora é a <b>Kipper Kiesel Ltda</b> (Kiesel Negócios Imobiliários), CNPJ 19.758.552/0001-91, CRECI 45.125/RS, Avenida Getúlio Vargas, 873, sala 02, Centro, São Martinho/RS, CEP 98690-000.",
-    "Para qualquer assunto sobre os seus dados, fale com a Kiesel pelo WhatsApp <a href=\"https://wa.me/5555999479495\" target=\"_blank\" rel=\"noopener\">(55) 99947-9495</a> ou no escritório. A Kiesel é agente de tratamento de pequeno porte (Resolução CD/ANPD nº 2/2022), e este é o canal de atendimento ao titular.")}
+    "Para qualquer assunto sobre os seus dados, fale com a Imobiliária Kiesel pelo WhatsApp <a href=\"https://wa.me/5555999479495\" target=\"_blank\" rel=\"noopener\">(55) 99947-9495</a> ou no escritório. A Imobiliária Kiesel é agente de tratamento de pequeno porte (Resolução CD/ANPD nº 2/2022), e este é o canal de atendimento ao titular.")}
 ${sec("Quais dados e para quê",
     `<ul>
 <li><b>Navegação.</b> Como todo site, o servidor de hospedagem registra dados técnicos de cada acesso (endereço IP, navegador, página e horário), para manter o site no ar e protegê-lo contra ataques. Base legal: legítimo interesse (art. 7º, IX, da LGPD).</li>
-<li><b>Favoritos e preferências.</b> Os imóveis que você guarda como favoritos ficam só no seu navegador (armazenamento local), assim como uma cópia de até 30 segundos da lista de imóveis, usada para as páginas abrirem mais rápido. Nada disso é enviado para a Kiesel. Para apagar, limpe os dados do site no seu navegador.</li>
-<li><b>Contato, encomenda e anúncio de imóvel.</b> Os formulários usam o nome, o telefone e a mensagem que você digitar apenas para montar o texto do WhatsApp. O site não guarda nada. Se você enviar a mensagem, a Kiesel usa esses dados para responder e dar andamento ao que você pediu. Base legal: procedimentos preliminares de um contrato, a seu pedido (art. 7º, V).</li>
-<li><b>Atendimento e negócios.</b> Quando uma conversa vira visita, proposta, compra, venda ou locação, a Kiesel guarda os dados necessários para o negócio e para cumprir as obrigações legais da corretagem de imóveis (art. 7º, II e V).</li>
+<li><b>Favoritos e preferências.</b> Os imóveis que você guarda como favoritos ficam só no seu navegador (armazenamento local), assim como uma cópia de até 30 segundos da lista de imóveis, usada para as páginas abrirem mais rápido. Nada disso é enviado para a Imobiliária Kiesel. Para apagar, limpe os dados do site no seu navegador.</li>
+<li><b>Contato, encomenda e anúncio de imóvel.</b> Os formulários usam o nome, o telefone e a mensagem que você digitar apenas para montar o texto do WhatsApp. O site não guarda nada. Se você enviar a mensagem, a Imobiliária Kiesel usa esses dados para responder e dar andamento ao que você pediu. Base legal: procedimentos preliminares de um contrato, a seu pedido (art. 7º, V).</li>
+<li><b>Atendimento e negócios.</b> Quando uma conversa vira visita, proposta, compra, venda ou locação, a Imobiliária Kiesel guarda os dados necessários para o negócio e para cumprir as obrigações legais da corretagem de imóveis (art. 7º, II e V).</li>
 </ul>`)}
 ${sec("Com quem os dados são compartilhados",
     `<ul>
 <li><b>Vercel Inc.</b>: hospedagem do site (registros técnicos de acesso).</li>
-<li><b>WhatsApp (Meta)</b>: somente se você escolher conversar com a Kiesel por lá, conforme os termos do próprio WhatsApp.</li>
+<li><b>WhatsApp (Meta)</b>: somente se você escolher conversar com a Imobiliária Kiesel por lá, conforme os termos do próprio WhatsApp.</li>
 <li><b>Google</b>: somente se você clicar em "Mostrar o mapa". O mapa só é carregado depois do seu clique.</li>
 <li><b>Supabase</b>: guarda o cadastro dos imóveis exibidos no site. Não recebe dados de visitantes.</li>
 <li>Autoridades públicas, quando houver obrigação legal ou ordem judicial.</li>
@@ -41,7 +41,7 @@ ${sec("Os seus direitos",
 ${sec("Segurança",
     "O site só funciona por conexão criptografada (HTTPS) e segue as proteções recomendadas para navegadores. A área de cadastro de imóveis é restrita à equipe da Kiesel, com senha individual, e guarda o histórico de cada alteração.")}
 ${sec("Crianças e adolescentes",
-    "Este site não é dirigido a menores de 18 anos, e a Kiesel não coleta, de propósito, dados de crianças ou adolescentes.")}
+    "Este site não é dirigido a menores de 18 anos, e a Imobiliária Kiesel não coleta, de propósito, dados de crianças ou adolescentes.")}
 ${sec("Mudanças nesta política",
     "Se esta política mudar, a nova versão é publicada nesta página, com a data de atualização no topo.")}
 </div></div></section>`;

@@ -129,7 +129,7 @@
     <button type="button" class="filme-pausa" id="heroi-pausa" aria-pressed="false" aria-label="Pausar o vídeo de fundo" hidden>${ICO_PAUSA.replace("<svg", '<svg class="i-pausa"')}${ICO_PLAY.replace("<svg", '<svg class="i-play"')}</button>
   </div>
   <div class="heroi-miolo">
-    <div class="heroi-titulo"><h1>Encontre seu imóvel em São Martinho e região</h1><p class="sub">${IMOVEIS.length} imóveis à venda e para alugar, com preço, fotos e atendimento direto com o corretor. CRECI 45.125/RS.</p></div>
+    <div class="heroi-titulo"><h1>Encontre seu imóvel em São Martinho e região</h1><p class="sub">A primeira imobiliária da cidade, com tradição, experiência e compromisso em cada negócio.</p></div>
   </div>
 </section>
 <div class="busca-faixa">
@@ -163,7 +163,7 @@
 </section>
 <section class="secao" id="porque">
   <div class="miolo">
-    <div class="cabeca rv"><div><span class="mono">Por que a Kiesel</span><h2>A imobiliária da cidade</h2><p>A primeira imobiliária da cidade, com tradição, experiência e compromisso em cada negócio.</p></div></div>
+    <div class="cabeca rv"><div><span class="mono">Por que a Imobiliária Kiesel</span><h2>A imobiliária da cidade</h2></div></div>
     <div class="porques" data-stagger>
       <div class="porque rv"><span class="ic">${icoSelo}</span><h3>Corretagem registrada</h3><p>CRECI 45.125/RS. Contrato, documentação conferida e orientação em cada etapa, da visita à escritura.</p></div>
       <div class="porque rv"><span class="ic">${icoCasa}</span><h3>Conhece cada quadra</h3><p>Escritório na Avenida Getúlio Vargas, no Centro. Sabe o histórico dos imóveis, a vizinhança e o que cada bairro oferece.</p></div>
@@ -186,7 +186,7 @@
 <section class="secao" id="anuncie-faixa" style="padding-top:0">
   <div class="miolo">
     <div class="faixa-azul rv">
-      <div><span class="mono" style="color:#9CC4EA">Proprietários</span><h2>Quer vender ou alugar o seu imóvel?</h2><p>Avaliação de mercado, fotos, anúncio neste site e no Facebook, visitas acompanhadas e documentação conferida. Você só fala com a Kiesel.</p></div>
+      <div><span class="mono" style="color:#9CC4EA">Proprietários</span><h2>Quer vender ou alugar o seu imóvel?</h2><p>Avaliação de mercado, fotos, anúncio neste site e no Facebook, visitas acompanhadas e documentação conferida. Você só fala com a Imobiliária Kiesel.</p></div>
       <div class="acoes"><a class="btn btn-papel" href="anuncie.html">Anunciar meu imóvel <span class="seta">${ico.seta}</span></a><a class="btn btn-contorno" href="financiamento.html">Simular financiamento</a></div>
     </div>
   </div>
@@ -195,7 +195,7 @@
   <div class="miolo">
     <div class="cabeca rv"><div><span class="mono">Como funciona</span><h2>Sem surpresa, do primeiro contato à escritura</h2></div></div>
     <div class="pilha" id="pilha" data-stagger>
-      <div class="cartao rv"><span class="n">Passo 1</span><h3>Conversa</h3><p>Você conta o que procura ou o que quer vender. A Kiesel responde pelo WhatsApp, sem formulário intermediário nem central de atendimento.</p><div class="mini"><span>WhatsApp</span><span>Balcão na Avenida</span></div></div>
+      <div class="cartao rv"><span class="n">Passo 1</span><h3>Conversa</h3><p>Você conta o que procura ou o que quer vender. A Imobiliária Kiesel responde pelo WhatsApp, sem formulário intermediário nem central de atendimento.</p><div class="mini"><span>WhatsApp</span><span>Balcão na Avenida</span></div></div>
       <div class="cartao rv"><span class="n">Passo 2</span><h3>Visita</h3><p>Visita acompanhada pelo corretor, que conhece o imóvel, a vizinhança e o histórico de cada quadra. Você vê o que a foto não mostra.</p><div class="mini"><span>Agenda flexível</span><span>Corretor presente</span></div></div>
       <div class="cartao rv"><span class="n">Passo 3</span><h3>Proposta, financiamento e escritura</h3><p>Negociação direta com o proprietário, orientação para financiar e documentação conferida até a assinatura. Simule aqui no site antes de visitar.</p><div class="mini"><span>Price e SAC</span><span>Documentação conferida</span></div></div>
     </div>
@@ -205,13 +205,13 @@
   <div class="miolo">
     <div class="manifesto">
       <div class="quadro quadro-mapa"><iframe title="Mapa: escritório da Kiesel, Avenida Getúlio Vargas, Centro, São Martinho" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=-27.70806,-53.96561&z=16&hl=pt-BR&output=embed"></iframe><span class="selo-mapa"><img src="assets/logo-topo.png" width="391" height="190" alt="" loading="lazy"><b>Av. Getúlio Vargas, Centro</b><span>São Martinho/RS · CRECI 45.125/RS</span></span></div>
-      <div><span class="mono rv">A Kiesel</span><p class="grande rv" style="margin-top:10px">Por trás de cada negócio, <em>uma história de respeito e confiança.</em></p><p class="desde rv" style="margin-top:16px">Atuamos no mercado desde fevereiro de 2014.</p><p class="rv" style="margin-top:10px">A Kiesel Negócios Imobiliários atende São Martinho, o interior e os municípios vizinhos com casas, terrenos, chácaras, áreas rurais e salas comerciais. Toda a carteira está neste site com preço, fotos e descrição.</p><p class="rv" style="margin-top:22px"><a class="btn btn-azul" href="sobre.html">Conheça a Kiesel <span class="seta">${ico.seta}</span></a> <a class="btn btn-contorno" href="contato.html" style="margin-left:6px">Fale conosco</a></p></div>
+      <div><span class="mono rv">A Imobiliária Kiesel</span><p class="grande rv" style="margin-top:10px">Por trás de cada negócio, <em>uma história de respeito e confiança.</em></p><p class="desde rv" style="margin-top:16px">Atuamos no mercado desde fevereiro de 2014.</p><p class="rv" style="margin-top:10px">A Kiesel Negócios Imobiliários atende São Martinho, o interior e os municípios vizinhos com casas, terrenos, chácaras, áreas rurais e salas comerciais. Toda a carteira está neste site com preço, fotos e descrição.</p><p class="rv" style="margin-top:22px"><a class="btn btn-azul" href="sobre.html">Conheça a Imobiliária Kiesel <span class="seta">${ico.seta}</span></a> <a class="btn btn-contorno" href="contato.html" style="margin-left:6px">Fale conosco</a></p></div>
     </div>
   </div>
 </section>
 <section class="chamada">
   <div class="miolo">
-    <h2 class="rv">Não achou o que procura? <em>A Kiesel procura para você.</em></h2>
+    <h2 class="rv">Não achou o que procura? <em>A Imobiliária Kiesel procura para você.</em></h2>
     <div class="acoes rv"><a class="btn btn-azul" href="encomende.html">Encomendar um imóvel <span class="seta">${ico.seta}</span></a><a class="btn btn-zap" href="${zapMsg("Olá, vi o site da Kiesel e quero conversar sobre um imóvel.")}" target="_blank" rel="noopener">${ico.zap}Chamar no WhatsApp</a></div>
   </div>
 </section>`;
@@ -310,7 +310,7 @@ ${vizinhos.length ? `<nav class="prox-ant" aria-label="Outros imóveis">${vizinh
   function corpoIndisponivel(ref, IMOVEIS) {
     const sug = IMOVEIS.slice().sort((a, b) => b.atualizado.localeCompare(a.atualizado)).slice(0, 3);
     return `
-<section class="pag-topo"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / <a href="imoveis.html">Imóveis</a>${ref ? " / " + esc(ref) : ""}</div><h1 class="mask">Este imóvel não está <span class="ital">mais disponível.</span></h1><p>${ref ? `O imóvel ${esc(ref)} foi vendido, alugado ou retirado da carteira.` : "Não encontramos esse imóvel."} Veja os que estão disponíveis hoje ou fale com a Kiesel: muitas vezes há opções parecidas que ainda não chegaram ao site.</p><p style="margin-top:22px"><a class="btn btn-azul" href="imoveis.html">Ver imóveis disponíveis <span class="seta">${ico.seta}</span></a> <a class="btn btn-zap" href="${zapMsg("Olá, vi no site o imóvel " + (ref || "") + " e queria saber de opções parecidas.")}" target="_blank" rel="noopener" style="margin-left:6px">${ico.zap}Falar no WhatsApp</a></p></div></section>
+<section class="pag-topo"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / <a href="imoveis.html">Imóveis</a>${ref ? " / " + esc(ref) : ""}</div><h1 class="mask">Este imóvel não está <span class="ital">mais disponível.</span></h1><p>${ref ? `O imóvel ${esc(ref)} foi vendido, alugado ou retirado da carteira.` : "Não encontramos esse imóvel."} Veja os que estão disponíveis hoje ou fale com a Imobiliária Kiesel: muitas vezes há opções parecidas que ainda não chegaram ao site.</p><p style="margin-top:22px"><a class="btn btn-azul" href="imoveis.html">Ver imóveis disponíveis <span class="seta">${ico.seta}</span></a> <a class="btn btn-zap" href="${zapMsg("Olá, vi no site o imóvel " + (ref || "") + " e queria saber de opções parecidas.")}" target="_blank" rel="noopener" style="margin-left:6px">${ico.zap}Falar no WhatsApp</a></p></div></section>
 ${sug.length ? `<section class="secao secao-cinza"><div class="miolo"><div class="cabeca"><div><span class="mono">Carteira</span><h2>Atualizados recentemente</h2></div></div><div class="vitrine">${sug.map(y => card(y)).join("")}</div></div></section>` : ""}`;
   }
 
