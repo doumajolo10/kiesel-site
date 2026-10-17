@@ -2,7 +2,7 @@
    quando o painel muda algum imóvel (vivo.js). Não depende de nada além dos dados. */
 (function (raiz) {
   "use strict";
-  const ZAP = "5555999479495";
+  const ZAP = "5555996298532";
   const SITE = "https://www.imobiliariakiesel.com.br";
   const SUPA = { url: "https://cwsjddppdogvyitspbfr.supabase.co", chave: "sb_publishable_zpNPLwlPqkOR6pnvrxRGHw_78r3siqN", tabela: "kiesel_imoveis", balde: "kiesel-fotos" };
 
@@ -204,7 +204,7 @@
 <section class="secao" id="sobre-breve">
   <div class="miolo">
     <div class="manifesto">
-      <div class="quadro quadro-mapa"><iframe title="Mapa: escritório da Kiesel, Avenida Getúlio Vargas, Centro, São Martinho" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=-27.70806,-53.96561&z=16&hl=pt-BR&output=embed"></iframe><span class="selo-mapa"><img src="assets/logo-topo.png" width="391" height="190" alt="" loading="lazy"><b>Av. Getúlio Vargas, Centro</b><span>São Martinho/RS · CRECI 45.125/RS</span></span></div>
+      <div class="quadro quadro-mapa"><iframe title="Mapa: escritório da Kiesel, Avenida Getúlio Vargas, Centro, São Martinho" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=NEG%C3%93CIOS%20IMOBILI%C3%81RIOS%20KIESEL%2C%20S%C3%A3o%20Martinho%20-%20RS&z=17&hl=pt-BR&output=embed"></iframe><span class="selo-mapa"><img src="assets/logo-topo.png" width="391" height="190" alt="" loading="lazy"><b>Av. Getúlio Vargas, Centro</b><span>São Martinho/RS · CRECI 45.125/RS</span></span></div>
       <div><span class="mono rv">A Imobiliária Kiesel</span><p class="grande rv" style="margin-top:10px">Por trás de cada negócio, <em>uma história de respeito e confiança.</em></p><p class="desde rv" style="margin-top:16px">Atuamos no mercado desde fevereiro de 2014.</p><p class="rv" style="margin-top:10px">A Kiesel Negócios Imobiliários atende São Martinho, o interior e os municípios vizinhos com casas, terrenos, chácaras, áreas rurais e salas comerciais. Toda a carteira está neste site com preço, fotos e descrição.</p><p class="rv" style="margin-top:22px"><a class="btn btn-azul" href="sobre.html">Conheça a Imobiliária Kiesel <span class="seta">${ico.seta}</span></a> <a class="btn btn-contorno" href="contato.html" style="margin-left:6px">Fale conosco</a></p></div>
     </div>
   </div>
@@ -292,7 +292,7 @@
           <a class="btn btn-zap" id="ficha-zap" href="${zapMsg(msg)}" target="_blank" rel="noopener">${ico.zap}Falar sobre este imóvel</a>
           <div class="acoes-linha"><button class="btn btn-contorno" type="button" data-fav="${x.ref}" aria-pressed="false" id="ficha-fav">${ico.coracao}<span>Guardar</span></button><button class="btn btn-contorno" type="button" id="ficha-compart">${ico.compart}Compartilhar</button></div>
           ${x.finalidade === "comprar" ? `<a class="btn btn-contorno" href="financiamento.html?valor=${x.preco}">Simular financiamento</a>` : ""}
-          <div class="corretor"><img src="assets/logo-topo.png" alt="" width="72" height="33"><div>Kiesel Negócios Imobiliários<br>CRECI 45.125/RS · (55) 99947-9495</div></div>
+          <div class="corretor"><img src="assets/logo-topo.png" alt="" width="72" height="33"><div>Kiesel Negócios Imobiliários<br>CRECI 45.125/RS · (55) 99629-8532</div></div>
         </div>
       </aside>
     </div>
@@ -316,7 +316,7 @@ ${sug.length ? `<section class="secao secao-cinza"><div class="miolo"><div class
 
   // mapa do Google só depois do clique (LGPD: o Google não recebe o acesso de quem não pediu o mapa)
   const PINO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>';
-  const mapaSob = (titulo, src) => `<div class="mapa-aviso" data-mapa="${src}" data-titulo="${titulo}"><span class="pino">${PINO}</span><b>Av. Getúlio Vargas, Centro · São Martinho/RS</b><button type="button" class="btn btn-contorno">Mostrar o mapa</button><small>O mapa é do Google. Ao abrir, o Google recebe o seu acesso. <a href="https://www.google.com/maps?q=-27.70806,-53.96561" target="_blank" rel="noopener">Abrir no Google Maps</a></small></div>`;
+  const mapaSob = (titulo, src) => `<div class="mapa-aviso" data-mapa="${src}" data-titulo="${titulo}"><span class="pino">${PINO}</span><b>Av. Getúlio Vargas, Centro · São Martinho/RS</b><button type="button" class="btn btn-contorno">Mostrar o mapa</button><small>O mapa é do Google. Ao abrir, o Google recebe o seu acesso. <a href="https://www.google.com/maps?q=NEG%C3%93CIOS%20IMOBILI%C3%81RIOS%20KIESEL%2C%20S%C3%A3o%20Martinho%20-%20RS" target="_blank" rel="noopener">Abrir no Google Maps</a></small></div>`;
   // o mesmo ajuste que o build aplica em todo <main>
   const ajusta = corpo => corpo.replace(/<iframe title="([^"]*)" loading="lazy" referrerpolicy="[^"]*" src="(https:\/\/www\.google\.com\/maps[^"]*)"><\/iframe>/g, (t, a, b) => mapaSob(a, b)).replace(/<(h1|p) class="(mask|grande mask)">([\s\S]*?)<\/\1>/g, '<$1 class="$2"><span>$3</span></$1>').replace(/class="(trilha|onde)"/g, 'class="$1 mono"').replace(/class="num-sec rv"/g, 'class="mono rv"');
 

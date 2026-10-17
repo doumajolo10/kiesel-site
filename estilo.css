@@ -508,3 +508,19 @@ img[src$="logo-topo.png"]{height:auto}
 @media (max-width:560px){.desde{font-size:14px!important;gap:8px}.desde::before{width:18px}}
 
 @media (max-width:400px){.imovel-lado .acoes-linha .btn{padding:0 10px;font-size:14px;gap:6px;min-width:0}}
+
+/* celular: botões do topo encostados à direita quando o menu de texto some */
+@media (max-width:1080px){.topo-acoes{margin-left:auto}}
+
+/* menu do celular: abre descendo suave e os itens entram um a um (antes aparecia de uma vez) */
+.menu-movel{display:flex;visibility:hidden;pointer-events:none;clip-path:inset(0 0 100% 0);transition:clip-path .5s var(--ease-2),visibility 0s linear .5s}
+.menu-movel.aberto{visibility:visible;pointer-events:auto;clip-path:inset(0 0 0 0);transition:clip-path .5s var(--ease-2),visibility 0s}
+.menu-movel a,.menu-movel .rod{opacity:0;transform:translateY(16px);transition:opacity .25s ease,transform .25s ease}
+.menu-movel.aberto a,.menu-movel.aberto .rod{opacity:1;transform:none;transition:opacity .45s var(--ease),transform .55s var(--ease)}
+.menu-movel.aberto a:nth-of-type(1){transition-delay:.14s}.menu-movel.aberto a:nth-of-type(2){transition-delay:.18s}
+.menu-movel.aberto a:nth-of-type(3){transition-delay:.22s}.menu-movel.aberto a:nth-of-type(4){transition-delay:.26s}
+.menu-movel.aberto a:nth-of-type(5){transition-delay:.30s}.menu-movel.aberto a:nth-of-type(6){transition-delay:.34s}
+.menu-movel.aberto .rod{transition-delay:.4s}
+.menu-movel a{-webkit-tap-highlight-color:transparent}
+.menu-movel a:active{color:var(--azul);padding-left:6px;transition:padding .15s ease,color .15s ease}
+@media (prefers-reduced-motion:reduce){.menu-movel,.menu-movel.aberto,.menu-movel a,.menu-movel .rod{transition:none!important;transform:none}}

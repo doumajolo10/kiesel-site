@@ -13,7 +13,7 @@ document.addEventListener("click", function (e) {
   "use strict";
   const $ = (s, r) => (r || document).querySelector(s);
   const $$ = (s, r) => Array.prototype.slice.call((r || document).querySelectorAll(s));
-  const ZAP = "5555999479495";
+  const ZAP = "5555996298532";
   const num = n => Number(n).toLocaleString("pt-BR", { maximumFractionDigits: 0 });
   const reduz = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const mouse = matchMedia("(hover: hover) and (pointer: fine)").matches;

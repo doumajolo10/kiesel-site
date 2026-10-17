@@ -8,7 +8,7 @@ ${sec("Em resumo",
     "Este site não tem cadastro, não usa cookies de rastreamento, de publicidade ou de estatística, e não vende nem empresta dados de ninguém. Os formulários não guardam nada: eles montam uma mensagem e abrem o seu WhatsApp, e só você decide se envia.")}
 ${sec("Quem cuida dos seus dados",
     "A controladora é a <b>Kipper Kiesel Ltda</b> (Kiesel Negócios Imobiliários), CNPJ 19.758.552/0001-91, CRECI 45.125/RS, Avenida Getúlio Vargas, 873, sala 02, Centro, São Martinho/RS, CEP 98690-000.",
-    "Para qualquer assunto sobre os seus dados, fale com a Imobiliária Kiesel pelo WhatsApp <a href=\"https://wa.me/5555999479495\" target=\"_blank\" rel=\"noopener\">(55) 99947-9495</a> ou no escritório. A Imobiliária Kiesel é agente de tratamento de pequeno porte (Resolução CD/ANPD nº 2/2022), e este é o canal de atendimento ao titular.")}
+    "Para qualquer assunto sobre os seus dados, fale com a Imobiliária Kiesel pelo WhatsApp <a href=\"https://wa.me/5555996298532\" target=\"_blank\" rel=\"noopener\">(55) 99629-8532</a> ou no escritório. A Imobiliária Kiesel é agente de tratamento de pequeno porte (Resolução CD/ANPD nº 2/2022), e este é o canal de atendimento ao titular.")}
 ${sec("Quais dados e para quê",
     `<ul>
 <li><b>Navegação.</b> Como todo site, o servidor de hospedagem registra dados técnicos de cada acesso (endereço IP, navegador, página e horário), para manter o site no ar e protegê-lo contra ataques. Base legal: legítimo interesse (art. 7º, IX, da LGPD).</li>
@@ -37,7 +37,7 @@ ${sec("Os seus direitos",
 <li>informação sobre com quem os dados foram compartilhados;</li>
 <li>revogação do consentimento, quando ele for a base do tratamento, e oposição a tratamentos que você não aceite.</li>
 </ul>`,
-    "Os pedidos são atendidos pelo WhatsApp (55) 99947-9495 ou no escritório. Se não ficar satisfeito, você também pode reclamar à Autoridade Nacional de Proteção de Dados (ANPD), em <a href=\"https://www.gov.br/anpd\" target=\"_blank\" rel=\"noopener\">gov.br/anpd</a>.")}
+    "Os pedidos são atendidos pelo WhatsApp (55) 99629-8532 ou no escritório. Se não ficar satisfeito, você também pode reclamar à Autoridade Nacional de Proteção de Dados (ANPD), em <a href=\"https://www.gov.br/anpd\" target=\"_blank\" rel=\"noopener\">gov.br/anpd</a>.")}
 ${sec("Segurança",
     "O site só funciona por conexão criptografada (HTTPS) e segue as proteções recomendadas para navegadores. A área de cadastro de imóveis é restrita à equipe da Kiesel, com senha individual, e guarda o histórico de cada alteração.")}
 ${sec("Crianças e adolescentes",
