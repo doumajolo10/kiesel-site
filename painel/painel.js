@@ -6,6 +6,8 @@
   const M = window.KieselModelo, S = M.SUPA;
   const DEMO = /[?&]demo\b/.test(location.search);
   const SITE_PUB = /kiesel-site\.vercel\.app|localhost|127\.0\.0\.1/.test(location.host) ? location.origin : /imobiliariakiesel\.com\.br$/.test(location.host) ? "https://www.imobiliariakiesel.com.br" : "https://kiesel-site.vercel.app";
+  // no endereço próprio do painel a barra mostra só painel.imobiliariakiesel.com.br (a Vercel manda a raiz para /painel, que é onde o arquivo mora)
+  if (/^painel\./.test(location.hostname) && location.pathname !== "/") history.replaceState(null, "", "/" + location.search + location.hash);
   const $ = (s, r) => (r || document).querySelector(s);
   const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
   const esc = M.esc;

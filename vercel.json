@@ -3,19 +3,6 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/painel",
-      "has": [
-        {
-          "type": "host",
-          "value": "painel.imobiliariakiesel.com.br"
-        }
-      ],
-      "destination": "/",
-      "permanent": false
-    }
-  ],
-  "rewrites": [
-    {
       "source": "/",
       "has": [
         {
@@ -23,8 +10,11 @@
           "value": "painel.imobiliariakiesel.com.br"
         }
       ],
-      "destination": "/painel/index.html"
-    },
+      "destination": "/painel",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
     {
       "source": "/painel",
       "destination": "/painel/index.html"
@@ -92,25 +82,6 @@
     },
     {
       "source": "/painel(.*)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "no-store"
-        }
-      ]
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "painel.imobiliariakiesel.com.br"
-        }
-      ],
       "headers": [
         {
           "key": "X-Robots-Tag",
