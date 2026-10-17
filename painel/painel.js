@@ -5,7 +5,7 @@
   "use strict";
   const M = window.KieselModelo, S = M.SUPA;
   const DEMO = /[?&]demo\b/.test(location.search);
-  const SITE_PUB = /kiesel-site\.vercel\.app|localhost|127\.0\.0\.1/.test(location.host) ? location.origin : "https://kiesel-site.vercel.app";
+  const SITE_PUB = /kiesel-site\.vercel\.app|localhost|127\.0\.0\.1/.test(location.host) ? location.origin : /imobiliariakiesel\.com\.br$/.test(location.host) ? "https://www.imobiliariakiesel.com.br" : "https://kiesel-site.vercel.app";
   const $ = (s, r) => (r || document).querySelector(s);
   const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
   const esc = M.esc;
