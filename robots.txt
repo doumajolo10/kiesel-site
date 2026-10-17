@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /painel
+
+Sitemap: https://www.imobiliariakiesel.com.br/sitemap.xml

@@ -46,6 +46,8 @@ function rodape() {
 <div class="bairro-foto" id="bairro-foto" aria-hidden="true"><img alt="" src="" width="260" height="195"></div>
 <div class="cursor" aria-hidden="true"></div><div class="cursor-rotulo" id="cursor-rotulo" aria-hidden="true"><span>Ver imóvel</span></div>`;
 }
+// endereço oficial de cada página no domínio (cleanUrls: sem .html; a capa é a raiz)
+const endereco = arquivo => SITE + "/" + (arquivo === "index.html" ? "" : arquivo.replace(/.html$/, ""));
 function pagina({ arquivo, titulo, desc, corpo, jsonld, escuro, extraHead = "", atual, vivo = false }) {
   return `<!doctype html>
 <html lang="pt-BR" class="sem-js">
@@ -55,6 +57,7 @@ function pagina({ arquivo, titulo, desc, corpo, jsonld, escuro, extraHead = "", 
 <title>${esc(titulo)}</title>
 <meta name="description" content="${esc(desc)}">
 <meta name="theme-color" content="#F4F2ED">
+${arquivo === "imovel.html" ? "" : `<link rel="canonical" href="${endereco(arquivo)}"><meta property="og:url" content="${endereco(arquivo)}">`}
 <meta property="og:type" content="website"><meta property="og:title" content="${esc(titulo)}"><meta property="og:description" content="${esc(desc)}"><meta property="og:image" content="${SITE}/og.jpg"><meta property="og:locale" content="pt_BR">
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="preload" href="fontes/InstrumentSans-400_700.woff2" as="font" type="font/woff2" crossorigin>
@@ -270,4 +273,17 @@ for (const x of IMOVEIS) saida[`imovel-${x.ref}.html`] = paginaImovel(x);
 const velhas = fs.readdirSync(RAIZ).filter(f => /^imovel-[A-Z]{2}\d{4}\.html$/.test(f) && !saida[f]);
 for (const f of velhas) fs.unlinkSync(path.join(RAIZ, f));
 for (const [n, h] of Object.entries(saida)) fs.writeFileSync(path.join(RAIZ, n), h);
+// mapa do site e regras para robôs (o painel fica de fora do Google)
+const urls = Object.keys(saida).filter(n => n !== "imovel.html").map(n => `  <url><loc>${endereco(n)}</loc></url>`);
+fs.writeFileSync(path.join(RAIZ, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.join("\n")}
+</urlset>
+`);
+fs.writeFileSync(path.join(RAIZ, "robots.txt"), `User-agent: *
+Allow: /
+Disallow: /painel
+
+Sitemap: ${SITE}/sitemap.xml
+`);
 console.log("gerado:", Object.keys(saida).length, "páginas", velhas.length ? "| removidas: " + velhas.join(", ") : "");
