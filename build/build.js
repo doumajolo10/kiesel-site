@@ -6,6 +6,7 @@ const M = require(path.join(RAIZ, "modelo.js"));
 const w = {}; global.window = w; require(path.join(RAIZ, "dados.js"));
 const IMOVEIS = M.ordena(w.IMOVEIS.map(M.normaliza));
 const { SITE, esc, num, precoTxt, onde, zapMsg, foto, capa, ico } = M;
+const ICO_CHAVE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3M14 9l2 2"/></svg>';
 
 // ---------- pedaços comuns ----------
 const PAGS = [["index.html", "Início"], ["imoveis.html", "Imóveis"], ["financiamento.html", "Financiamento"], ["anuncie.html", "Anuncie"], ["sobre.html", "Imobiliária Kiesel"], ["contato.html", "Contato"]];
@@ -13,7 +14,7 @@ function topo(atual) {
   return `<a class="pular so-leitor" href="#conteudo">Ir para o conteúdo</a>
 <div class="faixa-topo"><div class="miolo"><div><span>Av. Getúlio Vargas, Centro · São Martinho/RS</span><span>CRECI 45.125/RS</span></div><div><span><a href="https://wa.me/5555996298532" target="_blank" rel="noopener">(55) 99629-8532</a></span><span><a href="tel:+5555999479495">(55) 99947-9495</a></span></div></div></div>
 <header class="topo" id="topo">
-  <a class="marca" href="index.html" aria-label="Kiesel Negócios Imobiliários, início"><img src="assets/logo-topo.png" width="391" height="190" alt="Kiesel Negócios Imobiliários" decoding="async"></a>
+  <a class="marca" href="index.html" aria-label="Kiesel Negócios Imobiliários, início"><img src="assets/marca-kiesel-400.webp" width="400" height="194" alt="Kiesel Negócios Imobiliários" decoding="async"></a>
   <nav class="nav" aria-label="Principal">${PAGS.map(([h, t], i) => `<a href="${h}"${h === atual ? ' class="ativo" aria-current="page"' : ""}><span class="i">0${i + 1}</span>${t}</a>`).join("")}</nav>
   <div class="topo-acoes">
     <a class="ico-btn" id="favs-topo" href="imoveis.html?fin=favoritos" aria-label="Imóveis favoritos">${ico.coracao}<span class="conta num" id="favs-n">0</span></a>
@@ -31,7 +32,7 @@ function rodape() {
   return `<footer class="rodape">
   <div class="miolo">
     <div class="colunas">
-      <div><span class="logo-rod"><img src="assets/logo-topo.png" width="391" height="190" alt="Kiesel Negócios Imobiliários" loading="lazy"></span><p>Kipper Kiesel Ltda · CRECI 45.125/RS<br>CNPJ 19.758.552/0001-91<br>Av. Getúlio Vargas, Centro<br>São Martinho, RS · CEP 98690-000</p><div class="hud" style="margin-top:18px"><span>Imóveis publicados · <b class="num">${IMOVEIS.length}</b></span></div></div>
+      <div><span class="logo-rod"><img src="assets/marca-kiesel-400.webp" width="400" height="194" alt="Kiesel Negócios Imobiliários" loading="lazy"></span><p>Kipper Kiesel Ltda · CRECI 45.125/RS<br>CNPJ 19.758.552/0001-91<br>Av. Getúlio Vargas, Centro<br>São Martinho, RS · CEP 98690-000</p><div class="hud" style="margin-top:18px"><span>Imóveis publicados · <b class="num">${IMOVEIS.length}</b></span></div></div>
       <div><h4>Imóveis</h4><a href="imoveis.html?tipo=Casa">Casas</a><a href="imoveis.html?tipo=Terreno">Terrenos</a><a href="imoveis.html?tipo=Ch%C3%A1cara">Chácaras e áreas</a><a href="imoveis.html?fin=alugar">Para alugar</a><a href="imoveis.html?fin=favoritos">Meus favoritos</a></div>
       <div><h4>A Imobiliária Kiesel</h4><a href="sobre.html">Quem somos</a><a href="financiamento.html">Financiamento</a><a href="anuncie.html">Anuncie seu imóvel</a><a href="encomende.html">Encomende um imóvel</a><a href="privacidade.html">Privacidade</a></div>
       <div><h4>Contato</h4><a href="https://wa.me/5555996298532" target="_blank" rel="noopener">(55) 99629-8532</a><a href="tel:+5555999479495">(55) 99947-9495</a><a href="https://www.facebook.com/imobiliariakiesel" target="_blank" rel="noopener">facebook.com/imobiliariakiesel</a><a href="contato.html">Como chegar</a></div>
@@ -126,35 +127,35 @@ const sobre = pagina({
   arquivo: "sobre.html", titulo: "Imobiliária Kiesel · A primeira imobiliária de São Martinho/RS, desde 2014",
   desc: "Kiesel Negócios Imobiliários (Kipper Kiesel Ltda), CRECI 45.125/RS. Corretagem de casas, terrenos, chácaras e salas em São Martinho e região.",
   corpo: `
-<section class="pag-topo"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Imobiliária Kiesel</div><h1 class="mask">Respeito e <span class="ital">confiança,</span> negócio a negócio.</h1><p>A Kiesel Negócios Imobiliários é o escritório de corretagem de São Martinho, no noroeste gaúcho, registrado no CRECI sob o nº 45.125/RS.</p></div></section>
+<section class="pag-topo pag-foto" style="--fundo-img:url(assets/fotos/fundo-cidade.webp)"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Imobiliária Kiesel</div><h1 class="mask">Relações de <span class="ital">confiança.</span> Negócios feitos com <span class="ital">responsabilidade.</span></h1><p>Desde 2014, a Kiesel atua no mercado imobiliário de São Martinho e região, construindo sua trajetória com atendimento próximo, transparência e respeito por cada cliente.</p><p class="pag-assin">Imobiliária Kiesel — CRECI 45.125/RS.</p></div></section>
 <section class="secao">
   <div class="miolo">
     <div class="manifesto">
-      <div><p class="grande mask">Quem vende uma casa em São Martinho vende também <em>uma rua, uma vizinhança e uma história.</em></p><div class="quadro rv quadro-mapa"><iframe title="Mapa: escritório da Kiesel, Avenida Getúlio Vargas, Centro, São Martinho" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=NEG%C3%93CIOS%20IMOBILI%C3%81RIOS%20KIESEL%2C%20S%C3%A3o%20Martinho%20-%20RS&z=17&hl=pt-BR&output=embed"></iframe><span class="selo-mapa"><img src="assets/logo-topo.png" width="391" height="190" alt="" loading="lazy"><b>Av. Getúlio Vargas, Centro</b><span>São Martinho/RS · CRECI 45.125/RS</span></span></div></div>
+      <div><p class="grande mask">Mais de uma década ajudando São Martinho a encontrar <em>bons negócios imobiliários.</em></p><div class="quadro rv quadro-mapa"><iframe title="Mapa: escritório da Kiesel, Avenida Getúlio Vargas, Centro, São Martinho" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=NEG%C3%93CIOS%20IMOBILI%C3%81RIOS%20KIESEL%2C%20S%C3%A3o%20Martinho%20-%20RS&z=17&hl=pt-BR&output=embed"></iframe><span class="selo-mapa"><img src="assets/marca-kiesel-400.webp" width="400" height="194" alt="" loading="lazy"><b>Av. Getúlio Vargas, Centro</b><span>São Martinho/RS · CRECI 45.125/RS</span></span></div></div>
       <div>
-        <p class="destaque-texto rv">A primeira imobiliária da cidade, com tradição, experiência e compromisso em cada negócio.</p>
-        <p class="desde rv">Atuamos no mercado desde fevereiro de 2014.</p>
-        <p class="rv">A Imobiliária Kiesel trabalha com casas, terrenos, chácaras, áreas rurais e salas comerciais na cidade, no interior e nos municípios vizinhos. O escritório fica na Avenida Getúlio Vargas, no Centro, e o atendimento é direto com o corretor, pelo WhatsApp ou no balcão.</p>
-        <p class="rv">Toda a carteira está publicada aqui com preço, fotos e descrição completa. Quem anuncia com a Imobiliária Kiesel recebe avaliação do valor de mercado, fotos do imóvel, divulgação neste site e no Facebook, e acompanhamento das visitas até a escritura.</p>
-        <p class="rv">O lema da casa resume o jeito de trabalhar: por trás de cada negócio, uma história de respeito e confiança.</p>
-        <p class="assin rv">Kipper Kiesel Ltda · CNPJ 19.758.552/0001-91 · CRECI 45.125/RS</p>
+        <h2 class="destaque-texto rv">A primeira imobiliária da cidade. Uma história construída com confiança.</h2>
+        <p class="rv">Desde fevereiro de 2014, a Imobiliária Kiesel faz parte da história do mercado imobiliário de São Martinho. Como a primeira imobiliária da cidade, construímos nossa trajetória com experiência, compromisso e respeito por quem confia em nosso trabalho.</p>
+        <p class="rv">Atuamos na compra, venda e locação de casas, terrenos, chácaras, áreas rurais e salas comerciais em São Martinho, no interior e nos municípios vizinhos. Conhecemos a realidade local e entendemos que cada negociação envolve muito mais do que um imóvel: envolve planos, patrimônio e novos capítulos de vida.</p>
+        <p class="rv">Oferecemos atendimento direto e próximo, avaliação de mercado, divulgação dos imóveis com fotos e informações claras, acompanhamento das visitas e suporte na documentação. <em>Da primeira conversa à conclusão do negócio, nosso compromisso é conduzir cada etapa com transparência e responsabilidade.</em></p>
+        <p class="rv">Estamos na Avenida Getúlio Vargas, no Centro de São Martinho, prontos para ajudar você a encontrar seu próximo imóvel ou negociar o seu patrimônio com mais segurança!</p>
+        <p class="lema rv"><b>Imobiliária Kiesel.</b><span><em>Tradição</em> na cidade, <em>confiança</em> em cada negócio.</span></p>
       </div>
     </div>
     <div class="valores" data-stagger>
-      <div class="valor rv"><i>Da cidade</i><h3>Conhece cada quadra</h3><p>Sabe o histórico dos imóveis, quem é vizinho de quem e o que cada bairro oferece.</p></div>
-      <div class="valor rv"><i>Registrada</i><h3>CRECI 45.125/RS</h3><p>Corretagem regular, com contrato, documentação conferida e orientação em cada etapa.</p></div>
-      <div class="valor rv"><i>Direta</i><h3>Preço na vitrine</h3><p>Nenhum imóvel "sob consulta". Valor, fotos e descrição de tudo o que está disponível.</p></div>
+      <div class="valor rv"><i>Tradição</i><h3>Tradição que constrói confiança</h3><p>Mais de 10 anos de história e pioneirismo no mercado imobiliário da cidade. Uma trajetória construída com seriedade, compromisso e relações de confiança.</p></div>
+      <div class="valor rv"><i>Segurança</i><h3>Segurança em cada negociação</h3><p>Da primeira conversa à assinatura do contrato, você conta com orientação profissional, transparência e atenção aos detalhes para tomar decisões com mais tranquilidade.</p></div>
+      <div class="valor rv"><i>Da cidade</i><h3>Conhecimento de quem é da cidade</h3><p>Conhecemos a história, os bairros e as particularidades do mercado local. Experiência que ajuda você a encontrar o imóvel certo e a negociar com mais confiança.</p></div>
     </div>
   </div>
 </section>
-<section class="chamada"><div class="miolo"><h2 class="rv">Vamos <em>conversar?</em></h2><div class="acoes rv"><a class="btn btn-ouro" href="contato.html">Endereço e contato ${ico.seta}</a><a class="btn btn-contorno" href="imoveis.html">Ver os imóveis</a></div></div></section>`
+<section class="chamada"><div class="miolo"><h2 class="rv">Vamos <em>conversar?</em></h2><div class="acoes rv"><a class="btn btn-azul" href="contato.html">Endereço e contato ${ico.seta}</a><a class="btn btn-contorno" href="imoveis.html">Ver os imóveis</a></div></div></section>`
 });
 
 const contato = pagina({
   arquivo: "contato.html", titulo: "Contato · Imobiliária Kiesel, Av. Getúlio Vargas, São Martinho/RS",
   desc: "Fale com a Imobiliária Kiesel pelo WhatsApp (55) 99629-8532 ou visite o escritório na Avenida Getúlio Vargas, Centro, São Martinho/RS, CEP 98690-000.",
   corpo: `
-<section class="pag-topo"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Contato</div><h1 class="mask">Na Avenida, <span class="ital">ou no seu celular.</span></h1><p>O atendimento é direto com o corretor. Mande mensagem a qualquer hora ou passe no escritório, no Centro de São Martinho.</p></div></section>
+<section class="pag-topo pag-foto" style="--fundo-img:url(assets/fotos/fundo-avenida.webp)"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Contato</div><h1 class="mask">Perto de você, <span class="ital">em cada etapa.</span></h1><p>Fale diretamente com nosso corretor pelo WhatsApp ou venha nos visitar em nosso escritório, no Centro de São Martinho. Será um prazer atender você.</p></div></section>
 <section class="secao">
   <div class="miolo">
     <div class="contato">
@@ -181,7 +182,7 @@ const financiamento = pagina({
   arquivo: "financiamento.html", titulo: "Simulador de financiamento · Imobiliária Kiesel",
   desc: "Descubra quanto cabe no seu bolso e compare parcelas Price e SAC antes de visitar. Simulação transparente, sem cadastro.",
   corpo: `
-<section class="pag-topo"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Financiamento</div><h1 class="mask">Quanto cabe <span class="ital">no seu bolso?</span></h1><p>Duas contas simples antes de visitar: o valor de imóvel compatível com a sua renda e a parcela de um financiamento, pelas tabelas Price e SAC.</p></div></section>
+<section class="pag-topo pag-foto" style="--fundo-img:url(assets/fotos/fundo-cidade.webp)"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Financiamento</div><h1 class="mask">Quanto cabe <span class="ital">no seu bolso?</span></h1><p>Duas contas simples antes de visitar: o valor de imóvel compatível com a sua renda e a parcela de um financiamento, pelas tabelas Price e SAC.</p></div></section>
 <section class="secao">
   <div class="miolo">
     <div class="duas-col">
@@ -205,14 +206,14 @@ const financiamento = pagina({
     </div>
   </div>
 </section>
-<section class="chamada"><div class="miolo"><h2 class="rv">Fechou a conta? <em>Veja os imóveis</em> nessa faixa.</h2><div class="acoes rv"><a class="btn btn-ouro" href="imoveis.html" id="fin-ver">Ver imóveis ${ico.seta}</a><a class="btn btn-contorno" href="${zapMsg("Olá, fiz uma simulação no site da Kiesel e quero orientação sobre financiamento.")}" target="_blank" rel="noopener">${ico.zap}Falar sobre financiamento</a></div></div></section>`
+<section class="chamada chamada-foto" style="--fundo-img:url(assets/fotos/fundo-bairro.webp)"><div class="miolo"><span class="chamada-ic" aria-hidden="true">${ICO_CHAVE}</span><h2 class="rv">Já sabe quanto quer investir?</h2><p class="chamada-txt rv">Encontre imóveis dentro do seu orçamento e dê o próximo passo com mais <em>segurança</em>.</p><div class="acoes rv"><a class="btn btn-azul" href="imoveis.html" id="fin-ver">Ver imóveis ${ico.seta}</a><a class="btn btn-contorno" href="${zapMsg("Olá, fiz uma simulação no site da Kiesel e quero tirar dúvidas sobre financiamento.")}" target="_blank" rel="noopener">${ico.zap}Tirar dúvidas sobre financiamento</a></div></div></section>`
 });
 
 const anuncie = pagina({
   arquivo: "anuncie.html", titulo: "Anuncie seu imóvel · Imobiliária Kiesel",
   desc: "Venda ou alugue seu imóvel em São Martinho com a Imobiliária Kiesel: avaliação, fotos, divulgação neste site e no Facebook e acompanhamento até a escritura.",
   corpo: `
-<section class="pag-topo"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Anuncie</div><h1 class="mask">Seu imóvel, <span class="ital">bem apresentado.</span></h1><p>Avaliação de mercado, fotos, anúncio neste site e no Facebook, visitas acompanhadas e documentação conferida. Você só fala com a Imobiliária Kiesel.</p></div></section>
+<section class="pag-topo pag-foto" style="--fundo-img:url(assets/fotos/fundo-bairro.webp)"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Anuncie</div><h1 class="mask">A melhor apresentação <span class="ital">para o seu imóvel.</span></h1><p>Cada imóvel tem seus diferenciais. Valorizamos os pontos fortes da sua propriedade com fotos, informações claras e divulgação nos canais da Kiesel, além do acompanhamento das visitas e do suporte durante a negociação.</p></div></section>
 <section class="secao">
   <div class="miolo">
     <div class="duas-col">

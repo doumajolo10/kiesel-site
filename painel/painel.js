@@ -213,7 +213,7 @@
   function ladoMarca(frase) {
     const itens = [[I.mais, "Cadastre imóveis com fotos, preço e descrição"], [I.editar, "Edite qualquer informação quando quiser"], [I.etiqueta, "Marque como vendido e ele sai do site"], [I.estrela, "Escolha os destaques da página inicial"]];
     return `<div class="entrada-marca">
-    <div class="placa-logo"><img src="/assets/logo-topo.png" width="391" height="190" alt="Kiesel Negócios Imobiliários"></div>
+    <div class="placa-logo"><img src="/assets/marca-kiesel-400.webp" width="400" height="194" alt="Kiesel Negócios Imobiliários"></div>
     <div class="miolo-marca"><span class="rotulo-marca">Painel de imóveis</span><b>${esc(frase)}</b>
       <ul>${itens.map(([i, t]) => `<li><span class="ic">${i}</span>${t}</li>`).join("")}</ul></div>
     <p class="pe-marca">O site muda na hora em que você salva.<br>Kiesel Negócios Imobiliários · CRECI 45.125/RS</p>
@@ -226,7 +226,7 @@
   ${ladoMarca("Os imóveis da Kiesel, atualizados por quem conhece cada um.")}
   <div class="entrada-miolo">
     <div class="entrada-cartao">
-      <img class="logo" src="/assets/logo-topo.png" width="391" height="190" alt="Kiesel Negócios Imobiliários">
+      <img class="logo" src="/assets/marca-kiesel-400.webp" width="400" height="194" alt="Kiesel Negócios Imobiliários">
       <h1>Painel de imóveis</h1>
       <p class="sub">Entre com o e-mail e a senha da sua conta.</p>
       <form id="f-entrar" novalidate>
@@ -266,7 +266,7 @@
     document.title = "Nova senha · Painel Kiesel";
     app.innerHTML = `<main class="entrada">${ladoMarca(tipo === "invite" ? "Boas-vindas ao painel da Kiesel." : "Vamos criar uma senha nova.")}
   <div class="entrada-miolo"><div class="entrada-cartao">
-    <img class="logo" src="/assets/logo-topo.png" width="391" height="190" alt="Kiesel Negócios Imobiliários">
+    <img class="logo" src="/assets/marca-kiesel-400.webp" width="400" height="194" alt="Kiesel Negócios Imobiliários">
     <h1>${tipo === "invite" ? "Crie a sua senha" : "Senha nova"}</h1>
     <p class="sub">${esc(sessao && sessao.email || "")}</p>
     <form id="f-senha" novalidate>
@@ -287,7 +287,7 @@
   }
   function telaSemAcesso() {
     app.innerHTML = `<main class="entrada" style="grid-template-columns:1fr"><div class="entrada-miolo" style="align-items:center"><div class="entrada-cartao">
-      <img class="logo" src="/assets/logo-topo.png" width="391" height="190" alt="Kiesel Negócios Imobiliários">
+      <img class="logo" src="/assets/marca-kiesel-400.webp" width="400" height="194" alt="Kiesel Negócios Imobiliários">
       <h1>Acesso ainda não liberado</h1>
       <p class="sub" style="margin-top:12px">Você entrou como <b>${esc(sessao && sessao.email)}</b>, mas este e-mail ainda não está na equipe do painel. Peça para o responsável pelo site incluir o seu e-mail e entre de novo.</p>
       <form style="margin-top:24px"><button class="btn btn-linha" type="button" id="b-sair">Sair e entrar com outro e-mail</button></form>
@@ -302,7 +302,7 @@
     const nome = (E.equipe && E.equipe.nome) || (sessao && sessao.email) || "";
     return `${DEMO ? '<div class="demo-faixa">Modo demonstração: as alterações ficam só neste navegador e não vão para o site.</div>' : ""}
 <header class="topo">
-  <a class="marca" href="#" data-ir="lista"><img src="/assets/logo-topo.png" width="391" height="190" alt="Kiesel"><span>Painel de imóveis</span></a>
+  <a class="marca" href="#" data-ir="lista"><img src="/assets/marca-kiesel-400.webp" width="400" height="194" alt="Kiesel"><span>Painel de imóveis</span></a>
   <div class="espaco"></div>
   <a class="btn btn-fantasma ver-site" href="${SITE_PUB}/?fresco=1" target="_blank" rel="noopener">${I.externo}<span>Ver o site</span></a>
   <div class="usuario"><button type="button" id="b-usuario" aria-haspopup="menu" aria-expanded="false"><span class="avatar">${esc(inicial(nome))}</span><span class="nome">${esc(nome)}</span></button></div>

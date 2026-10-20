@@ -166,7 +166,7 @@ document.addEventListener("click", function (e) {
     });
     // cartões empilhados
     const cartoes = $$("#pilha .cartao");
-    if (cartoes.length && innerWidth > 860) cartoes.forEach((c, i) => { const prox = cartoes[i + 1]; if (!prox) return; gsap.to(c, { scale: 0.94, opacity: 0.6, ease: "none", scrollTrigger: { trigger: prox, start: "top 80%", end: "top 20%", scrub: true } }); });
+    // (sem efeito de empilhar: os três cartões ficam iguais, brancos e do mesmo tamanho)
     // palavra gigante do rodapé sobe com a rolagem
     const gig = $(".rodape .gigante"); if (gig) gsap.from(gig, { yPercent: 30, ease: "none", scrollTrigger: { trigger: ".rodape", start: "top bottom", end: "bottom bottom", scrub: true } });
   } else if (lenis) { (function raf(t) { lenis.raf(t); requestAnimationFrame(raf); })(0); }
@@ -204,25 +204,33 @@ document.addEventListener("click", function (e) {
   // ---------- busca da home ----------
   const fb = $("#form-busca");
   if (fb) {
+    // cidade escolhida limita a lista de bairros (há bairros com o mesmo nome em cidades diferentes)
+    const bC = $("#b-cidade"), bB = $("#b-bairro");
+    const casaBairros = (cid, sel) => { $$("option[data-cidade]", sel).forEach(o => { o.hidden = o.disabled = !!cid && o.dataset.cidade !== cid; }); if (sel.selectedOptions[0] && sel.selectedOptions[0].disabled) sel.value = ""; };
+    if (bC && bB) { bC.addEventListener("change", () => casaBairros(bC.value, bB)); bB.addEventListener("change", () => { const o = bB.selectedOptions[0]; if (o && o.dataset.cidade && !bC.value) { bC.value = o.dataset.cidade; casaBairros(bC.value, bB); } }); }
     $$(".alterna button", fb).forEach(b => b.addEventListener("click", () => { $$(".alterna button", fb).forEach(o => o.setAttribute("aria-pressed", "false")); b.setAttribute("aria-pressed", "true"); $("#b-fin").value = b.dataset.fin; }));
     fb.addEventListener("submit", () => { $$("select", fb).forEach(s => { if (!s.value) s.disabled = true; }); setTimeout(() => $$("select", fb).forEach(s => s.disabled = false), 500); });
   }
 
   // ---------- catálogo ----------
   const grade = $("#grade");
-  var estado = { fin: "comprar", tipo: "", bairro: "", quartos: "", ordem: "recentes", busca: "", pag: 1 };
+  var estado = { fin: "comprar", tipo: "", cidade: "", bairro: "", quartos: "", ordem: "recentes", busca: "", pag: 1 };
   var filtra;
   if (grade && pagina === "imoveis") {
     const POR = 12;
     const itens = $$(".item", grade), vazio = $("#vazio"), pagin = $("#paginacao");
-    const fT = $("#f-tipo"), fB = $("#f-bairro"), fQ = $("#f-quartos"), fO = $("#f-ordem"), fS = $("#f-busca");
+    const fT = $("#f-tipo"), fC = $("#f-cidade"), fB = $("#f-bairro"), fQ = $("#f-quartos"), fO = $("#f-ordem"), fS = $("#f-busca");
     const fins = $$("#filtros .alterna button");
     if (["comprar", "alugar", "favoritos"].indexOf(params.get("fin")) >= 0) estado.fin = params.get("fin");
     if (params.get("tipo")) estado.tipo = params.get("tipo");
+    if (params.get("cidade")) estado.cidade = params.get("cidade");
     if (params.get("bairro")) estado.bairro = params.get("bairro");
     if (params.get("quartos")) estado.quartos = params.get("quartos");
     if (params.get("q")) estado.busca = params.get("q");
     fT.value = estado.tipo; if (fT.value !== estado.tipo) estado.tipo = "";
+    const casaBairros = () => { $$("option[data-cidade]", fB).forEach(o => { o.hidden = o.disabled = !!estado.cidade && o.dataset.cidade !== estado.cidade; }); };
+    fC.value = estado.cidade; if (fC.value !== estado.cidade) estado.cidade = "";
+    casaBairros();
     fB.value = estado.bairro; if (fB.value !== estado.bairro) estado.bairro = "";
     fQ.value = estado.quartos; fS.value = estado.busca;
     fins.forEach(b => b.setAttribute("aria-pressed", b.dataset.fin === estado.fin ? "true" : "false"));
@@ -232,6 +240,7 @@ document.addEventListener("click", function (e) {
       let vis = itens.filter(it => {
         if (estado.fin === "favoritos") { if (l.indexOf(it.dataset.ref) < 0) return false; } else if (it.dataset.fin !== estado.fin) return false;
         if (estado.tipo && it.dataset.tipo !== estado.tipo) return false;
+        if (estado.cidade && it.dataset.cidade !== estado.cidade) return false;
         if (estado.bairro && it.dataset.bairro !== estado.bairro) return false;
         if (estado.quartos && +it.dataset.quartos < +estado.quartos) return false;
         if (q && norm(it.dataset.busca).indexOf(q) < 0 && norm(it.dataset.ref).indexOf(q) < 0) return false;
@@ -246,11 +255,11 @@ document.addEventListener("click", function (e) {
       $("#res-n").textContent = vis.length; $("#res-txt").textContent = vis.length === 1 ? "imóvel" : "imóveis";
       const partes = [];
       partes.push(estado.fin === "favoritos" ? "nos favoritos" : estado.fin === "alugar" ? "para alugar" : "à venda");
-      if (estado.tipo) partes.push(estado.tipo.toLowerCase()); if (estado.bairro) partes.push("em " + estado.bairro); if (estado.quartos) partes.push(estado.quartos + "+ quartos"); if (q) partes.push("“" + estado.busca.trim() + "”");
+      if (estado.tipo) partes.push(estado.tipo.toLowerCase()); if (estado.bairro) partes.push("em " + estado.bairro + (estado.cidade ? ", " + estado.cidade : "")); else if (estado.cidade) partes.push("em " + estado.cidade); if (estado.quartos) partes.push(estado.quartos + "+ quartos"); if (q) partes.push("“" + estado.busca.trim() + "”");
       $("#res-fil").textContent = partes.join(" · ");
       pagin.innerHTML = paginas > 1 ? Array.from({ length: paginas }, (_, i) => '<button type="button" class="num" data-pag="' + (i + 1) + '"' + (i + 1 === estado.pag ? ' aria-current="page"' : "") + ">" + (i + 1) + "</button>").join("") : "";
       const u = new URL(location.href); u.search = ""; const p = u.searchParams;
-      if (estado.fin !== "comprar") p.set("fin", estado.fin); if (estado.tipo) p.set("tipo", estado.tipo); if (estado.bairro) p.set("bairro", estado.bairro); if (estado.quartos) p.set("quartos", estado.quartos); if (estado.busca.trim()) p.set("q", estado.busca.trim()); if (estado.pag > 1) p.set("pag", estado.pag);
+      if (estado.fin !== "comprar") p.set("fin", estado.fin); if (estado.tipo) p.set("tipo", estado.tipo); if (estado.cidade) p.set("cidade", estado.cidade); if (estado.bairro) p.set("bairro", estado.bairro); if (estado.quartos) p.set("quartos", estado.quartos); if (estado.busca.trim()) p.set("q", estado.busca.trim()); if (estado.pag > 1) p.set("pag", estado.pag);
       try { history.replaceState(null, "", u.pathname.split("/").pop() + (p.toString() ? "?" + p.toString() : "")); } catch (e) { }
       if (window.ScrollTrigger) ScrollTrigger.refresh();
       // se a barra de filtros ficou escondida atrás do cabeçalho, traz de volta
@@ -259,11 +268,12 @@ document.addEventListener("click", function (e) {
     };
     fins.forEach(b => b.addEventListener("click", () => { fins.forEach(o => o.setAttribute("aria-pressed", "false")); b.setAttribute("aria-pressed", "true"); estado.fin = b.dataset.fin; estado.pag = 1; filtra(); }));
     fT.addEventListener("change", () => { estado.tipo = fT.value; estado.pag = 1; filtra(); });
-    fB.addEventListener("change", () => { estado.bairro = fB.value; estado.pag = 1; filtra(); });
+    fC.addEventListener("change", () => { estado.cidade = fC.value; casaBairros(); if (fB.selectedOptions[0] && fB.selectedOptions[0].disabled) { fB.value = ""; estado.bairro = ""; } estado.pag = 1; filtra(); });
+    fB.addEventListener("change", () => { estado.bairro = fB.value; const o = fB.selectedOptions[0]; if (o && o.dataset.cidade && !estado.cidade) { estado.cidade = o.dataset.cidade; fC.value = estado.cidade; casaBairros(); } estado.pag = 1; filtra(); });
     fQ.addEventListener("change", () => { estado.quartos = fQ.value; estado.pag = 1; filtra(); });
     fO.addEventListener("change", () => { estado.ordem = fO.value; estado.pag = 1; filtra(); });
     let tS; fS.addEventListener("input", () => { clearTimeout(tS); tS = setTimeout(() => { estado.busca = fS.value; estado.pag = 1; filtra(); }, 180); });
-    $("#f-limpar").addEventListener("click", () => { estado = { fin: "comprar", tipo: "", bairro: "", quartos: "", ordem: "recentes", busca: "", pag: 1 }; fT.value = ""; fB.value = ""; fQ.value = ""; fO.value = "recentes"; fS.value = ""; fins.forEach(o => o.setAttribute("aria-pressed", o.dataset.fin === "comprar" ? "true" : "false")); filtra(); });
+    $("#f-limpar").addEventListener("click", () => { estado = { fin: "comprar", tipo: "", cidade: "", bairro: "", quartos: "", ordem: "recentes", busca: "", pag: 1 }; fT.value = ""; fC.value = ""; casaBairros(); fB.value = ""; fQ.value = ""; fO.value = "recentes"; fS.value = ""; fins.forEach(o => o.setAttribute("aria-pressed", o.dataset.fin === "comprar" ? "true" : "false")); filtra(); });
     pagin.addEventListener("click", e => { const b = e.target.closest("[data-pag]"); if (!b) return; estado.pag = +b.dataset.pag; filtra(); const alvo = $("#filtros"); if (lenis) lenis.scrollTo(alvo, { offset: -90 }); else alvo.scrollIntoView({ behavior: reduz ? "auto" : "smooth" }); });
     if (params.get("pag")) estado.pag = +params.get("pag") || 1;
     filtra();

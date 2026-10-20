@@ -69,7 +69,7 @@
   }
   function card(x, lazy = true) {
     const f1 = capa(x), f2 = capa2(x);
-    return `<a class="item" href="imovel-${x.ref}.html" data-cursor="Ver imóvel" data-ref="${x.ref}" data-tipo="${esc(x.tipo)}" data-fin="${x.finalidade}" data-bairro="${esc(x.bairro)}" data-preco="${x.preco}" data-quartos="${x.quartos}" data-area="${x.area}" data-data="${x.atualizado}" data-busca="${esc((x.titulo + " " + x.bairro + " " + x.cidade + " " + x.ref + " " + x.comodidades.join(" ") + " " + x.descricao).toLowerCase())}">
+    return `<a class="item" href="imovel-${x.ref}.html" data-cursor="Ver imóvel" data-ref="${x.ref}" data-tipo="${esc(x.tipo)}" data-fin="${x.finalidade}" data-bairro="${esc(x.bairro)}" data-cidade="${esc(x.cidade)}" data-preco="${x.preco}" data-quartos="${x.quartos}" data-area="${x.area}" data-data="${x.atualizado}" data-busca="${esc((x.titulo + " " + x.bairro + " " + x.cidade + " " + x.ref + " " + x.comodidades.join(" ") + " " + x.descricao).toLowerCase())}">
   <div class="moldura"><img class="a" src="${fotoOu(f1, "p")}"${f1 ? ` srcset="${foto(f1, "p")} 640w, ${foto(f1, "g")} 1280w"` : ""} sizes="(max-width:600px) 100vw, (max-width:1000px) 50vw, 33vw" width="640" height="360" alt="${esc(x.titulo)} em ${esc(x.bairro)}"${lazy ? ' loading="lazy" decoding="async"' : ""}>${f2 ? `<img class="b" src="${foto(f2, "p")}" alt="" loading="lazy" decoding="async">` : ""}<span class="cod">${x.ref}</span><span class="tipo">${esc(x.tipo)}${x.finalidade === "alugar" ? " · aluguel" : ""}</span><button class="fav" type="button" data-fav="${x.ref}" aria-label="Guardar ${x.ref} nos favoritos" aria-pressed="false">${ico.coracao}</button></div>
   <div class="dados"><h3>${esc(x.titulo)}</h3><span class="preco num">${preco(x)}</span></div>
   <span class="onde">${esc(onde(x))}</span>
@@ -81,16 +81,17 @@
   function contexto(IMOVEIS) {
     const bairros = {}; for (const x of IMOVEIS) { const k = x.bairro + "|" + x.cidade; bairros[k] = (bairros[k] || 0) + 1; }
     const listaBairros = Object.entries(bairros).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+    const listaCidades = [...new Set(IMOVEIS.map(x => x.cidade).filter(Boolean))].sort((a, b) => IMOVEIS.filter(x => x.cidade === b).length - IMOVEIS.filter(x => x.cidade === a).length || a.localeCompare(b));
     const cont = t => IMOVEIS.filter(x => x.tipo === t).length;
     const porRef = r => IMOVEIS.find(x => x.ref === r);
     const tipos = TIPOS.filter(t => cont(t)).concat([...new Set(IMOVEIS.map(x => x.tipo))].filter(t => TIPOS.indexOf(t) < 0));
     // destaques marcados no painel (na ordem), completados pelos mais caros com foto
-    const marcados = IMOVEIS.filter(x => x.destaque > 0).sort((a, b) => a.destaque - b.destaque);
+    const marcados = IMOVEIS.filter(x => x.destaque > 0 && x.finalidade === "comprar").sort((a, b) => a.destaque - b.destaque);
     const resto = IMOVEIS.filter(x => !(x.destaque > 0) && x.fotos.length && x.finalidade === "comprar").sort((a, b) => b.preco - a.preco);
     const destaques = marcados.concat(resto).slice(0, 6);
     const heroi = destaques.filter(x => x.fotos.length).slice(0, 4);
     const recentes = IMOVEIS.slice().sort((a, b) => b.atualizado.localeCompare(a.atualizado) || b.preco - a.preco).slice(0, 6);
-    return { listaBairros, cont, porRef, tipos, destaques, heroi, recentes };
+    return { listaBairros, cont, porRef, tipos, destaques, heroi, recentes, listaCidades };
   }
 
   // ---------- filme aéreo da capa (build/video.sh) ----------
@@ -109,15 +110,18 @@
   // ---------- home ----------
   const CATEGORIAS = [["Casa", "Casas", "CA0047"], ["Apartamento", "Apartamentos", ""], ["Terreno", "Terrenos", "TE0028"], ["Chácara", "Chácaras", "CH0007"], ["Área rural", "Áreas rurais", "AR0001"], ["Prédio", "Prédios", "PR0001"], ["Sala comercial", "Salas comerciais", "SA0003"]];
   function corpoHome(IMOVEIS) {
-    const { listaBairros, cont, porRef, tipos, destaques, heroi, recentes } = contexto(IMOVEIS);
+    const { listaBairros, listaCidades, cont, porRef, tipos, destaques, heroi, recentes } = contexto(IMOVEIS);
     const bairroFoto = b => { const y = IMOVEIS.find(x => x.bairro === b && x.tipo === "Casa" && x.fotos.length) || IMOVEIS.find(x => x.bairro === b && x.fotos.length) || IMOVEIS.find(x => x.bairro === b); return fotoOu(capa(y), "p"); };
     const categorias = CATEGORIAS.map(([t, nome, ref]) => { const n = cont(t); const p = porRef(ref); const y = p && p.tipo === t && p.fotos.length ? p : IMOVEIS.find(x => x.tipo === t && x.fotos.length) || IMOVEIS.find(x => x.tipo === t); return { t, nome, n, y }; }).filter(c => c.n > 0).slice(0, 6);
     const icoCasa = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 11l9-7 9 7M5 10v10h14V10M10 20v-6h4v6"/></svg>';
     const icoSelo = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3l2.5 2 3.2-.3.6 3.1 2.7 1.7-1.3 2.9 1.3 2.9-2.7 1.7-.6 3.1-3.2-.3L12 21l-2.5-2-3.2.3-.6-3.1L3 14.5l1.3-2.9L3 8.7l2.7-1.7.6-3.1 3.2.3z"/><path d="M9 12l2 2 4-4"/></svg>';
+    const icoTrad = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>';
+    const icoEscudo = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3l7 3v5c0 4.6-3 8.4-7 10-4-1.6-7-5.4-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>';
+    const icoPino = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>';
     const icoEtiq = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.5"/></svg>';
     const terras = cont("Terreno") + cont("Chácara") + cont("Área rural");
     return `
-<div class="pre" id="pre" aria-hidden="true"><img src="assets/logo-topo.png" alt="" width="391" height="190"><span class="pre-num" id="pre-conta">0</span><i class="pre-linha"><i id="pre-barra"></i></i></div>
+<div class="pre" id="pre" aria-hidden="true"><img src="assets/marca-kiesel-400.webp" alt="" width="400" height="194"><span class="pre-num" id="pre-conta">0</span><i class="pre-linha"><i id="pre-barra"></i></i></div>
 <section class="heroi" id="heroi">
   <div class="heroi-fotos heroi-filme" id="heroi-fotos">
     <img class="heroi-poster" src="assets/video/heroi-poster.webp" srcset="assets/video/heroi-poster-p.webp 960w, assets/video/heroi-poster.webp 1920w" sizes="(max-width:900px) 100vw, 1360px" width="1920" height="1080" alt="Vista aérea de São Martinho/RS, com a igreja matriz e o letreiro da cidade" fetchpriority="high">
@@ -129,14 +133,15 @@
     <button type="button" class="filme-pausa" id="heroi-pausa" aria-pressed="false" aria-label="Pausar o vídeo de fundo" hidden>${ICO_PAUSA.replace("<svg", '<svg class="i-pausa"')}${ICO_PLAY.replace("<svg", '<svg class="i-play"')}</button>
   </div>
   <div class="heroi-miolo">
-    <div class="heroi-titulo"><h1>Encontre seu imóvel em São Martinho e região</h1><p class="sub">A primeira imobiliária da cidade, com tradição, experiência e compromisso em cada negócio.</p></div>
+    <div class="heroi-titulo"><h1>Encontre seu imóvel em São Martinho e região</h1><p class="sub">A primeira imobiliária da cidade, com mais de 12 anos de tradição, experiência e compromisso em cada negócio.</p></div>
   </div>
 </section>
 <div class="busca-faixa">
   <form class="busca busca-barra" id="form-busca" action="imoveis.html" method="get" aria-label="Buscar imóveis">
     <div class="alterna" role="group" aria-label="Finalidade"><input type="hidden" name="fin" id="b-fin" value="comprar"><button type="button" data-fin="comprar" aria-pressed="true">Comprar</button><button type="button" data-fin="alugar" aria-pressed="false">Alugar</button></div>
     <div class="campo"><label for="b-tipo">Tipo de imóvel</label><select class="sel" id="b-tipo" name="tipo"><option value="">Todos os tipos</option>${tipos.map(t => `<option>${esc(t)}</option>`).join("")}</select></div>
-    <div class="campo"><label for="b-bairro">Bairro</label><select class="sel" id="b-bairro" name="bairro"><option value="">Todos os bairros</option>${listaBairros.map(([k]) => { const [b, c] = k.split("|"); return `<option value="${esc(b)}">${esc(b)} · ${esc(c)}</option>`; }).join("")}</select></div>
+    <div class="campo"><label for="b-cidade">Cidade</label><select class="sel" id="b-cidade" name="cidade"><option value="">Todas as cidades</option>${listaCidades.map(c => `<option>${esc(c)}</option>`).join("")}</select></div>
+    <div class="campo"><label for="b-bairro">Bairro</label><select class="sel" id="b-bairro" name="bairro"><option value="">Todos os bairros</option>${listaBairros.map(([k]) => { const [b, c] = k.split("|"); return `<option value="${esc(b)}" data-cidade="${esc(c)}">${esc(b)} · ${esc(c)}</option>`; }).join("")}</select></div>
     <div class="campo"><label for="b-quartos">Quartos</label><select class="sel" id="b-quartos" name="quartos"><option value="">Qualquer</option><option value="1">1 ou mais</option><option value="2">2 ou mais</option><option value="3">3 ou mais</option><option value="4">4 ou mais</option></select></div>
     <button class="btn btn-azul" type="submit">Buscar <span class="seta">${ico.seta}</span></button>
   </form>
@@ -149,6 +154,9 @@
     <div class="fato rv"><b class="num" data-n="${listaBairros.length}">${listaBairros.length}</b><span>bairros em São Martinho e Sede Nova</span></div>
   </div>
 </section>
+<section class="frase-cidade" aria-label="Imobiliária Kiesel">
+  <div class="miolo"><p class="rv">Uma <em>história</em> que faz parte da cidade.<br>Uma <em>confiança</em> que faz parte da sua história.</p></div>
+</section>
 <section class="secao" id="categorias">
   <div class="miolo">
     <div class="cabeca rv"><div><span class="mono">O que você procura</span><h2>Busque por tipo de imóvel</h2></div></div>
@@ -157,17 +165,17 @@
 </section>
 <section class="secao secao-cinza" id="selecao">
   <div class="miolo">
-    <div class="cabeca rv"><div><span class="mono">Seleção da equipe</span><h2>Imóveis em destaque</h2><p>Os imóveis mais completos da carteira, escolhidos pela Kiesel.</p></div><a class="btn btn-contorno" href="imoveis.html">Ver catálogo completo <span class="seta">${ico.seta}</span></a></div>
+    <div class="cabeca rv"><div><span class="mono">Seleção da equipe</span><h2>Imóveis à venda em destaque</h2><p>Os imóveis mais completos da carteira, escolhidos pela Kiesel.</p></div><a class="btn btn-contorno" href="imoveis.html">Ver catálogo completo <span class="seta">${ico.seta}</span></a></div>
     <div class="vitrine" data-stagger id="destaques">${destaques.map(x => card(x)).join("")}</div>
   </div>
 </section>
 <section class="secao" id="porque">
   <div class="miolo">
-    <div class="cabeca rv"><div><span class="mono">Por que a Imobiliária Kiesel</span><h2>A imobiliária da cidade</h2></div></div>
+    <div class="cabeca rv"><div><span class="mono">Por que a Imobiliária Kiesel</span><h2>A primeira imobiliária da cidade</h2></div></div>
     <div class="porques" data-stagger>
-      <div class="porque rv"><span class="ic">${icoSelo}</span><h3>Corretagem registrada</h3><p>CRECI 45.125/RS. Contrato, documentação conferida e orientação em cada etapa, da visita à escritura.</p></div>
-      <div class="porque rv"><span class="ic">${icoCasa}</span><h3>Conhece cada quadra</h3><p>Escritório na Avenida Getúlio Vargas, no Centro. Sabe o histórico dos imóveis, a vizinhança e o que cada bairro oferece.</p></div>
-      <div class="porque rv"><span class="ic">${icoEtiq}</span><h3>Preço na vitrine</h3><p>Nenhum imóvel "sob consulta". Valor, fotos e descrição completa de tudo o que está disponível.</p></div>
+      <div class="porque rv"><span class="ic">${icoTrad}</span><h3>Tradição que constrói confiança</h3><p>Mais de 10 anos de história e pioneirismo no mercado imobiliário da cidade. Uma trajetória construída com seriedade, compromisso e relações de confiança.</p></div>
+      <div class="porque rv"><span class="ic">${icoEscudo}</span><h3>Segurança em cada negociação</h3><p>Da primeira conversa à assinatura do contrato, você conta com orientação profissional, transparência e atenção aos detalhes para tomar decisões com mais tranquilidade.</p></div>
+      <div class="porque rv"><span class="ic">${icoPino}</span><h3>Conhecimento de quem é da cidade</h3><p>Conhecemos a história, os bairros e as particularidades do mercado local. Experiência que ajuda você a encontrar o imóvel certo e a negociar com mais confiança.</p></div>
     </div>
   </div>
 </section>
@@ -180,20 +188,20 @@
 <section class="secao" id="bairros">
   <div class="miolo">
     <div class="cabeca rv"><div><span class="mono">Onde</span><h2>Imóveis por bairro</h2></div></div>
-    <div class="bairros" data-stagger>${listaBairros.map(([k, n]) => { const [b, c] = k.split("|"); return `<a class="bairro rv" href="imoveis.html?bairro=${encodeURIComponent(b)}" data-foto="${bairroFoto(b)}"><img class="th" src="${bairroFoto(b)}" alt="" loading="lazy" decoding="async" width="72" height="60"><span><b>${esc(b)}</b><span>${esc(c)}</span></span><span class="mono">${n} ${n > 1 ? "imóveis" : "imóvel"}</span></a>`; }).join("")}</div>
+    <div class="bairros" data-stagger>${listaBairros.map(([k, n]) => { const [b, c] = k.split("|"); return `<a class="bairro rv" href="imoveis.html?cidade=${encodeURIComponent(c)}&bairro=${encodeURIComponent(b)}" data-foto="${bairroFoto(b)}"><img class="th" src="${bairroFoto(b)}" alt="" loading="lazy" decoding="async" width="72" height="60"><span><b>${esc(b)}</b><span>${esc(c)}</span></span><span class="mono">${n} ${n > 1 ? "imóveis" : "imóvel"}</span></a>`; }).join("")}</div>
   </div>
 </section>
 <section class="secao" id="anuncie-faixa" style="padding-top:0">
   <div class="miolo">
     <div class="faixa-azul rv">
-      <div><span class="mono" style="color:#9CC4EA">Proprietários</span><h2>Quer vender ou alugar o seu imóvel?</h2><p>Avaliação de mercado, fotos, anúncio neste site e no Facebook, visitas acompanhadas e documentação conferida. Você só fala com a Imobiliária Kiesel.</p></div>
+      <div><span class="mono" style="color:#9CC4EA">Proprietários</span><h2>Seu imóvel merece a <em>experiência</em> de quem conhece este mercado.</h2><p>Cuidamos de cada etapa da venda ou locação: avaliação de mercado, apresentação do imóvel, divulgação e acompanhamento das visitas. Você conta com orientação profissional e suporte na documentação, do anúncio à conclusão do negócio.</p></div>
       <div class="acoes"><a class="btn btn-papel" href="anuncie.html">Anunciar meu imóvel <span class="seta">${ico.seta}</span></a><a class="btn btn-contorno" href="financiamento.html">Simular financiamento</a></div>
     </div>
   </div>
 </section>
 <section class="secao secao-cinza" id="como">
   <div class="miolo">
-    <div class="cabeca rv"><div><span class="mono">Como funciona</span><h2>Sem surpresa, do primeiro contato à escritura</h2></div></div>
+    <div class="cabeca rv"><div><span class="mono">Com confiança em cada etapa</span><h2>Do primeiro contato à escritura, você sabe com quem contar.</h2><p>Atendimento próximo, informações claras e acompanhamento em cada etapa da negociação. <em>Porque um bom negócio começa com confiança e termina com a tranquilidade de ter feito a escolha certa.</em></p></div></div>
     <div class="pilha" id="pilha" data-stagger>
       <div class="cartao rv"><span class="n">Passo 1</span><h3>Conversa</h3><p>Você conta o que procura ou o que quer vender. A Imobiliária Kiesel responde pelo WhatsApp, sem formulário intermediário nem central de atendimento.</p><div class="mini"><span>WhatsApp</span><span>Balcão na Avenida</span></div></div>
       <div class="cartao rv"><span class="n">Passo 2</span><h3>Visita</h3><p>Visita acompanhada pelo corretor, que conhece o imóvel, a vizinhança e o histórico de cada quadra. Você vê o que a foto não mostra.</p><div class="mini"><span>Agenda flexível</span><span>Corretor presente</span></div></div>
@@ -204,14 +212,17 @@
 <section class="secao" id="sobre-breve">
   <div class="miolo">
     <div class="manifesto">
-      <div class="quadro quadro-mapa"><iframe title="Mapa: escritório da Kiesel, Avenida Getúlio Vargas, Centro, São Martinho" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=NEG%C3%93CIOS%20IMOBILI%C3%81RIOS%20KIESEL%2C%20S%C3%A3o%20Martinho%20-%20RS&z=17&hl=pt-BR&output=embed"></iframe><span class="selo-mapa"><img src="assets/logo-topo.png" width="391" height="190" alt="" loading="lazy"><b>Av. Getúlio Vargas, Centro</b><span>São Martinho/RS · CRECI 45.125/RS</span></span></div>
+      <figure class="quadro quadro-foto rv"><img src="assets/fotos/centro-1600.webp" srcset="assets/fotos/centro-800.webp 800w, assets/fotos/centro-1600.webp 1600w" sizes="(max-width:860px) 100vw, 50vw" width="1600" height="900" alt="Centro de São Martinho visto do alto, onde fica o escritório da Imobiliária Kiesel" loading="lazy" decoding="async"><figcaption class="selo-mapa"><img src="assets/marca-kiesel-400.webp" width="400" height="194" alt="" loading="lazy"><b>Av. Getúlio Vargas, Centro</b><span>São Martinho/RS · CRECI 45.125/RS</span></figcaption></figure>
       <div><span class="mono rv">A Imobiliária Kiesel</span><p class="grande rv" style="margin-top:10px">Por trás de cada negócio, <em>uma história de respeito e confiança.</em></p><p class="desde rv" style="margin-top:16px">Atuamos no mercado desde fevereiro de 2014.</p><p class="rv" style="margin-top:10px">A Kiesel Negócios Imobiliários atende São Martinho, o interior e os municípios vizinhos com casas, terrenos, chácaras, áreas rurais e salas comerciais. Toda a carteira está neste site com preço, fotos e descrição.</p><p class="rv" style="margin-top:22px"><a class="btn btn-azul" href="sobre.html">Conheça a Imobiliária Kiesel <span class="seta">${ico.seta}</span></a> <a class="btn btn-contorno" href="contato.html" style="margin-left:6px">Fale conosco</a></p></div>
     </div>
   </div>
 </section>
-<section class="chamada">
+<section class="chamada chamada-foto" style="--fundo-img:url(assets/fotos/fundo-cidade.webp)">
   <div class="miolo">
-    <h2 class="rv">Não achou o que procura? <em>A Imobiliária Kiesel procura para você.</em></h2>
+    <span class="chamada-ic" aria-hidden="true">${icoPino}</span>
+    <h2 class="rv">Ainda não encontrou o imóvel ideal?</h2>
+    <p class="chamada-sub rv"><em>Conte com a Kiesel para encontrar o que você procura.</em></p>
+    <p class="chamada-txt rv">Diga o que você precisa. Vamos buscar opções que combinem com seus planos e seu orçamento.</p>
     <div class="acoes rv"><a class="btn btn-azul" href="encomende.html">Encomendar um imóvel <span class="seta">${ico.seta}</span></a><a class="btn btn-zap" href="${zapMsg("Olá, vi o site da Kiesel e quero conversar sobre um imóvel.")}" target="_blank" rel="noopener">${ico.zap}Chamar no WhatsApp</a></div>
   </div>
 </section>`;
@@ -219,7 +230,7 @@
 
   // ---------- catálogo ----------
   function corpoCatalogo(IMOVEIS) {
-    const { listaBairros, tipos } = contexto(IMOVEIS);
+    const { listaBairros, listaCidades, tipos } = contexto(IMOVEIS);
     return `
 <section class="pag-topo"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Imóveis</div><h1 class="mask">Catálogo <span class="ital">completo.</span></h1><p>Todos os imóveis disponíveis hoje, com preço, fotos e descrição. Filtre por finalidade, tipo, bairro e quartos, ou guarde favoritos para comparar depois.</p></div></section>
 <section class="secao" style="padding-top:clamp(28px,4vw,48px);min-height:100vh">
@@ -227,7 +238,8 @@
     <form class="filtros" id="filtros" data-sem-envio>
       <div class="alterna" role="group" aria-label="Finalidade"><button type="button" data-fin="comprar" aria-pressed="true">Comprar</button><button type="button" data-fin="alugar" aria-pressed="false">Alugar</button><button type="button" data-fin="favoritos" aria-pressed="false">Favoritos</button></div>
       <div class="campo"><label for="f-tipo">Tipo</label><select class="sel" id="f-tipo"><option value="">Todos</option>${tipos.map(t => `<option>${esc(t)}</option>`).join("")}</select></div>
-      <div class="campo"><label for="f-bairro">Bairro</label><select class="sel" id="f-bairro"><option value="">Todos</option>${listaBairros.map(([k]) => { const [b, c] = k.split("|"); return `<option value="${esc(b)}">${esc(b)} · ${esc(c)}</option>`; }).join("")}</select></div>
+      <div class="campo"><label for="f-cidade">Cidade</label><select class="sel" id="f-cidade"><option value="">Todas</option>${listaCidades.map(c => `<option>${esc(c)}</option>`).join("")}</select></div>
+      <div class="campo"><label for="f-bairro">Bairro</label><select class="sel" id="f-bairro"><option value="">Todos</option>${listaBairros.map(([k]) => { const [b, c] = k.split("|"); return `<option value="${esc(b)}" data-cidade="${esc(c)}">${esc(b)} · ${esc(c)}</option>`; }).join("")}</select></div>
       <div class="campo"><label for="f-quartos">Quartos</label><select class="sel" id="f-quartos"><option value="">Qualquer</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option></select></div>
       <div class="campo"><label for="f-ordem">Ordem</label><select class="sel" id="f-ordem"><option value="recentes">Mais recentes</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option><option value="area">Maior área</option></select></div>
       <div class="campo campo-busca"><label for="f-busca">Buscar</label><input class="ent" id="f-busca" type="search" placeholder="piscina, Centro, CA0018…" autocomplete="off"></div>
@@ -292,7 +304,7 @@
           <a class="btn btn-zap" id="ficha-zap" href="${zapMsg(msg)}" target="_blank" rel="noopener">${ico.zap}Falar sobre este imóvel</a>
           <div class="acoes-linha"><button class="btn btn-contorno" type="button" data-fav="${x.ref}" aria-pressed="false" id="ficha-fav">${ico.coracao}<span>Guardar</span></button><button class="btn btn-contorno" type="button" id="ficha-compart">${ico.compart}Compartilhar</button></div>
           ${x.finalidade === "comprar" ? `<a class="btn btn-contorno" href="financiamento.html?valor=${x.preco}">Simular financiamento</a>` : ""}
-          <div class="corretor"><img src="assets/logo-topo.png" alt="" width="72" height="33"><div>Kiesel Negócios Imobiliários<br>CRECI 45.125/RS · (55) 99629-8532</div></div>
+          <div class="corretor"><img src="assets/marca-kiesel-400.webp" alt="" width="72" height="35"><div>Kiesel Negócios Imobiliários<br>CRECI 45.125/RS · (55) 99629-8532</div></div>
         </div>
       </aside>
     </div>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- Logotipo da Kiesel redesenhado em vetor sobre o original (assets/logo-topo.png, 391x190), na mesma composição.
+     Coordenadas no tamanho original x4 (1564 x 760). Rodar: node build/logo2.js -->
+<link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@500;600;700&family=Bodoni+Moda:opsz,wght@6..96,600;6..96,700;6..96,800&display=block" rel="stylesheet">
+<style>
+html,body{margin:0;background:transparent}
+#logo{width:1564px;height:760px;display:block}
+.ref{position:absolute;left:0;top:0;width:1564px;height:760px;opacity:.45;display:none}
+body.comparar .ref{display:block}
+</style></head><body>
+<img class="ref" src="../assets/logo-topo.png" alt="">
+<svg id="logo" viewBox="0 0 1564 760" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="azul" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2FA3E0"/><stop offset="1" stop-color="#1683C6"/></linearGradient>
+  </defs>
+  <!-- arco preto (externo): fino em cima, encorpado embaixo -->
+  <path d="M168 88 C 88 150, 22 270, 26 410 C 30 560, 160 672, 352 700 C 430 711, 500 708, 548 698 C 470 696, 400 686, 336 668 C 168 622, 70 528, 62 404 C 54 282, 104 168, 168 88 Z" fill="#1A1A1C"/>
+  <!-- arco azul (interno) -->
+  <path d="M296 30 C 176 96, 96 232, 100 382 C 104 520, 196 626, 344 662 C 410 678, 480 680, 548 668 C 470 664, 404 650, 352 628 C 240 580, 162 488, 154 380 C 146 258, 200 136, 296 30 Z" fill="url(#azul)"/>
+  <!-- prédio: torre azul com faixas brancas (andares) e linhas do telhado em perspectiva -->
+  <g fill="url(#azul)">
+    <path d="M208 214 L 248 214 L 248 640 L 208 640 Z"/>
+    <path d="M300 150 L 334 150 L 334 560 L 300 560 Z"/>
+    <path d="M248 214 L 300 196 L 300 560 L 248 560 Z" opacity=".95"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M208 252 L 300 232 L 300 246 L 208 266 Z"/>
+    <path d="M208 318 L 300 298 L 300 312 L 208 332 Z"/>
+    <path d="M208 384 L 300 364 L 300 378 L 208 398 Z"/>
+    <path d="M208 450 L 300 430 L 300 444 L 208 464 Z"/>
+    <path d="M208 516 L 300 496 L 300 510 L 208 530 Z"/>
+  </g>
+  <g fill="none" stroke="url(#azul)" stroke-width="14" stroke-linecap="square">
+    <path d="M334 214 L 446 278"/>
+    <path d="M334 290 L 470 366"/>
+    <path d="M334 366 L 520 452"/>
+    <path d="M470 400 L 548 444"/>
+    <path d="M470 470 L 548 506"/>
+    <path d="M480 540 L 548 578"/>
+  </g>
+  <path d="M332 560 L 350 560 L 350 652 L 332 652 Z" fill="url(#azul)"/>
+  <path d="M486 560 L 502 560 L 502 652 L 486 652 Z" fill="url(#azul)"/>
+  <!-- textos -->
+  <text x="570" y="302" font-family="Libre Bodoni" font-weight="700" font-size="88" fill="#4E9EBA" stroke="#FFFFFF" stroke-width="8" paint-order="stroke" textLength="900" lengthAdjust="spacing">Negócios Imobiliários</text>
+  <g><text x="298" y="558" font-family="Libre Bodoni" font-weight="700" font-size="300" fill="#1A1A1C" stroke="#FFFFFF" stroke-width="16" stroke-linejoin="round" paint-order="stroke" textLength="1236" lengthAdjust="spacingAndGlyphs">KIESEL</text></g>
+  <text x="592" y="662" font-family="Libre Bodoni" font-weight="600" font-size="52" fill="#5E6B78" textLength="938" lengthAdjust="spacing">CRECI RS 45.125 · Corretor de Imóveis</text>
+</svg>
+</body></html>
