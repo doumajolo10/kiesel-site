@@ -55,6 +55,9 @@ ${rotulos}
   <circle r="46" fill="#1F6FB8" opacity=".12"/><circle r="26" fill="#1F6FB8" opacity=".18"/>
   <path d="M0 0 C -6 -14 -22 -24 -22 -42 A 22 22 0 0 1 22 -42 C 22 -24 6 -14 0 0 Z" fill="#1F6FB8" stroke="#fff" stroke-width="4"/>
   <circle cy="-42" r="8" fill="#fff"/>
+  <g transform="translate(34 -78)"><rect x="0" y="0" width="236" height="52" rx="12" fill="#0F2A44"/><path d="M-10 26 L0 18 L0 34 Z" fill="#0F2A44"/>
+    <text x="16" y="23" style="font:700 17px 'Instrument Sans',system-ui,sans-serif;fill:#fff">Imobiliária Kiesel</text>
+    <text x="16" y="41" style="font:500 12.5px 'Instrument Sans',system-ui,sans-serif;fill:#9CC4EA">Av. Getúlio Vargas · Centro</text></g>
 </g>
 <text x="${W - 14}" y="${H - 12}" text-anchor="end" style="font:500 12px 'Instrument Sans',system-ui,sans-serif;fill:#7A8796">© colaboradores do OpenStreetMap</text>
 </svg>`;
