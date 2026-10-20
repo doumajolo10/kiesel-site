@@ -20,7 +20,7 @@ ${sec("Com quem os dados são compartilhados",
     `<ul>
 <li><b>Vercel Inc.</b>: hospedagem do site (registros técnicos de acesso).</li>
 <li><b>WhatsApp (Meta)</b>: somente se você escolher conversar com a Imobiliária Kiesel por lá, conforme os termos do próprio WhatsApp.</li>
-<li><b>Google</b>: somente se você clicar em "Mostrar o mapa". O mapa só é carregado depois do seu clique.</li>
+<li><b>Google</b>: as páginas Imobiliária Kiesel e Contato mostram o mapa do Google Maps com a localização do escritório. Ao exibir o mapa, o Google recebe dados técnicos do seu acesso (como endereço IP e navegador), conforme a política de privacidade do próprio Google.</li>
 <li><b>Supabase</b>: guarda o cadastro dos imóveis exibidos no site. Não recebe dados de visitantes.</li>
 <li>Autoridades públicas, quando houver obrigação legal ou ordem judicial.</li>
 </ul>`,

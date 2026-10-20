@@ -127,7 +127,7 @@ const sobre = pagina({
   arquivo: "sobre.html", titulo: "Imobiliária Kiesel · A primeira imobiliária de São Martinho/RS, desde 2014",
   desc: "Kiesel Negócios Imobiliários (Kipper Kiesel Ltda), CRECI 45.125/RS. Corretagem de casas, terrenos, chácaras e salas em São Martinho e região.",
   corpo: `
-<section class="pag-topo pag-foto" style="--fundo-img:url(assets/fotos/fundo-cidade.webp)"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Imobiliária Kiesel</div><h1 class="mask">Relações de <span class="ital">confiança.</span> Negócios feitos com <span class="ital">responsabilidade.</span></h1><p>Desde 2014, a Kiesel atua no mercado imobiliário de São Martinho e região, construindo sua trajetória com atendimento próximo, transparência e respeito por cada cliente.</p><p class="pag-assin">Imobiliária Kiesel — CRECI 45.125/RS.</p></div></section>
+<section class="pag-topo pag-foto" style="--fundo-img:url(assets/fotos/foto-igreja.webp);--fundo-img-p:url(assets/fotos/foto-igreja-960.webp)"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Imobiliária Kiesel</div><h1 class="mask">Relações de <span class="ital">confiança.</span> Negócios feitos com <span class="ital">responsabilidade.</span></h1><p>Desde 2014, a Kiesel atua no mercado imobiliário de São Martinho e região, construindo sua trajetória com atendimento próximo, transparência e respeito por cada cliente.</p><p class="pag-assin">Imobiliária Kiesel — CRECI 45.125/RS.</p></div></section>
 <section class="secao">
   <div class="miolo">
     <div class="manifesto">
@@ -155,7 +155,7 @@ const contato = pagina({
   arquivo: "contato.html", titulo: "Contato · Imobiliária Kiesel, Av. Getúlio Vargas, São Martinho/RS",
   desc: "Fale com a Imobiliária Kiesel pelo WhatsApp (55) 99629-8532 ou visite o escritório na Avenida Getúlio Vargas, Centro, São Martinho/RS, CEP 98690-000.",
   corpo: `
-<section class="pag-topo pag-foto" style="--fundo-img:url(assets/fotos/fundo-avenida.webp)"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Contato</div><h1 class="mask">Perto de você, <span class="ital">em cada etapa.</span></h1><p>Fale diretamente com nosso corretor pelo WhatsApp ou venha nos visitar em nosso escritório, no Centro de São Martinho. Será um prazer atender você.</p></div></section>
+<section class="pag-topo pag-foto" style="--fundo-img:url(assets/fotos/foto-avenida-nitida.webp);--fundo-img-p:url(assets/fotos/foto-avenida-nitida-960.webp)"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Contato</div><h1 class="mask">Perto de você, <span class="ital">em cada etapa.</span></h1><p>Fale diretamente com nosso corretor pelo WhatsApp ou venha nos visitar em nosso escritório, no Centro de São Martinho. Será um prazer atender você.</p></div></section>
 <section class="secao">
   <div class="miolo">
     <div class="contato">
@@ -182,7 +182,7 @@ const financiamento = pagina({
   arquivo: "financiamento.html", titulo: "Simulador de financiamento · Imobiliária Kiesel",
   desc: "Descubra quanto cabe no seu bolso e compare parcelas Price e SAC antes de visitar. Simulação transparente, sem cadastro.",
   corpo: `
-<section class="pag-topo pag-foto" style="--fundo-img:url(assets/fotos/fundo-cidade.webp)"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Financiamento</div><h1 class="mask">Quanto cabe <span class="ital">no seu bolso?</span></h1><p>Duas contas simples antes de visitar: o valor de imóvel compatível com a sua renda e a parcela de um financiamento, pelas tabelas Price e SAC.</p></div></section>
+<section class="pag-topo pag-foto" style="--fundo-img:url(assets/fotos/foto-vista.webp);--fundo-img-p:url(assets/fotos/foto-vista-960.webp)"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Financiamento</div><h1 class="mask">Quanto cabe <span class="ital">no seu bolso?</span></h1><p>Duas contas simples antes de visitar: o valor de imóvel compatível com a sua renda e a parcela de um financiamento, pelas tabelas Price e SAC.</p></div></section>
 <section class="secao">
   <div class="miolo">
     <div class="duas-col">
@@ -206,14 +206,14 @@ const financiamento = pagina({
     </div>
   </div>
 </section>
-<section class="chamada chamada-foto" style="--fundo-img:url(assets/fotos/fundo-bairro.webp)"><div class="miolo"><span class="chamada-ic" aria-hidden="true">${ICO_CHAVE}</span><h2 class="rv">Já sabe quanto quer investir?</h2><p class="chamada-txt rv">Encontre imóveis dentro do seu orçamento e dê o próximo passo com mais <em>segurança</em>.</p><div class="acoes rv"><a class="btn btn-azul" href="imoveis.html" id="fin-ver">Ver imóveis ${ico.seta}</a><a class="btn btn-contorno" href="${zapMsg("Olá, fiz uma simulação no site da Kiesel e quero tirar dúvidas sobre financiamento.")}" target="_blank" rel="noopener">${ico.zap}Tirar dúvidas sobre financiamento</a></div></div></section>`
+<section class="chamada chamada-foto" style="--fundo-img:url(assets/fotos/foto-casas.webp);--fundo-img-p:url(assets/fotos/foto-casas-960.webp)"><div class="miolo"><span class="chamada-ic" aria-hidden="true">${ICO_CHAVE}</span><h2 class="rv">Já sabe quanto quer investir?</h2><p class="chamada-txt rv">Encontre imóveis dentro do seu orçamento e dê o próximo passo com mais <em>segurança</em>.</p><div class="acoes rv"><a class="btn btn-azul" href="imoveis.html" id="fin-ver">Ver imóveis ${ico.seta}</a><a class="btn btn-contorno" href="${zapMsg("Olá, fiz uma simulação no site da Kiesel e quero tirar dúvidas sobre financiamento.")}" target="_blank" rel="noopener">${ico.zap}Tirar dúvidas sobre financiamento</a></div></div></section>`
 });
 
 const anuncie = pagina({
   arquivo: "anuncie.html", titulo: "Anuncie seu imóvel · Imobiliária Kiesel",
   desc: "Venda ou alugue seu imóvel em São Martinho com a Imobiliária Kiesel: avaliação, fotos, divulgação neste site e no Facebook e acompanhamento até a escritura.",
   corpo: `
-<section class="pag-topo pag-foto" style="--fundo-img:url(assets/fotos/fundo-bairro.webp)"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Anuncie</div><h1 class="mask">A melhor apresentação <span class="ital">para o seu imóvel.</span></h1><p>Cada imóvel tem seus diferenciais. Valorizamos os pontos fortes da sua propriedade com fotos, informações claras e divulgação nos canais da Kiesel, além do acompanhamento das visitas e do suporte durante a negociação.</p></div></section>
+<section class="pag-topo pag-foto" style="--fundo-img:url(assets/fotos/foto-vista.webp);--fundo-img-p:url(assets/fotos/foto-vista-960.webp)"><div class="miolo"><div class="trilha"><a href="index.html">Início</a> / Anuncie</div><h1 class="mask">A melhor apresentação <span class="ital">para o seu imóvel.</span></h1><p>Cada imóvel tem seus diferenciais. Valorizamos os pontos fortes da sua propriedade com fotos, informações claras e divulgação nos canais da Kiesel, além do acompanhamento das visitas e do suporte durante a negociação.</p></div></section>
 <section class="secao">
   <div class="miolo">
     <div class="duas-col">

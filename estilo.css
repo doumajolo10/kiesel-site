@@ -559,13 +559,21 @@ img[src$="logo-topo.png"],img[src$="marca-kiesel-400.webp"]{height:auto}
 .chamada-txt{margin-top:12px;max-width:52ch;font-size:17px;color:var(--tinta-2)}
 .chamada-txt em{font-style:italic;color:var(--marinho);font-weight:600}
 .chamada-foto .acoes{margin-top:34px;margin-left:0;padding-left:0;justify-content:flex-start}
-/* mapa (sobre e contato): vista aérea no lugar do quadrado cinza enquanto o mapa não é aberto */
-.mapa-aviso{position:relative;isolation:isolate;background:#DDE5EC url(assets/fotos/mapa-aereo.webp) center/cover no-repeat;color:var(--tinta-2)}
-.mapa-aviso::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(15,42,68,.18),rgba(15,42,68,.42))}
-.mapa-aviso>*{position:relative}
-.mapa-aviso b,.mapa-aviso small{background:rgba(255,255,255,.94);border-radius:10px;padding:8px 14px;box-shadow:var(--sombra)}
-.mapa-aviso small{padding:7px 12px}
-.mapa-aviso button{box-shadow:var(--sombra-2)}
+/* localização (sobre e contato): mapa ilustrado com as ruas reais (OpenStreetMap) + cartão; o mapa do Google só abre se a pessoa pedir */
+.mapa-ilustrado{position:relative;display:block;padding:0;background:#EEF2F6;overflow:hidden;min-height:inherit;height:100%}
+.mapa-ilustrado .mapa-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.mapa .mapa-ilustrado{min-height:520px}
+.quadro-mapa .mapa-ilustrado{position:absolute;inset:0}
+.mapa-cartao{position:absolute;left:16px;right:16px;bottom:16px;max-width:440px;background:#fff;border-radius:14px;padding:16px 18px 14px;box-shadow:0 2px 6px rgba(22,32,43,.08),0 18px 40px -18px rgba(22,32,43,.45);display:grid;gap:12px;text-align:left}
+.mapa-id{display:flex;align-items:center;gap:14px}
+.mapa-id img{height:42px;width:auto;flex:none}
+.mapa-id b{display:block;font-size:16px;color:var(--marinho)}
+.mapa-id span{display:block;font-size:13.5px;line-height:1.4;color:var(--tinta-2)}
+.mapa-acoes{display:flex;gap:8px;flex-wrap:wrap}
+.mapa-acoes .btn{min-height:40px;padding:0 16px;font-size:14px}
+.mapa-acoes .btn svg{width:17px;height:17px;margin-right:6px}
+.mapa-cartao small{font-size:11.5px;line-height:1.4;color:var(--tinta-3)}
+@media (max-width:560px){.mapa-cartao{left:10px;right:10px;bottom:10px;padding:14px}.mapa-id img{height:34px}.mapa .mapa-ilustrado{min-height:460px}}
 /* sobre: assinatura do topo e lema */
 .pag-topo .pag-assin{margin-top:10px;font-size:14px;font-weight:600;color:var(--marinho)}
 .manifesto h2.destaque-texto{margin-bottom:18px}
@@ -577,5 +585,29 @@ img[src$="logo-topo.png"],img[src$="marca-kiesel-400.webp"]{height:auto}
 .pag-topo.pag-foto::before{content:"";position:absolute;top:0;right:0;bottom:0;width:58%;z-index:-2;background:var(--fundo-img,url(assets/fotos/fundo-avenida.webp)) center/cover no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent,#000 55%);mask-image:linear-gradient(90deg,transparent,#000 55%)}
 .pag-topo.pag-foto::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--fundo) 38%,rgba(244,246,249,.55))}
 @media (max-width:760px){.pag-topo.pag-foto::before{width:100%;opacity:.55}.pag-topo.pag-foto::after{background:linear-gradient(180deg,rgba(244,246,249,.92),rgba(244,246,249,.8))}}
-.mapa-aviso button,.mapa-aviso .btn{background:#fff!important;color:var(--marinho)!important;border-color:#fff!important;font-weight:600}
 .frase-cidade p{text-wrap:balance}
+.mapa-cartao .mapa-id img{width:auto!important;height:42px!important;max-width:120px;object-fit:contain;transform:none!important}@media (max-width:560px){.mapa-cartao .mapa-id img{height:34px!important}}
+@media (max-width:560px){.quadro-mapa:has(.mapa-ilustrado),.mapa:has(.mapa-ilustrado){aspect-ratio:auto;min-height:0}.quadro-mapa .mapa-ilustrado,.mapa .mapa-ilustrado{position:relative;inset:auto;height:auto;min-height:0}.mapa-ilustrado .mapa-img{position:relative;display:block;height:260px}.mapa-cartao{position:relative;left:auto;right:auto;bottom:auto;max-width:none;margin:-26px 10px 10px}}
+.mapa .mapa-ilustrado,.quadro-mapa .mapa-ilustrado{padding:0!important}
+
+/* mapa do Google aberto direto; o mapa ilustrado (ruas reais do OpenStreetMap) fica de fundo enquanto ele carrega */
+.quadro-mapa,.mapa{background:#EEF2F6 url(assets/fotos/mapa-kiesel-800.webp) center/cover no-repeat}
+.quadro-mapa iframe,.mapa iframe{display:block;border:0}
+@media (max-width:560px){.mapa{min-height:380px}.mapa iframe{min-height:380px}}
+
+/* v2 das faixas com foto (pedido: "está muito em branco"): foto real da cidade, nítida, com faixa azul-marinho para o texto */
+.chamada-foto::before{inset:0;background-image:var(--fundo-img);background-position:center;background-size:cover}
+.chamada-foto::after{background:linear-gradient(90deg,rgba(15,42,68,.95) 0%,rgba(15,42,68,.86) 42%,rgba(15,42,68,.45) 72%,rgba(15,42,68,.2) 100%)}
+.chamada-foto{border-top:0;color:#fff}
+.chamada-foto h2{color:#fff}
+.chamada-foto .chamada-sub{color:#9CC4EA}
+.chamada-foto .chamada-txt{color:rgba(255,255,255,.88)}
+.chamada-foto .chamada-txt em{color:#fff}
+.chamada-foto .chamada-ic{background:rgba(255,255,255,.12);color:#fff;box-shadow:none;border:1px solid rgba(255,255,255,.28)}
+.chamada-foto .btn-contorno{color:#fff;border-color:rgba(255,255,255,.55);background:transparent}
+.chamada-foto .btn-contorno:hover{border-color:#fff;color:#fff}
+.chamada-foto .btn-contorno::before{background:rgba(255,255,255,.12)}
+@media (max-width:760px){.chamada-foto::before{background-image:var(--fundo-img-p,var(--fundo-img))}.chamada-foto::after{background:linear-gradient(180deg,rgba(15,42,68,.9),rgba(15,42,68,.82))}}
+.pag-topo.pag-foto::before{width:60%;background-image:var(--fundo-img);background-position:center;background-size:cover;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 38%);mask-image:linear-gradient(90deg,transparent 0%,#000 38%)}
+.pag-topo.pag-foto::after{background:linear-gradient(90deg,var(--fundo) 40%,rgba(244,246,249,.55) 58%,rgba(244,246,249,0) 85%)}
+@media (max-width:760px){.pag-topo.pag-foto::before{width:100%;opacity:1;background-image:var(--fundo-img-p,var(--fundo-img));-webkit-mask-image:none;mask-image:none}.pag-topo.pag-foto::after{background:linear-gradient(180deg,rgba(244,246,249,.95),rgba(244,246,249,.86))}}
