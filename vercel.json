@@ -3,6 +3,17 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/:caminho*",
+      "has": [
+        {
+          "type": "host",
+          "value": "kiesel-site.vercel.app"
+        }
+      ],
+      "destination": "https://www.imobiliariakiesel.com.br/:caminho*",
+      "permanent": true
+    },
+    {
       "source": "/",
       "has": [
         {
