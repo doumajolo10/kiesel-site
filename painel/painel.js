@@ -33,6 +33,7 @@
     chave: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M14 9l2 2"/></svg>',
     externo: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg>',
     foto: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 8"/></svg>',
+    baixa: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 4v11M7.5 10.5L12 15l4.5-4.5M5 20h14"/></svg>',
     envia: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 18a5 5 0 0 1-.6-10A6 6 0 0 1 18 8.5a4.5 4.5 0 0 1-.5 9.5"/><path d="M12 12v9M8.5 15.5L12 12l3.5 3.5"/></svg>',
     x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>',
     esq: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>',
@@ -539,6 +540,7 @@
       <div class="conteudo">
         <label class="solta" id="solta">${I.envia}<b>Escolher fotos</b><span>ou arraste os arquivos para cá · JPG, PNG ou WEBP</span><input type="file" id="arq" accept="image/*" multiple></label>
         <div class="fotos" id="fotos"></div>
+        <button type="button" class="btn btn-linha" id="b-baixa-jpg"${ed.fotos.some(x => x.f) ? "" : " hidden"}>${I.baixa}Baixar as fotos em JPG</button>
         <label class="marca-agua"><input type="checkbox" id="c-marca"${ed.marca ? " checked" : ""}>Colocar a marca d'água da Kiesel nas fotos novas</label>
       </div>
     </section>
@@ -659,6 +661,7 @@
     $("#c-destaque").addEventListener("change", e => { const maior = E.lista.reduce((m, y) => Math.max(m, y.destaque || 0), 0); d.destaque = e.target.checked ? (ed.orig && ed.orig.destaque > 0 ? ed.orig.destaque : maior + 1) : 0; muda(); });
     $("#c-marca").addEventListener("change", e => { ed.marca = e.target.checked; guarda.set("kiesel-painel-marca", ed.marca); });
     // fotos
+    $("#b-baixa-jpg").addEventListener("click", baixaJPG);
     const arq = $("#arq"), solta = $("#solta");
     arq.addEventListener("change", () => { recebeArquivos(arq.files); arq.value = ""; });
     ["dragenter", "dragover"].forEach(t => solta.addEventListener(t, e => { e.preventDefault(); solta.classList.add("sobre"); }));
@@ -716,6 +719,29 @@
       pintaFotos(); pintaPrevia();
     };
     window.addEventListener("pointerup", fim); window.addEventListener("pointercancel", fim);
+  }
+
+  // ---------- baixar as fotos já publicadas em JPG (Instagram/Facebook não aceitam WEBP) ----------
+  async function baixaJPG(e) {
+    const ed = E.ed, b = e.currentTarget, fotos = ed.fotos.filter(x => x.f);
+    if (!fotos.length) return aviso("Este imóvel ainda não tem fotos salvas.", { erro: true });
+    b.disabled = true; let feitas = 0;
+    try {
+      for (const x of fotos) {
+        b.lastChild.textContent = `Preparando ${feitas + 1} de ${fotos.length}…`;
+        const r = await fetch(fotoURL(x.f, "g"), { cache: "no-store" }); if (!r.ok) throw new Error("foto");
+        const img = await abreImagem(await r.blob());
+        const cv = document.createElement("canvas"); cv.width = img.width; cv.height = img.height;
+        const cx = cv.getContext("2d"); cx.fillStyle = "#fff"; cx.fillRect(0, 0, cv.width, cv.height); cx.drawImage(img, 0, 0);
+        if (img.close) img.close();
+        const jpg = await paraBlob(cv, "image/jpeg", 0.92);
+        const a = document.createElement("a"); a.href = URL.createObjectURL(jpg); a.download = `${ed.d.ref || "imovel"}-${String(++feitas).padStart(2, "0")}.jpg`;
+        document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 60000);
+        await new Promise(ok => setTimeout(ok, 350));
+      }
+      aviso(feitas === 1 ? "1 foto baixada em JPG." : `${feitas} fotos baixadas em JPG. Se o navegador perguntar, permita baixar vários arquivos.`, { tempo: 6000 });
+    } catch (err) { aviso(`Não deu para baixar${feitas ? " todas (" + feitas + " baixadas)" : ""}. Confira a internet e tente de novo.`, { erro: true }); }
+    b.disabled = false; b.lastChild.textContent = "Baixar as fotos em JPG";
   }
 
   // ---------- fotos: reduz, marca d'água e envia ----------
